@@ -1,0 +1,7 @@
+@import './globals.css';
+@import './typography.css';
+@import './utilities.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
