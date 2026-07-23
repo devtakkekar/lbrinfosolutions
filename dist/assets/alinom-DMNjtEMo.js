@@ -1,0 +1,1 @@
+import{g as t}from"./main-BrWH3t0s.js";import{r as e}from"./faq-C5asFSdi.js";document.addEventListener("DOMContentLoaded",()=>{const o=t("alinom");o&&e("faq-container",o.faq)});

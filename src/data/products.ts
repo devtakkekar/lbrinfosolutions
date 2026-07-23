@@ -1,0 +1,300 @@
+/**
+ * Products Data
+ * Complete content for all product pages, cards, and carousel
+ */
+
+import type { Product } from '../types/product';
+
+// Partner/product logos — imported so Vite fingerprints and bundles them.
+// Each resolves to a hashed URL string at build time.
+import postgresProLogo from '../assets/logos/PostgresPro_logo.svg';
+import infinidatLogo from '../assets/logos/lenovo_infinidat.svg';
+import vastDataLogo from '../assets/logos/vast_data.svg';
+// Hammerspace's source file is white-fill only (transparent on white cards),
+// so a navy-fill variant is used for light surfaces (cards, listing grid).
+import hammerspaceLogo from '../assets/logos/hammerspace-dark.svg';
+import alinomLogo from '../assets/logos/alinom.svg';
+import visionLabsLogo from '../assets/logos/vison_labs.svg';
+
+export const products: Product[] = [
+  {
+    id: 'postgres-pro',
+    name: 'Postgres Pro',
+    tagline: 'Enterprise-Grade PostgreSQL',
+    shortDescription: 'Advanced PostgreSQL fork providing enhanced performance, scalability, reliability, and security for mission-critical enterprise workloads.',
+    overview: 'Postgres Pro is developed by Postgres Professional, one of the world\'s leading PostgreSQL vendors and a top-3 contributor to the open-source PostgreSQL project. Postgres Pro DBMS builds on PostgreSQL with proprietary enhancements that boost performance, strengthen security, and simplify enterprise operations.\n\nAvailable in Standard and Enterprise editions, Postgres Pro delivers features like 64-bit transaction IDs, advanced query optimization, Oracle compatibility layers, and enterprise-grade security — all backed by 24/7/365 expert support, consulting, and migration assistance.',
+    category: 'Database',
+    logo: postgresProLogo,
+    features: [
+      { title: '64-bit Transaction IDs', description: 'Long-term stability for massive workloads without transaction ID wraparound concerns.' },
+      { title: 'Advanced Query Optimization', description: 'AI-driven adaptive query tuning that automatically optimizes execution plans over time.' },
+      { title: 'Oracle Compatibility', description: 'PL/SQL packages, collections, and Ora2pg Pro utility for seamless Oracle-to-Postgres migration.' },
+      { title: 'Enterprise Security', description: 'pg_proaudit extension, advanced authentication policies, and fine-grained access control.' },
+      { title: 'Compressed File System', description: 'CFS technology for storage efficiency when handling large data volumes.' },
+      { title: 'Superfast Incremental Backup', description: 'Efficient recovery with minimal downtime through intelligent incremental backup strategies.' },
+      { title: 'Table Partitioning', description: 'Optimized partitioning for large datasets, delivering better performance at scale.' },
+      { title: 'Resource Management', description: 'Fine-grained control over resource-intensive operations to prevent workload contention.' },
+    ],
+    benefits: [
+      { title: 'Reduced Licensing Costs', description: 'Open-source foundation with enterprise features eliminates expensive proprietary database licensing.' },
+      { title: 'Simplified Migration', description: 'Purpose-built tools make Oracle and other proprietary database migrations predictable and low-risk.' },
+      { title: 'Enterprise Reliability', description: '24/7 expert support from the team that contributes directly to PostgreSQL core development.' },
+      { title: 'Future-Proof Investment', description: 'Built on the world\'s most advanced open-source database with guaranteed long-term roadmap.' },
+    ],
+    useCases: [
+      { title: 'Oracle Migration', description: 'Organizations moving from Oracle to reduce costs while maintaining enterprise capabilities.', industries: ['Banking', 'Government', 'Telecom'] },
+      { title: 'High-Volume OLTP', description: 'Transaction-heavy applications requiring consistent sub-millisecond response times.', industries: ['E-Commerce', 'Financial Services'] },
+      { title: 'Data Warehousing', description: 'Large-scale analytics workloads benefiting from advanced partitioning and compression.', industries: ['Telecom', 'Media', 'Retail'] },
+      { title: 'Mission-Critical Systems', description: 'Applications where downtime directly impacts revenue or safety.', industries: ['Healthcare', 'Manufacturing', 'Energy'] },
+    ],
+    industries: ['Banking & Financial Services', 'Government', 'Telecommunications', 'Healthcare', 'Manufacturing', 'Retail'],
+    editions: [
+      { name: 'Postgres Pro Standard', description: 'Reliable PostgreSQL with enterprise enhancements for mid-size deployments.' },
+      { name: 'Postgres Pro Enterprise', description: 'Advanced clustering, security, and scalability for large organizations.' },
+      { name: 'Postgres Pro Enterprise Manager', description: 'Centralized monitoring and management dashboard for fleet operations.' },
+    ],
+    faq: [
+      { question: 'How does Postgres Pro differ from standard PostgreSQL?', answer: 'Postgres Pro extends PostgreSQL with proprietary features including 64-bit transaction IDs, adaptive query optimization, Oracle compatibility packages, enhanced security auditing, and compressed storage — all developed by top PostgreSQL contributors.' },
+      { question: 'Is Postgres Pro compatible with existing PostgreSQL applications?', answer: 'Yes. Postgres Pro maintains full compatibility with PostgreSQL. Existing applications, tools, and extensions work without modification.' },
+      { question: 'What support options are available?', answer: 'Postgres Professional offers 24/7/365 expert support, remote DBA services, technical audits, migration consulting, and professional training programs.' },
+      { question: 'Can Postgres Pro handle Oracle-to-PostgreSQL migrations?', answer: 'Postgres Pro includes the Ora2pg Pro utility and Oracle-compatible PL/SQL packages specifically designed for smooth, low-risk Oracle migrations.' },
+    ],
+    officialUrl: 'https://postgrespro.com/',
+    pagePath: '/src/pages/postgres-pro/',
+    featured: true,
+    order: 1,
+  },
+  {
+    id: 'infinidat',
+    name: 'Infinidat',
+    tagline: 'Enterprise Data Storage & Cyber Resilience',
+    shortDescription: 'Petabyte-scale enterprise storage with InfiniSafe cyber protection, delivering unmatched performance and 99.99999% availability.',
+    overview: 'Infinidat provides enterprise-class data storage and protection solutions designed for organizations that demand the highest levels of performance, availability, and cyber resilience. The InfiniBox platform delivers petabyte-scale storage with consistent sub-millisecond latency.\n\nWith InfiniSafe technology, Infinidat addresses the growing threat of ransomware and cyberattacks through immutable snapshots, logical air-gapping, and near-instantaneous recovery — ensuring your data remains protected and recoverable under any circumstance.',
+    category: 'Storage',
+    logo: infinidatLogo,
+    features: [
+      { title: 'InfiniBox', description: 'Petabyte-scale primary storage with consistent sub-millisecond performance and 99.99999% availability.' },
+      { title: 'InfiniBox SSA', description: 'All-flash enterprise storage delivering unmatched real-world application performance.' },
+      { title: 'InfiniGuard', description: 'Purpose-built data protection appliance with InfiniSafe cyber recovery capabilities.' },
+      { title: 'InfiniSafe Technology', description: 'Immutable snapshots, logical air-gap, fenced forensic environments, and near-instant recovery.' },
+      { title: 'Neural Cache', description: 'AI-powered caching algorithm that learns access patterns for optimized performance.' },
+      { title: 'Autonomous Automation', description: 'Self-healing, self-optimizing storage that reduces operational overhead by up to 80%.' },
+      { title: 'Multi-Protocol Support', description: 'Unified block, file, and object storage in a single platform.' },
+      { title: 'Guaranteed SLAs', description: 'Industry-first 100% availability guarantee backed by contractual SLAs.' },
+    ],
+    benefits: [
+      { title: 'Cyber Resilience', description: 'Comprehensive protection against ransomware with guaranteed recovery in under one minute.' },
+      { title: 'Consolidation', description: 'Reduce storage sprawl by consolidating multiple workloads onto a single high-performance platform.' },
+      { title: 'Lower TCO', description: 'Up to 70% reduction in total cost of ownership compared to competitive all-flash solutions.' },
+      { title: 'Operational Simplicity', description: 'Autonomous operations reduce storage management time by 80%, freeing IT teams for strategic work.' },
+    ],
+    useCases: [
+      { title: 'Data Center Consolidation', description: 'Replacing multiple storage arrays with a single high-performance platform.', industries: ['Enterprise IT', 'Financial Services'] },
+      { title: 'Cyber Recovery', description: 'Protecting mission-critical data against ransomware with guaranteed rapid recovery.', industries: ['Healthcare', 'Government', 'Banking'] },
+      { title: 'Database Storage', description: 'High-performance backend for Oracle, SQL Server, and SAP HANA workloads.', industries: ['Manufacturing', 'Telecom'] },
+      { title: 'Virtual Infrastructure', description: 'Enterprise storage for large-scale VMware and container environments.', industries: ['Cloud Service Providers', 'Enterprise IT'] },
+    ],
+    industries: ['Banking & Financial Services', 'Healthcare', 'Government', 'Telecommunications', 'Manufacturing', 'Cloud Providers'],
+    faq: [
+      { question: 'What is the InfiniSafe cyber recovery solution?', answer: 'InfiniSafe provides four pillars of protection: immutable snapshots that cannot be altered or deleted, a logical air-gap separating backup from production, a fenced forensic environment for safe malware analysis, and near-instantaneous recovery validated across petabytes of data.' },
+      { question: 'What availability guarantee does Infinidat offer?', answer: 'Infinidat provides a contractual 99.99999% availability guarantee — the industry\'s highest — translating to less than 3 seconds of unplanned downtime per year.' },
+      { question: 'How does Infinidat reduce storage costs?', answer: 'Through neural cache algorithms, inline compression and deduplication, autonomous operations that reduce admin overhead, and a pricing model that delivers enterprise-class storage at significantly lower per-TB costs.' },
+      { question: 'Is Infinidat suitable for hybrid cloud environments?', answer: 'Yes. Infinidat supports hybrid cloud architectures with cloud snapshot orchestration, enabling seamless data mobility between on-premises and cloud storage tiers.' },
+    ],
+    officialUrl: 'https://www.infinidat.com/',
+    pagePath: '/src/pages/infinidat/',
+    featured: true,
+    order: 2,
+  },
+  {
+    id: 'vast-data',
+    name: 'VAST Data',
+    tagline: 'The AI Data Platform',
+    shortDescription: 'Next-generation all-flash data platform that eliminates storage tiering and delivers unified file, object, and database services for AI workloads.',
+    overview: 'VAST Data has built the AI operating system — a groundbreaking scale-out platform that eliminates complex storage tiering and brings an end to the HDD era in the data center. The VAST Data Platform delivers file, object, database, and edge-to-cloud services in one scalable, affordable all-flash system.\n\nDesigned from the ground up for AI and deep learning workloads, VAST provides the performance to keep GPUs fully utilized, the security to protect intellectual property, and 99.999% uptime for continuous AI development. Recognized as a Leader in the 2024 Gartner Magic Quadrant for File and Object Storage Platforms.',
+    category: 'Storage',
+    logo: vastDataLogo,
+    features: [
+      { title: 'Universal Storage', description: 'Unified file, object, and database services in a single all-flash system — no tiering required.' },
+      { title: 'DASE Architecture', description: 'Disaggregated, Shared-Everything architecture delivering cloud data services with resilience at scale.' },
+      { title: 'AI-Optimized Performance', description: 'Purpose-built for GPU-intensive workloads with consistent high-bandwidth, low-latency access.' },
+      { title: 'Exabyte Scale', description: 'Linear scalability from terabytes to exabytes without performance degradation.' },
+      { title: 'Data Catalogue', description: 'Built-in metadata management and discovery engine for AI-ready data pipelines.' },
+      { title: 'Multi-Tenancy', description: 'Secure isolation with dynamic composability for multiple teams and workloads.' },
+      { title: 'Global Data Services', description: 'Edge-to-cloud data fabric with consistent APIs across all deployment locations.' },
+      { title: '99.999% Availability', description: 'Enterprise-grade uptime ensuring continuous AI development without interruption.' },
+    ],
+    benefits: [
+      { title: 'Eliminate Storage Tiering', description: 'One platform for all data — active, archive, and everything in between — at flash performance and near-tape economics.' },
+      { title: 'Accelerate AI Pipelines', description: 'Keep GPU clusters fed with data at line rate, reducing training time and maximizing infrastructure ROI.' },
+      { title: 'Simplify Operations', description: 'Replace multiple storage systems with a single platform, reducing management complexity by orders of magnitude.' },
+      { title: 'Future-Proof Architecture', description: 'Scale seamlessly as data grows without rearchitecting, re-tiering, or migrating workloads.' },
+    ],
+    useCases: [
+      { title: 'AI Model Training', description: 'High-throughput storage for feeding GPU clusters during deep learning training runs.', industries: ['Technology', 'Research', 'Automotive'] },
+      { title: 'Data Lakes', description: 'Consolidating structured and unstructured data into a single high-performance platform.', industries: ['Media', 'Healthcare', 'Financial Services'] },
+      { title: 'Analytics & Data Warehousing', description: 'Real-time analytics on massive datasets without performance bottlenecks.', industries: ['Retail', 'Telecom', 'Government'] },
+      { title: 'Life Sciences', description: 'Genomics, drug discovery, and medical imaging workloads requiring high-bandwidth access.', industries: ['Pharmaceuticals', 'Healthcare', 'Research'] },
+    ],
+    industries: ['Technology', 'Healthcare & Life Sciences', 'Financial Services', 'Media & Entertainment', 'Government', 'Research & Education'],
+    faq: [
+      { question: 'What makes VAST Data different from traditional storage?', answer: 'VAST eliminates the need for storage tiering entirely. Its DASE architecture delivers all-flash performance at near-tape economics, providing a single system for all data regardless of temperature or workload type.' },
+      { question: 'Is VAST Data suitable for AI workloads?', answer: 'VAST was purpose-built for AI. It delivers the sustained bandwidth and low latency needed to keep GPU clusters fully utilized during training, inference, and RAG workloads.' },
+      { question: 'How does VAST Data handle scalability?', answer: 'The DASE architecture provides linear scalability from terabytes to exabytes. Performance scales with capacity — adding nodes increases both storage and throughput proportionally.' },
+      { question: 'What protocols does VAST Data support?', answer: 'VAST supports NFS, SMB, S3 object, and database protocols natively — all from a single namespace without gateways or translation layers.' },
+    ],
+    officialUrl: 'https://www.vastdata.com/',
+    pagePath: '/src/pages/vast-data/',
+    featured: true,
+    order: 3,
+  },
+  {
+    id: 'hammerspace',
+    name: 'Hammerspace',
+    tagline: 'Global Data Orchestration',
+    shortDescription: 'Software-defined data orchestration platform providing a unified global namespace across heterogeneous storage, clouds, and geographic locations.',
+    overview: 'Hammerspace is a software-defined data orchestration and storage solution that provides unified file access via a high-performance Parallel Global File System spanning different storage types, vendors, geographic locations, and cloud environments.\n\nDesigned to make data a global resource across distributed or otherwise incompatible storage platforms, Hammerspace presents a cross-platform global namespace where users and applications can have direct multi-protocol access to all files on any storage anywhere — automating data movement, transformation, and lifecycle management for AI-ready pipelines.',
+    category: 'Data Orchestration',
+    logo: hammerspaceLogo,
+    features: [
+      { title: 'Global Namespace', description: 'Unified view of all data across heterogeneous storage systems, locations, and clouds.' },
+      { title: 'Parallel Global File System', description: 'High-performance distributed file system delivering bandwidth at scale across sites.' },
+      { title: 'Automated Data Orchestration', description: 'Policy-driven data placement and movement across storage tiers and locations.' },
+      { title: 'Multi-Protocol Access', description: 'Simultaneous NFS, SMB, and S3 access to the same data without copies or gateways.' },
+      { title: 'AI Data Pipeline', description: 'Automated data transformation and continuous delivery of AI-ready data to GPU clusters.' },
+      { title: 'Metadata Intelligence', description: 'Rich metadata services enabling smart data placement, search, and lifecycle management.' },
+      { title: 'Hybrid & Multi-Cloud', description: 'Seamless data mobility between on-premises, edge, and multiple cloud providers.' },
+      { title: 'Storage Agnostic', description: 'Works with any vendor\'s storage — no forklift upgrades or vendor lock-in required.' },
+    ],
+    benefits: [
+      { title: 'Eliminate Data Silos', description: 'Unify fragmented storage into a single accessible namespace without migrating or copying data.' },
+      { title: 'Accelerate AI Workflows', description: 'Automated pipelines ensure GPU clusters always have access to the right data in the right format.' },
+      { title: 'Reduce Cloud Costs', description: 'Intelligent data placement moves cold data to cheaper tiers automatically while maintaining instant access.' },
+      { title: 'Vendor Independence', description: 'Avoid lock-in by orchestrating data across any vendor\'s storage infrastructure transparently.' },
+    ],
+    useCases: [
+      { title: 'AI Data Management', description: 'Automating data pipelines for training, inference, and RAG workloads across distributed GPU clusters.', industries: ['Technology', 'Automotive', 'Research'] },
+      { title: 'Hybrid Cloud Storage', description: 'Extending on-premises storage to cloud seamlessly for burst capacity and DR.', industries: ['Enterprise IT', 'Financial Services'] },
+      { title: 'Media Production', description: 'Global collaboration on large media files with automatic data placement near editors.', industries: ['Media & Entertainment', 'Advertising'] },
+      { title: 'HPC & Research', description: 'High-performance data access for scientific computing and simulation workloads.', industries: ['Government', 'Research', 'Energy'] },
+    ],
+    industries: ['Technology', 'Media & Entertainment', 'Government', 'Research & Education', 'Financial Services', 'Energy'],
+    faq: [
+      { question: 'How does Hammerspace differ from traditional NAS?', answer: 'Unlike traditional NAS which is a single storage system, Hammerspace provides a software layer that orchestrates data across any existing storage — NAS, object, cloud — presenting it all as a single high-performance global file system.' },
+      { question: 'Does Hammerspace require replacing existing storage?', answer: 'No. Hammerspace works with your existing storage infrastructure from any vendor. It adds a metadata and orchestration layer on top without requiring data migration or hardware changes.' },
+      { question: 'How does Hammerspace support AI workloads?', answer: 'Hammerspace automates the entire pipeline of discovering, transforming, and delivering data to GPU clusters. It ensures AI workloads always have the freshest, properly formatted data regardless of where it physically resides.' },
+      { question: 'What cloud providers does Hammerspace support?', answer: 'Hammerspace supports all major cloud providers including AWS, Azure, Google Cloud, and Oracle Cloud — enabling true multi-cloud data mobility without application changes.' },
+    ],
+    officialUrl: 'https://hammerspace.com/',
+    pagePath: '/src/pages/hammerspace/',
+    featured: true,
+    order: 4,
+  },
+  {
+    id: 'alinom',
+    name: 'Alinom',
+    tagline: 'Enterprise IT Monitoring',
+    shortDescription: 'Free enterprise-grade IT monitoring platform for complex infrastructure, telecommunication networks, and engineering systems.',
+    overview: 'Alinom is a comprehensive IT monitoring platform designed for managing complex enterprise infrastructure, telecommunication networks, and engineering systems at scale. It provides all-in-one monitoring capabilities with multi-technology support, advanced visualization, and open integration.\n\nUnlike traditional monitoring tools that charge per-node or per-metric, Alinom offers enterprise-grade capabilities without licensing constraints — making comprehensive observability accessible to organizations of all sizes while maintaining the depth and reliability demanded by large-scale operations.',
+    category: 'Monitoring',
+    logo: alinomLogo,
+    features: [
+      { title: 'Multi-Technology Support', description: 'Monitor servers, network equipment, applications, databases, cloud services, and IoT devices from a single platform.' },
+      { title: 'Advanced Visualization', description: 'Customizable dashboards, topology maps, and real-time data visualization for operational clarity.' },
+      { title: 'Open Integration', description: 'RESTful APIs, webhook support, and pre-built integrations with ITSM, messaging, and automation tools.' },
+      { title: 'Intelligent Alerting', description: 'Configurable thresholds, anomaly detection, and alert correlation to reduce noise and surface real issues.' },
+      { title: 'Scalable Architecture', description: 'Distributed monitoring architecture supporting tens of thousands of nodes without performance degradation.' },
+      { title: 'Network Discovery', description: 'Automated discovery and mapping of network topology, dependencies, and device relationships.' },
+      { title: 'SLA Monitoring', description: 'Track and report on service level agreements with built-in availability and performance metrics.' },
+      { title: 'Historical Analytics', description: 'Long-term data retention with trend analysis and capacity planning capabilities.' },
+    ],
+    benefits: [
+      { title: 'No Licensing Limits', description: 'Enterprise-grade monitoring without per-node costs — scale your monitoring as your infrastructure grows.' },
+      { title: 'Unified Visibility', description: 'Single pane of glass across servers, networks, applications, and cloud services.' },
+      { title: 'Faster Incident Response', description: 'Intelligent correlation and root cause indicators reduce mean time to resolution.' },
+      { title: 'Operational Efficiency', description: 'Automated discovery and configuration reduce manual setup and ongoing maintenance effort.' },
+    ],
+    useCases: [
+      { title: 'Telecom Network Monitoring', description: 'End-to-end visibility across complex telecommunication infrastructure and services.', industries: ['Telecommunications', 'ISPs'] },
+      { title: 'Data Center Operations', description: 'Comprehensive monitoring of compute, storage, and network infrastructure.', industries: ['Enterprise IT', 'Cloud Providers'] },
+      { title: 'IT Service Management', description: 'SLA tracking, availability reporting, and proactive capacity planning.', industries: ['Managed Services', 'Enterprise IT'] },
+      { title: 'Industrial Systems', description: 'Monitoring engineering systems, SCADA, and industrial IoT environments.', industries: ['Manufacturing', 'Energy', 'Utilities'] },
+    ],
+    industries: ['Telecommunications', 'Enterprise IT', 'Manufacturing', 'Energy & Utilities', 'Government', 'Managed Service Providers'],
+    faq: [
+      { question: 'Is Alinom truly free for enterprise use?', answer: 'Yes. Alinom provides enterprise-grade monitoring capabilities without per-node or per-metric licensing fees, making comprehensive observability accessible to organizations regardless of infrastructure scale.' },
+      { question: 'What technologies can Alinom monitor?', answer: 'Alinom supports monitoring across servers (Linux, Windows), network equipment (SNMP, NetFlow), applications, databases, cloud services (AWS, Azure), containers, and IoT/industrial systems.' },
+      { question: 'How does Alinom scale for large environments?', answer: 'Alinom uses a distributed architecture with proxy nodes for remote monitoring, enabling management of tens of thousands of devices across multiple locations without centralized bottlenecks.' },
+      { question: 'Can Alinom integrate with existing ITSM tools?', answer: 'Yes. Alinom provides RESTful APIs and pre-built integrations with ServiceNow, Jira, PagerDuty, Slack, Microsoft Teams, and custom webhook-based automation workflows.' },
+    ],
+    officialUrl: 'https://www.alinom.com/',
+    pagePath: '/src/pages/alinom/',
+    featured: true,
+    order: 5,
+  },
+  {
+    id: 'visionlabs-ai',
+    name: 'VisionLabs AI',
+    tagline: 'Computer Vision & Biometric Intelligence',
+    shortDescription: 'Global leader in computer vision and machine learning, delivering high-performance facial recognition and biometric identification at enterprise scale.',
+    overview: 'VisionLabs is a global leader in computer vision and machine learning, specializing in high-performance facial recognition and biometric identification systems. With over a decade of expertise and top-ranked algorithms globally, VisionLabs delivers the LUNA Platform — a comprehensive solution for face and body recognition, video analytics, and object detection.\n\nThe platform powers secure digital identity experiences across banking, transportation, smart cities, and access control — combining AI precision with purpose-built hardware to deliver fast, accurate recognition that is designed to resist spoofing and deepfake attacks.',
+    category: 'AI & Vision',
+    logo: visionLabsLogo,
+    features: [
+      { title: 'LUNA Platform', description: 'Comprehensive face and body recognition engine for large-scale biometric identification and verification.' },
+      { title: 'Liveness Detection', description: 'Advanced anti-spoofing including presentation attack detection and deepfake analysis.' },
+      { title: 'Video Analytics', description: 'Real-time face detection and tracking across multiple video streams simultaneously.' },
+      { title: 'ISO Compliance', description: 'Image quality checks conforming to ISO/IEC 19794-5:2011 and custom requirements.' },
+      { title: 'Attribute Estimation', description: 'Age, gender, emotion, and appearance analysis from facial and body imagery.' },
+      { title: '1:N Matching', description: 'High-speed identification against databases containing millions of descriptors.' },
+      { title: 'Edge Deployment', description: 'Optimized models for deployment on edge devices, mobile platforms, and embedded hardware.' },
+      { title: 'LUNA ID SDK', description: 'Mobile development tools in Kotlin and Swift for face recognition in native applications.' },
+    ],
+    benefits: [
+      { title: 'World-Leading Accuracy', description: 'Top-ranked facial recognition algorithms with perfect liveness detection scores in international benchmarks.' },
+      { title: 'Scalable Architecture', description: 'Process millions of identifications per day with horizontal scaling and distributed descriptor databases.' },
+      { title: 'Anti-Fraud Protection', description: 'Multi-layered spoofing resistance including presentation attacks, deepfakes, and replay attacks.' },
+      { title: 'Flexible Deployment', description: 'Deploy on-premises, in private cloud, or at the edge — maintaining full data sovereignty and compliance.' },
+    ],
+    useCases: [
+      { title: 'Digital Identity Verification', description: 'KYC onboarding and identity verification for banking and financial services.', industries: ['Banking', 'Fintech', 'Insurance'] },
+      { title: 'Access Control', description: 'Biometric access management for buildings, data centers, and secure facilities.', industries: ['Enterprise', 'Government', 'Defense'] },
+      { title: 'Smart City & Transportation', description: 'Passenger verification, border control, and public safety surveillance systems.', industries: ['Government', 'Transportation', 'Aviation'] },
+      { title: 'Retail Analytics', description: 'Customer behavior analysis, VIP recognition, and loss prevention.', industries: ['Retail', 'Hospitality', 'Entertainment'] },
+    ],
+    industries: ['Banking & Fintech', 'Government & Defense', 'Transportation & Aviation', 'Retail', 'Healthcare', 'Smart Cities'],
+    faq: [
+      { question: 'How accurate is VisionLabs facial recognition?', answer: 'VisionLabs algorithms consistently rank among the top globally in NIST FRVT benchmarks, with perfect liveness detection accuracy and sub-second identification against million-record databases.' },
+      { question: 'Can VisionLabs detect deepfakes and spoofing attempts?', answer: 'Yes. The LUNA Platform includes multi-layered anti-spoofing with presentation attack detection, deepfake analysis, and liveness verification that works across 2D photos, 3D masks, and video replay attacks.' },
+      { question: 'What deployment options are available?', answer: 'VisionLabs supports on-premises deployment for maximum data sovereignty, private cloud for scalability, edge deployment on embedded hardware, and mobile SDK integration for native applications.' },
+      { question: 'Does VisionLabs comply with privacy regulations?', answer: 'The platform is designed with privacy-by-design principles, supporting GDPR compliance, data minimization, consent management, and configurable data retention policies.' },
+    ],
+    officialUrl: 'https://visionlabs.ai/',
+    pagePath: '/src/pages/visionlabs-ai/',
+    featured: true,
+    order: 6,
+  },
+];
+
+/** Get all products sorted by order */
+export const getProducts = (): Product[] => {
+  return [...products].sort((a, b) => a.order - b.order);
+};
+
+/** Get a single product by ID */
+export const getProductById = (id: string): Product | undefined => {
+  return products.find((p) => p.id === id);
+};
+
+/** Get featured products for homepage */
+export const getFeaturedProducts = (): Product[] => {
+  return products.filter((p) => p.featured).sort((a, b) => a.order - b.order);
+};
+
+/** Get related products (excluding current) */
+export const getRelatedProducts = (currentId: string, limit = 3): Product[] => {
+  return products
+    .filter((p) => p.id !== currentId)
+    .sort((a, b) => a.order - b.order)
+    .slice(0, limit);
+};
