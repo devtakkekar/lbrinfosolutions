@@ -73,7 +73,9 @@ export type ProductCategory =
   | 'Data Orchestration'
   | 'Monitoring'
   | 'AI & Vision'
-  | 'Security';
+  | 'Security'
+  | 'Operating System'
+  | 'Infrastructure';
 
 /** Minimal product data for cards and carousel */
 export type ProductCard = Pick<
