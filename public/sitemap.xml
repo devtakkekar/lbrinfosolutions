@@ -31,12 +31,27 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.lbrinfosolutions.com/alinom/</loc>
+    <loc>https://www.lbrinfosolutions.com/visionlabs-ai/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.lbrinfosolutions.com/visionlabs-ai/</loc>
+    <loc>https://www.lbrinfosolutions.com/rhel/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lbrinfosolutions.com/hpe/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lbrinfosolutions.com/cloudian/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lbrinfosolutions.com/yubico/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
