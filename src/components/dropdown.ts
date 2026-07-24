@@ -126,7 +126,7 @@ function initMobileMenu(): void {
 
   // Cap the slide-open height at the viewport (minus the fixed nav bar height)
   // so long menus scroll internally instead of overflowing the screen.
-  const maxOpenHeight = () => `${Math.min(menu.scrollHeight, window.innerHeight - 64)}px`;
+  const maxOpenHeight = () => `${Math.min(menu.scrollHeight, window.innerHeight - 72)}px`;
 
   toggle.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
