@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     aria-label="Hewlett Packard Enterprise"
+     class="hpe-logo"
+     focusable="false"
+     viewBox="0 0 630 180">
+
+  <path d="M18 180V0"
+        fill="none"
+        stroke="#000"
+        stroke-width="36"/>
+
+  <path d="M172 180V0"
+        fill="none"
+        stroke="#000"
+        stroke-width="36"/>
+
+  <path d="M18 89H155"
+        fill="none"
+        stroke="#000"
+        stroke-width="36"/>
+
+  <path d="M250 180V0"
+        fill="none"
+        stroke="#000"
+        stroke-width="36"/>
+
+  <path d="M250 18H352A32 32 0 0 1 352 118H250"
+        fill="none"
+        stroke="#000"
+        stroke-width="36"/>
+
+  <path d="M472 51V18H630"
+        fill="none"
+        stroke="#000"
+        stroke-width="36"/>
+
+  <path d="M630 162H472V86H630"
+        fill="none"
+        stroke="#03A883"
+        stroke-width="36"/>
+
+  <title>Hewlett Packard Enterprise</title>
+</svg>
