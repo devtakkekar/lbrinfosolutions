@@ -55,7 +55,6 @@ export const mainNavItems: NavItem[] = [
   {
     label :'Career',
     href: '',
-
   },
   {
     label: 'Contact',
