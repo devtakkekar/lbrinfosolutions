@@ -31,7 +31,7 @@ function buildNavItems(): string {
         return `
         <li class="nav-item-dropdown relative">
           <button
-            class="nav-link flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-navy transition-colors"
+            class="nav-link flex items-center gap-1 px-3 py-2 text-base font-medium text-gray-700 hover:text-navy transition-colors"
             aria-expanded="false"
             aria-haspopup="true"
           >
@@ -54,7 +54,7 @@ function buildNavItems(): string {
       }
       return `
       <li>
-        <a href="${item.href}" class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-navy transition-colors">${item.label}</a>
+        <a href="${item.href}" class="nav-link px-3 py-2 text-base font-medium text-gray-700 hover:text-navy transition-colors">${item.label}</a>
       </li>`;
     })
     .join('');
@@ -106,25 +106,16 @@ function buildMobileNavItems(): string {
 export function buildNavbarHtml(): string {
   return `
     <nav class="navbar fixed top-0 left-0 right-0 z-[200] bg-white border-b border-gray-200 shadow-nav" aria-label="Main navigation">
-      <div class="container-main flex items-center justify-between h-16 lg:h-18">
+      <div class="container-main flex items-center justify-between h-18 lg:h-20">
         <!-- Logo -->
-        <a href="/" class="nav-logo flex items-center gap-2 text-navy font-semibold text-lg tracking-tight" aria-label="${siteConfig.name} - Home">
-          <svg class="w-8 h-8 text-blue-accent" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="4" fill="currentColor" opacity="0.1"/>
-            <path d="M8 10h4v12H8V10zm6 4h4v8h-4v-8zm6-2h4v10h-4V12z" fill="currentColor"/>
-          </svg>
-          <span>${siteConfig.name}</span>
+        <a href="/" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
+          <img src="/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 w-auto" />
         </a>
 
         <!-- Desktop Navigation -->
         <ul class="nav-desktop hidden lg:flex items-center gap-1" role="menubar">
           ${buildNavItems()}
         </ul>
-
-        <!-- Desktop CTA -->
-        <a href="/src/pages/contact/" class="nav-cta hidden lg:inline-flex btn-primary text-xs px-4 py-2">
-          Get in Touch
-        </a>
 
         <!-- Mobile Menu Toggle -->
         <button
@@ -146,12 +137,9 @@ export function buildNavbarHtml(): string {
         <ul class="py-2">
           ${buildMobileNavItems()}
         </ul>
-        <div class="px-4 py-4 border-t border-gray-100">
-          <a href="/src/pages/contact/" class="btn-primary w-full text-center text-sm">Get in Touch</a>
-        </div>
       </div>
     </nav>
     <!-- Spacer to prevent content from hiding behind fixed nav -->
-    <div class="h-16 lg:h-18"></div>
+    <div class="h-18 lg:h-20"></div>
   `;
 }

@@ -18,38 +18,32 @@ export const mainNavItems: NavItem[] = [
         {
           label: 'Postgres Pro',
           href: '/src/pages/postgres-pro/',
-          description: 'Enterprise PostgreSQL Database',
-          badge: 'Database',
+          description: '',
+          badge: '',
+        },
+        {
+          label: 'RHEL',
+          href: '/src/pages/visionlabs-ai/',
+          description: '',
+          badge: '',
         },
         {
           label: 'Infinidat',
           href: '/src/pages/infinidat/',
-          description: 'Enterprise Data Storage & Protection',
-          badge: 'Storage',
+          description: '',
+          badge: '',
         },
         {
-          label: 'VAST Data',
-          href: '/src/pages/vast-data/',
-          description: 'AI-Powered Data Platform',
-          badge: 'Storage',
-        },
-        {
-          label: 'Hammerspace',
-          href: '/src/pages/hammerspace/',
-          description: 'Global Data Orchestration',
-          badge: 'Data Orchestration',
-        },
-        {
-          label: 'Alinom',
-          href: '/src/pages/alinom/',
-          description: 'IT Infrastructure Monitoring',
-          badge: 'Monitoring',
-        },
-        {
-          label: 'VisionLabs AI',
+          label: 'HPE',
           href: '/src/pages/visionlabs-ai/',
-          description: 'Computer Vision & Biometrics',
-          badge: 'AI & Vision',
+          description: '',
+          badge: '',
+        },
+        {
+          label: 'Cloudian',
+          href: '/src/pages/visionlabs-ai/',
+          description: '',
+          badge: '',
         },
       ],
     },
@@ -57,6 +51,11 @@ export const mainNavItems: NavItem[] = [
   {
     label: 'About',
     href: '/src/pages/about/',
+  },
+  {
+    label :'Career',
+    href: '',
+
   },
   {
     label: 'Contact',

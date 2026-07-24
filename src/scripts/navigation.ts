@@ -23,7 +23,7 @@ function initSmoothScrollLinks(): void {
       if (!target) return;
 
       e.preventDefault();
-      const navHeight = document.querySelector('.navbar')?.getBoundingClientRect().height ?? 64;
+      const navHeight = document.querySelector('.navbar')?.getBoundingClientRect().height ?? 72;
 
       window.scrollTo({
         top: target.getBoundingClientRect().top + window.scrollY - navHeight - 20,
