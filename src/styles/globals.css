@@ -85,6 +85,13 @@
     }
   }
 
+  @layer utilities {
+  .animate-word-spin {
+    animation-duration: 6s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
   /* Selection styling */
   ::selection {
     background-color: rgba(51, 102, 153, 0.15);

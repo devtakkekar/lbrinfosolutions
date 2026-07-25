@@ -76,6 +76,7 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         'slide-up': 'slideUp 0.5s ease-out forwards',
         'slide-in-right': 'slideInRight 0.3s ease-out forwards',
+        "word-spin": "wordSpin 6s infinite",
       },
       keyframes: {
         fadeIn: {
@@ -89,6 +90,19 @@ export default {
         slideInRight: {
           '0%': { opacity: '0', transform: 'translateX(-10px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        wordSpin: {
+          '0%':   { transform: 'translateY(0%)' },
+          '15%':  { transform: 'translateY(0%)' },
+          '20%':  { transform: 'translateY(-20%)' },
+          '35%':  { transform: 'translateY(-20%)' },
+          '40%':  { transform: 'translateY(-40%)' },
+          '55%':  { transform: 'translateY(-40%)' },
+          '60%':  { transform: 'translateY(-60%)' },
+          '75%':  { transform: 'translateY(-60%)' },
+          '80%':  { transform: 'translateY(-80%)' },
+          '95%':  { transform: 'translateY(-80%)' },
+          '100%': { transform: 'translateY(-80%)' },
         },
       },
     },
