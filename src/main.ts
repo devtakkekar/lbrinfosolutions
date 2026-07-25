@@ -20,6 +20,7 @@
 import { initDropdowns } from './components/dropdown';
 import { initCookieBanner } from './components/cookie-banner';
 import { initCarousel } from './components/carousel';
+import { initLogoCarousel } from './components/logo-carousel';
 import { initCounters } from './components/counter';
 import { initNavigation } from './scripts/navigation';
 import { initAnimations } from './scripts/animations';
@@ -36,6 +37,9 @@ function init(): void {
   // 2. Initialize page-specific components if their containers exist
   if (document.getElementById('product-carousel')) {
     initCarousel();
+  }
+  if (document.getElementById('logoTrack')) {
+    initLogoCarousel();
   }
 
   // 3. Cookie consent (always last, non-blocking)
