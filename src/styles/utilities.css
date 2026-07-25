@@ -135,6 +135,87 @@
   .prose-content a {
     @apply text-blue-accent hover:text-blue-light underline;
   }
+
+  /* Logo Carousel — continuous marquee of partner/technology logos.
+     Sits inside .container-main like every other section, so the fade
+     masks blend with the section's own background rather than the page's.
+     JS (logo-carousel.ts) duplicates .logo-track's children once and
+     animates via translate3d for a seamless infinite loop. */
+  .logo-carousel {
+    @apply relative w-full overflow-hidden isolate;
+  }
+
+  .logo-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  .logo-card {
+    @apply bg-white border border-gray-200 rounded transition-all duration-250;
+    width: 180px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 180px;
+    user-select: none;
+  }
+
+  .logo-card:hover {
+    @apply shadow-card-hover -translate-y-0.5;
+  }
+
+  .logo-card img {
+    width: 130px;
+    height: 40px;
+    object-fit: contain;
+    -webkit-user-drag: none;
+  }
+
+  .logo-card img.hpe-logo {
+    width: 100px;
+    height: 60px;
+  }
+
+  .logo-card img.redhat-logo {
+    width: 170px;
+    height: 90px;
+  }
+
+  /* Left & right fade masks — solid color matches the section's own
+     background (gray-50), not the page background, so it blends
+     correctly regardless of which sections sit above/below. */
+  .logo-carousel::before,
+  .logo-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  .logo-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-gray-50) 0%, rgba(247, 249, 252, 0) 100%);
+  }
+
+  .logo-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-gray-50) 0%, rgba(247, 249, 252, 0) 100%);
+  }
+
+  @media (max-width: 640px) {
+    .logo-carousel::before,
+    .logo-carousel::after {
+      width: 48px;
+    }
+  }
 }
 
 @layer utilities {
