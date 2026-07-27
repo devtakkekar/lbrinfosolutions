@@ -6,60 +6,56 @@
  * to animate (e.g. "24/7").
  */
 
-const COUNTER_SELECTOR = '[data-counter]';
-const COUNTER_DURATION = 1400; // ms
-
-function easeOutExpo(t: number): number {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
-
-function animateCounter(el: HTMLElement): void {
-  const raw = el.textContent?.trim() ?? '';
-  const match = raw.match(/^(\D*)(\d+)(.*)$/);
-
-  // No digits found (e.g. "24/7") — nothing to animate, leave as-is.
-  if (!match) return;
-
-  const [, prefix = '', digits, suffix = ''] = match;
-  if (!digits) return;
-  const target = parseInt(digits, 10);
-  const start = performance.now();
-
-  function tick(now: number): void {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / COUNTER_DURATION, 1);
-    const current = Math.round(easeOutExpo(progress) * target);
-    el.textContent = `${prefix}${current}${suffix}`;
-
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    } else {
-      el.textContent = raw; // snap to exact original string at the end
-    }
-  }
-
-  requestAnimationFrame(tick);
-}
 
 export function initCounters(): void {
-  const counters = document.querySelectorAll<HTMLElement>(COUNTER_SELECTOR);
-  if (counters.length === 0) return;
+  const counters = document.querySelectorAll<HTMLElement>("[data-counter]");
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return; // Leave static values as-is
-  }
+  if (!counters.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target as HTMLElement);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.4 }
-  );
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-  counters.forEach((el) => observer.observe(el));
+  counters.forEach((counter) => {
+    const target = Number(counter.dataset.target);
+    const suffix = counter.dataset.suffix ?? "";
+    const duration = prefersReducedMotion ? 1000 : 2000;
+    const start = performance.now();
+
+    function easeOutCubic(t: number): number {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animate(time: number): void {
+      const progress = Math.min((time - start) / duration, 1);
+      const eased = easeOutCubic(progress);
+      const value = Math.round(target * eased);
+
+      counter.textContent = `${value}${suffix}`;
+
+      // Decorative effects only when motion is allowed
+      if (!prefersReducedMotion) {
+        const blur = (1 - eased) * 5;
+        counter.style.filter = `blur(${blur}px)`;
+
+        const scale = 1 + (1 - eased) * 0.08;
+        counter.style.transform = `scale(${scale})`;
+
+        counter.style.opacity = `${0.75 + eased * 0.25}`;
+        counter.style.willChange = "transform, filter, opacity";
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        counter.textContent = `${target}${suffix}`;
+        counter.style.filter = "none";
+        counter.style.transform = "scale(1)";
+        counter.style.opacity = "1";
+        counter.style.willChange = "auto";
+      }
+    }
+
+    requestAnimationFrame(animate);
+  });
 }

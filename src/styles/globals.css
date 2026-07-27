@@ -70,21 +70,28 @@
   }
 
   /* Respect reduced motion preference */
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+ @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
+  /* Stop continuous decorative animations */
+  .btn-shine,
+  .btn-chevron,
+  .logo-track,
+  .animate-word-spin {
+    animation: none !important;
+  }
+
+  /* Disable reveal transitions */
+  .animate-on-scroll,
+  .reveal-fade,
+  .reveal-left,
+  .reveal-right,
+  .reveal-zoom {
+    transition: none !important;
+  }
+}
   @layer utilities {
   .animate-word-spin {
     animation-duration: 6s !important;
