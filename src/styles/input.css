@@ -5,3 +5,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-shine{
+    background: linear-gradient(
+        90deg,
+        rgb(99, 98, 98) 0%,
+        rgb(241, 241, 237) 50%,
+        rgb(99, 98, 98) 100%
+    );
+
+    background-size:300% 100%;
+    background-position:-300% 0;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+
+    animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+    from{background-position:-300% 0;}
+    to{background-position:300% 0;}
+}
