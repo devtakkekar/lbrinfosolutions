@@ -18,27 +18,27 @@ export const mainNavItems: NavItem[] = [
         {
           label: 'Postgres Pro',
           href: '/src/pages/postgres-pro/',
-          logo: '/assets/logos/PostgresPro_logo.svg',
+          logo: '/src/assets/logos/PostgresPro_logo.svg',
         },
         {
           label: 'RHEL',
           href: '/src/pages/rhel/',
-          logo: '/assets/logos/redhat.svg',
+          logo: '/src/assets/logos/redhat.svg',
         },
         {
           label: 'Infinidat',
           href: '/src/pages/infinidat/',
-          logo: '/assets/logos/lenovo_infinidat.svg',
+          logo: '/src/assets/logos/lenovo_infinidat.svg',
         },
         {
           label: 'HPE',
           href: '/src/pages/hpe/',
-          logo: '/assets/logos/hpe.svg',
+          logo: '/src/assets/logos/hpe.svg',
         },
         {
           label: 'Cloudian',
           href: '/src/pages/cloudian/',
-          logo: '/assets/logos/cloudian.svg',
+          logo: '/src/assets/logos/cloudian.svg',
         },
         /* Only shows major products 
         {
