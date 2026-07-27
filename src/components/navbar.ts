@@ -7,19 +7,54 @@
 
 import { mainNavItems } from '../data/navigation';
 import { siteConfig } from '../config/site.config';
+import type { NavDropdown } from '../types/navigation';
 
-function buildDropdownItems(items: typeof mainNavItems[1]['dropdown']): string {
+function buildDropdownItems(items: NavDropdown | undefined): string {
   if (!items) return '';
+
   return items.items
     .map(
       (item) => `
-      <a href="${item.href}" class="nav-dropdown-item group flex items-start gap-3 px-4 py-3 rounded hover:bg-gray-50 transition-colors duration-150">
-        <div class="flex-1">
-          <span class="block text-sm font-medium text-navy group-hover:text-blue-accent transition-colors">${item.label}</span>
-          ${item.description ? `<span class="block text-xs text-gray-400 mt-0.5">${item.description}</span>` : ''}
+      <a
+        href="${item.href}"
+        class="nav-dropdown-item group flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-3 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50/40 hover:shadow-sm"
+      >
+        <div class="flex h-14 w-20 shrink-0 items-center justify-center rounded-lg border border-gray-100 bg-white p-2">
+          <img
+            src="${item.logo}"
+            alt="${item.label}"
+            class="max-h-8 max-w-full object-contain"
+            loading="lazy"
+          />
         </div>
-        ${item.badge ? `<span class="badge text-[10px] mt-0.5">${item.badge}</span>` : ''}
-      </a>`
+
+        <div class="min-w-0 flex-1">
+          <h4 class="text-sm font-semibold text-navy transition-colors group-hover:text-blue-accent">
+            ${item.label}
+          </h4>
+
+          ${
+            item.description
+              ? `<p class="mt-0.5 text-xs text-gray-500">${item.description}</p>`
+              : ''
+          }
+        </div>
+
+        <svg
+          class="h-4 w-4 shrink-0 text-gray-400 transition-all group-hover:translate-x-1 group-hover:text-blue-accent"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </a>
+      `
     )
     .join('');
 }
@@ -40,15 +75,32 @@ function buildNavItems(): string {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
-          <div class="nav-dropdown absolute top-full left-0 mt-2 w-72 bg-white rounded-md shadow-dropdown border border-gray-100 opacity-0 invisible translate-y-1 transition-all duration-200 z-[100]" role="menu">
-            <div class="py-2">
+          <div class="nav-dropdown absolute top-full left-0 mt-3 w-[430px] rounded-2xl border border-gray-200 bg-white shadow-2xl opacity-0 invisible translate-y-1 transition-all duration-200 z-[100]" role="menu">
+            <div class="space-y-2 p-4">
               ${buildDropdownItems(item.dropdown)}
             </div>
-            <div class="border-t border-gray-100 px-4 py-3">
-              <a href="/src/pages/products/" class="text-xs font-medium text-blue-accent hover:text-blue-light transition-colors">
-                View All Products &rarr;
+            <div class="border-t border-gray-200 p-4">
+              <a
+                  href="/src/pages/products/"
+                  class="flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3 text-sm font-semibold text-blue-accent transition hover:bg-blue-50"
+              >
+                  <span>View All Products</span>
+
+                  <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                  >
+                      <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                      />
+                  </svg>
               </a>
-            </div>
+          </div>
           </div>
         </li>`;
       }
