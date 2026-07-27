@@ -45,6 +45,7 @@ export const mainNavItems: NavItem[] = [
           description: '',
           badge: '',
         },
+        /* Only shows major products 
         {
           label: 'VAST Data',
           href: '/src/pages/vast-data/',
@@ -69,6 +70,7 @@ export const mainNavItems: NavItem[] = [
           description: '',
           badge: '',
         },
+        */
       ],
     },
   },
@@ -95,10 +97,12 @@ export const footerColumns: FooterColumn[] = [
       { label: 'Infinidat', href: '/src/pages/infinidat/' },
       { label: 'HPE', href: '/src/pages/hpe/' },
       { label: 'Cloudian', href: '/src/pages/cloudian/' },
+      /* 
       { label: 'VAST Data', href: '/src/pages/vast-data/' },
       { label: 'Hammerspace', href: '/src/pages/hammerspace/' },
       { label: 'VisionLabs AI', href: '/src/pages/visionlabs-ai/' },
       { label: 'Yubico', href: '/src/pages/yubico/' },
+      */
     ],
   },
   {
