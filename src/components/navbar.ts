@@ -75,7 +75,7 @@ function buildNavItems(): string {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
-          <div class="nav-dropdown absolute top-full left-0 mt-3 w-[430px] rounded-2xl border border-gray-200 bg-white shadow-2xl opacity-0 invisible translate-y-1 transition-all duration-200 z-[100]" role="menu">
+          <div class="nav-dropdown absolute top-full left-0 mt-3 w-[430px] rounded-2xl border border-gray-200 bg-white shadow-2xl opacity-0 invisible -translate-y-2 transition-all duration-200 ease-out z-[100]" role="menu">
             <div class="space-y-2 p-4">
               ${buildDropdownItems(item.dropdown)}
             </div>

@@ -24,7 +24,7 @@ function initDesktopDropdowns(): void {
 
     function show(): void {
       clearTimeout(hideTimeout);
-      dropdown!.classList.remove('opacity-0', 'invisible', 'translate-y-1');
+      dropdown!.classList.remove('opacity-0', 'invisible', '-translate-y-2');
       dropdown!.classList.add('opacity-100', 'visible', 'translate-y-0');
       trigger!.setAttribute('aria-expanded', 'true');
       chevron?.classList.add('rotate-180');
@@ -32,7 +32,7 @@ function initDesktopDropdowns(): void {
 
     function hide(): void {
       hideTimeout = setTimeout(() => {
-        dropdown!.classList.add('opacity-0', 'invisible', 'translate-y-1');
+        dropdown!.classList.add('opacity-0', 'invisible', '-translate-y-2');
         dropdown!.classList.remove('opacity-100', 'visible', 'translate-y-0');
         trigger!.setAttribute('aria-expanded', 'false');
         chevron?.classList.remove('rotate-180');
@@ -79,7 +79,7 @@ function initDesktopDropdowns(): void {
     const target = e.target as HTMLElement;
     if (!target.closest('.nav-item-dropdown')) {
       document.querySelectorAll<HTMLElement>('.nav-dropdown').forEach((dd) => {
-        dd.classList.add('opacity-0', 'invisible', 'translate-y-1');
+        dd.classList.add('opacity-0', 'invisible', '-translate-y-2');
         dd.classList.remove('opacity-100', 'visible', 'translate-y-0');
       });
       document.querySelectorAll<HTMLButtonElement>('.nav-item-dropdown button').forEach((btn) => {
