@@ -19,6 +19,8 @@ export interface NavDropdownItem {
   label: string;
   /** URL path */
   href: string;
+  /** Logo */
+  logo: string;
   /** Short description shown in mega-menu */
   description?: string;
   /** Category badge text */
