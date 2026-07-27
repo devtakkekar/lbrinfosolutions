@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.lbrinfosolutions.com/sitemap.xml
-
-# Disallow admin/dev paths
-Disallow: /node_modules/
-Disallow: /src/
