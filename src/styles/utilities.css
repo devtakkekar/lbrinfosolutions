@@ -186,6 +186,11 @@
     height: 90px;
   }
 
+  .logo-card img.postgres-logo {
+    width: 160px;
+    height: 80px;
+  }
+
   /* Left & right fade masks — solid color matches the section's own
      background (gray-50), not the page background, so it blends
      correctly regardless of which sections sit above/below. */

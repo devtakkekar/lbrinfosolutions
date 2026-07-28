@@ -10,9 +10,9 @@
 .btn-shine{
     background: linear-gradient(
         90deg,
-        rgb(99, 98, 98) 0%,
-        rgb(241, 241, 237) 50%,
-        rgb(99, 98, 98) 100%
+        rgb(139, 139, 139) 0%,
+        rgb(249, 249, 248) 50%,
+        rgb(139, 139, 139) 100%
     );
 
     background-size:300% 100%;
@@ -23,7 +23,7 @@
     color:transparent;
     -webkit-text-fill-color:transparent;
 
-    animation:shine 6s linear infinite;
+    animation:shine 10s linear infinite;
 }
 
 @keyframes shine{
