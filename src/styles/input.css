@@ -1,6 +1,7 @@
 @import './globals.css';
 @import './typography.css';
 @import './utilities.css';
+@import './radial-diagram.css';
 
 @tailwind base;
 @tailwind components;
