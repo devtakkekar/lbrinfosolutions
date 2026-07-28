@@ -44,13 +44,9 @@ export function buildFooterHtml(): string {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <!-- Brand column -->
           <div class="lg:col-span-2">
-            <a href="/" class="inline-flex items-center gap-2 text-white font-semibold text-lg mb-4" aria-label="${siteConfig.name} - Home">
-              <svg class="w-8 h-8 text-blue-accent" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="32" height="32" rx="4" fill="currentColor" opacity="0.2"/>
-                <path d="M8 10h4v12H8V10zm6 4h4v8h-4v-8zm6-2h4v10h-4V12z" fill="currentColor"/>
-              </svg>
-              <span>${siteConfig.name}</span>
-            </a>
+            <a href="/" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
+          <img src="/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 pb-2 w-auto" />
+        </a>
             <p class="text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
               Delivering disruptive enterprise technology solutions in database infrastructure, storage, AI, and data orchestration for modern workloads.
             </p>
