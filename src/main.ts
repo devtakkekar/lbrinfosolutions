@@ -21,6 +21,7 @@ import { initDropdowns } from './components/dropdown';
 import { initCookieBanner } from './components/cookie-banner';
 import { initCarousel } from './components/carousel';
 import { initLogoCarousel } from './components/logo-carousel';
+import { initRadialDiagram } from './components/radial-diagram';
 import { initCounters } from './components/counter';
 import { initNavigation } from './scripts/navigation';
 import { initAnimations } from './scripts/animations';
@@ -40,6 +41,9 @@ function init(): void {
   }
   if (document.getElementById('logoTrack')) {
     initLogoCarousel();
+  }
+  if (document.getElementById('stage')) {
+    initRadialDiagram();
   }
 
   // 3. Cookie consent (always last, non-blocking)
