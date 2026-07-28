@@ -59,7 +59,7 @@
     <!-- Hero Section — fills the viewport below the fixed navbar on every
          screen (svh handles mobile browser chrome correctly), so content
          never gets clipped by the fold regardless of aspect ratio. -->
-    <section class="relative bg-navy overflow-hidden flex flex-col justify-center min-h-[calc(100svh-72px)] lg:min-h-[calc(100svh-80px)]">
+    <section class="relative bg-navy overflow-hidden flex flex-col justify-start min-h-[calc(100svh-72px)] lg:min-h-[calc(100svh-80px)]">
       <!-- Subtle grid pattern background -->
       <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
 
@@ -75,7 +75,7 @@
            beneath the text content (see z-10 on the container below). -->
       <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
 
-      <div class="container-main relative z-10 py-16 md:py-20 lg:py-24">
+      <div class="container-main relative z-10 py-10 md:py-8 lg:py-8">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-10 xl:gap-14">
         <div class="max-w-3xl">
           <span class="btn-shine animate-on-scroll">
@@ -138,7 +138,7 @@
                 <line class="connector" data-angle="26.6"  data-length="40"  x1="430" y1="275" stroke="#12967F" stroke-width="6"/>
                 <line class="connector" data-angle="-25.1" data-length="40"   x1="442.0" y1="382.5" stroke="#7ED37E" stroke-width="6"/>
                 <line class="connector" data-angle="-64.6" data-length="50"   x1="380.2" y1="425.7" stroke="#2483D6" stroke-width="6"/>
-                <line class="connector" data-angle="-107.5" data-length="40" x1="288.5" y1="448.6" stroke="#12A79A" stroke-width="6"/>
+                <line class="connector" data-angle="-125.5" data-length="40" x1="250.5" y1="428.6" stroke="#12A79A" stroke-width="6"/>
                 <line class="connector" data-angle="165.6" data-length="40"   x1="220.3" y1="300.7" stroke="#1968A6" stroke-width="6"/>
 
                 <circle cx="330" cy="330" r="133" fill="none" stroke="#ffffff" stroke-width="0"/>
@@ -147,7 +147,7 @@
                 <path class="arc-bracket" data-angle="64.5" data-radius="140" data-width="15" fill="none" stroke="#5FBE6E" stroke-width="5" stroke-linecap="round"/>
                 <path class="arc-bracket" data-angle="26.6" data-radius="110" data-width="40" fill="none" stroke="#12967f" stroke-width="10" stroke-linecap="round"/>
                 <path class="arc-bracket" data-angle="-64.6" data-radius="110" data-width="45" fill="none" stroke="#2483D6" stroke-width="5" stroke-linecap="round"/>
-                <path class="arc-bracket" data-angle="-107.5" data-radius="125" data-width="30" fill="none" stroke="#12A79A" stroke-width="5" stroke-linecap="round"/>
+                <path class="arc-bracket" data-angle="-130.5" data-radius="125" data-width="45" fill="none" stroke="#12A79A" stroke-width="5" stroke-linecap="round"/>
                 <path class="arc-bracket" data-angle="165.6" data-radius="110" data-width="70" fill="none" stroke="#1968A6" stroke-width="10" stroke-linecap="round"/>
                 <path class="arc-bracket" data-angle="-25.1" data-radius="125" data-width="15" fill="none" stroke="#7ED37E" stroke-width="5" stroke-linecap="round"/>
               </svg>
@@ -256,7 +256,7 @@
               </div>
 
               <!-- NODE: Pencil (bottom, medium, title) -->
-              <div class="node g-pencil" style="left:265px; top:535px; width:128px; height:128px; padding:14px;">
+              <div class="node g-pencil" style="left:190px; top:505px; width:128px; height:128px; padding:14px;">
                 <div class="icon-dot mb-1">
                   <svg fill="#ffffff" width="40px" height="40px" viewBox="0 0 1024 1024"><path d="M21.84 301.808l475.09 258.72a32.093 32.093 0 0 0 15.312 3.904 31.99 31.99 0 0 0 15.184-3.84l480.096-258.72c10.464-5.631 16.975-16.624 16.815-28.528a32.088 32.088 0 0 0-17.504-28.16L531.713 3.904c-9.055-4.592-19.744-4.624-28.88-.064L22.785 245.12c-10.624 5.343-17.44 16.16-17.632 28.064s6.256 22.944 16.687 28.624zM517.153 68.287l406.159 206.271L512.336 496.03 106.16 274.846zm484.187 412.031l-94.974-48.225-68.56 36.976 80 40.624-410.96 221.456-406.191-221.184 85.311-42.88-68.368-37.248-100.32 50.4c-10.624 5.344-17.44 16.16-17.633 28.065s6.256 22.944 16.688 28.624l475.088 258.72a32.092 32.092 0 0 0 15.312 3.903 31.99 31.99 0 0 0 15.184-3.84l480.096-258.72c10.464-5.631 16.975-16.624 16.815-28.528a31.996 31.996 0 0 0-17.487-28.143zm.01 223.999l-89.966-44.224-68.56 36.976 75.008 36.624-410.976 221.456-406.192-221.184 79.312-35.872-68.368-37.248-94.32 43.408C6.662 709.597-.154 720.413-.346 732.318s6.255 22.944 16.687 28.624l475.088 258.72a32.092 32.092 0 0 0 15.313 3.903 31.99 31.99 0 0 0 15.183-3.84l480.096-258.72c10.464-5.632 16.976-16.624 16.816-28.528a32.002 32.002 0 0 0-17.488-28.16z"/></svg>
                 </div>
@@ -285,7 +285,7 @@
         </div>
 
         <!-- Stats row -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-white/10 animate-on-scroll" data-stagger>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-18 pt-12 border-t border-white/10 animate-on-scroll" data-stagger>
           <div class="text-center md:text-left animate-on-scroll">
             <p
               class="text-3xl font-bold text-white inline-block"
