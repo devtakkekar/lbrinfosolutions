@@ -32,3 +32,29 @@ export const animationConfig: AnimationConfig = {
   backToTopThreshold: 400,
   navScrollThreshold: 50,
 };
+
+
+const initCardScrollAnimation = (): void => {
+  const cards = document.querySelectorAll<HTMLElement>(".nhost-card");
+
+  if (cards.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add("is-visible");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -80px 0px",
+    }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+};
+
+// Call it
+document.addEventListener("DOMContentLoaded", initCardScrollAnimation);

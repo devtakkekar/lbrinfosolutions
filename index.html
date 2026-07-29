@@ -59,7 +59,7 @@
     <!-- Hero Section — fills the viewport below the fixed navbar on every
          screen (svh handles mobile browser chrome correctly), so content
          never gets clipped by the fold regardless of aspect ratio. -->
-    <section class="relative bg-navy overflow-hidden flex flex-col justify-start min-h-[calc(100svh-72px)] lg:min-h-[calc(100svh-80px)]">
+    <section class="relative bg-sky-900 overflow-hidden flex flex-col justify-start min-h-[calc(100svh-72px)] lg:min-h-[calc(100svh-80px)]">
       <!-- Subtle grid pattern background -->
       <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
 
@@ -324,15 +324,219 @@
       </div>
     </section>
 
-    <!-- Product Carousel Section -->
+    <!-- Our Services Section -->
     <section class="section-padding">
       <div class="container-main">
         <div class="section-header animate-on-scroll">
-          <h2>Our Solutions</h2>
-          <p>Curated enterprise technology solutions from category-leading vendors, designed for mission-critical workloads.</p>
+          <h2>Our Services</h2>
+          <p>Solutions to all your problems at one place.</p>
         </div>
 
-        <div id="product-carousel" class="px-6 lg:px-8"></div>
+        <div class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center animate-on-scroll">
+          <!-- Database --> 
+      <div class="nhost-card">
+        <div class="card-glow"></div>
+        <div class="card-grid"></div>
+
+        <a href="/src/pages/postgres-pro/" class="go-corner" aria-label="Contact us">
+          <span class="go-arrow">→</span>
+        </a>
+
+        <div class="card-header">
+          <div class="brand-wrapper">
+            <div class="logo-container">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="0.8">
+                <path d="M4 18V6"/>
+                <path d="M20 6V18"/>
+                <path d="M12 10C16.4183 10 20 8.20914 20 6C20 3.79086 16.4183 2 12 2C7.58172 2 4 3.79086 4 6C4 8.20914 7.58172 10 12 10Z"/>
+                <path d="M20 12C20 14.2091 16.4183 16 12 16C7.58172 16 4 14.2091 4 12"/>
+                <path d="M20 18C20 20.2091 16.4183 22 12 22C7.58172 22 4 20.2091 4 18"/>
+              </svg>
+            </div>
+            <span class="brand-text">Database</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="repo-title">Performance<!--<span class="blinking-cursor"></span>--></div>
+          <p class="repo-description">
+            Enterprise-grade PostgreSQL and RDBMS platforms engineered for performance, high availability, and mission-critical reliability.
+          </p>
+          <!--
+          <div class="tag-wrapper">
+            <span class="badge badge-js">High Availability</span>
+            <span class="badge badge-ts">Enterprise</span>
+          </div>
+          -->
+        </div>
+      </div>
+
+      <!-- Storage -->
+      <div class="nhost-card">
+        <div class="card-glow"></div>
+        <div class="card-grid"></div>
+        <a href="/src/pages/products/" class="go-corner" aria-label="Contact us">
+          <span class="go-arrow">→</span>
+        </a>
+        <div class="card-header">
+          <div class="brand-wrapper">
+            <div class="logo-container">
+              <svg width="18" height="18" viewBox="0 0 512 512" fill="#ffffff">
+                      <path d="M0,17.067V153.6h512V17.067H0z M110.933,110.925h-51.2v-51.2h51.2V110.925z"/>
+                      <path d="M0,324.267h512V187.733H0V324.267z M59.733,230.391h51.2v51.2h-51.2V230.391z"/>
+                      <path d="M0,494.933h512V358.4H0V494.933z M59.733,401.058h51.2v51.2h-51.2V401.058z"/>
+                    </svg>
+            </div>
+            <span class="brand-text">Storage</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="repo-title">Resilience<!--<span class="blinking-cursor"></span>--></div>
+          <p class="repo-description">
+            Petabyte-scale, S3-compatible, and cyber-resilient storage platforms built for unstructured data, backups, and AI-scale workloads.
+          </p>
+          <!--
+          <div class="tag-wrapper">
+            <span class="badge badge-js">Industrial</span>
+            <span class="badge badge-ts">Scalable</span>
+          </div>
+        -->
+        </div>
+      </div>
+
+      <!-- A.I. -->
+      <div class="nhost-card">
+        <div class="card-glow"></div>
+        <div class="card-grid"></div>
+        <a href="/src/pages/visionlabs-ai/" class="go-corner" aria-label="Contact us">
+          <span class="go-arrow">→</span>
+        </a>
+
+        <div class="card-header">
+          <div class="brand-wrapper">
+            <div class="logo-container">
+              <svg width="26" height="26" viewBox="0 0 512 512" fill="#ffffff">
+                <path d="M320,64 L320,320 L64,320 L64,64 L320,64 Z M171.749388,128 L146.817842,128 L99.4840387,256 L121.976629,256 L130.913039,230.977 L187.575039,230.977 L196.319607,256 L220.167172,256 L171.749388,128 Z M260.093778,128 L237.691519,128 L237.691519,256 L260.093778,256 L260.093778,128 Z M159.094727,149.47526 L181.409039,213.333 L137.135039,213.333 L159.094727,149.47526 Z M341.333333,256 L384,256 L384,298.666667 L341.333333,298.666667 L341.333333,256 Z M85.3333333,341.333333 L128,341.333333 L128,384 L85.3333333,384 L85.3333333,341.333333 Z M170.666667,341.333333 L213.333333,341.333333 L213.333333,384 L170.666667,384 L170.666667,341.333333 Z M85.3333333,0 L128,0 L128,42.6666667 L85.3333333,42.6666667 L85.3333333,0 Z M256,341.333333 L298.666667,341.333333 L298.666667,384 L256,384 L256,341.333333 Z M170.666667,0 L213.333333,0 L213.333333,42.6666667 L170.666667,42.6666667 L170.666667,0 Z M256,0 L298.666667,0 L298.666667,42.6666667 L256,42.6666667 L256,0 Z M341.333333,170.666667 L384,170.666667 L384,213.333333 L341.333333,213.333333 L341.333333,170.666667 Z M0,256 L42.6666667,256 L42.6666667,298.666667 L0,298.666667 L0,256 Z M341.333333,85.3333333 L384,85.3333333 L384,128 L341.333333,128 L341.333333,85.3333333 Z M0,170.666667 L42.6666667,170.666667 L42.6666667,213.333333 L0,213.333333 L0,170.666667 Z M0,85.3333333 L42.6666667,85.3333333 L42.6666667,128 L0,128 L0,85.3333333 Z" transform="translate(64,64)"/>
+              </svg>
+            </div>
+            <span class="brand-text">A.I.</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="repo-title">Automation<!--<span class="blinking-cursor"></span>--></div>
+          <p class="repo-description">
+            Computer vision, biometric intelligence, and AI-driven platforms that turn enterprise data into automated, real-time insight.
+          </p>
+          <!--
+          <div class="tag-wrapper">
+            <span class="badge badge-js">Intelligent</span>
+            <span class="badge badge-ts">Automated</span>
+          </div>
+        -->
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="nhost-card">
+        <div class="card-glow"></div>
+        <div class="card-grid"></div>
+        <a href="/src/pages/yubico/" class="go-corner" aria-label="Contact us">
+          <span class="go-arrow">→</span>
+        </a>
+
+        <div class="card-header">
+          <div class="brand-wrapper">
+            <div class="logo-container">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.73169L19.5 5.39836V12.75C19.5 15.6371 17.5419 18.9972 12.2605 20.9533L12 21.0498L11.7395 20.9533C6.45811 18.9972 4.5 15.6371 4.5 12.75V5.39836L12 3.73169ZM6 6.60161V12.75C6 14.8245 7.3659 17.6481 12 19.4479C16.6341 17.6481 18 14.8245 18 12.75V6.60161L12 5.26828L6 6.60161Z" fill="#ffffff"></path> </g></svg>
+            </div>
+            <span class="brand-text">Security</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="repo-title">Identity<!--<span class="blinking-cursor"></span>--></div>
+          <p class="repo-description">
+            Protect enterprise identities with phishing-resistant authentication and secure access solutions.
+          </p>
+          <!--
+          <div class="tag-wrapper">
+            <span class="badge badge-js">Authentication</span>
+            <span class="badge badge-ts">Identity</span>
+          </div>
+          -->
+        </div>
+      </div>
+
+      <!-- Monitoring -->
+
+      <div class="nhost-card">
+        <div class="card-glow"></div>
+        <div class="card-grid"></div>
+        <a href="/src/pages/products/" class="go-corner" aria-label="Contact us">
+          <span class="go-arrow">→</span>
+        </a>
+
+        <div class="card-header">
+          <div class="brand-wrapper">
+            <div class="logo-container">
+              <svg fill="#ffffff" height="22px" width="22px" version="1.1" viewBox="0 0 439.479 439.479">
+                    <g>
+                      <path d="M407.18,60.082h-374.882c-17.81,0-32.298,14.489-32.298,32.299v226.626c0,17.81 14.488,32.299 32.298,32.299h106.252l-12.162,13.091h-18.23c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5 7.5,7.5h223.162c4.143,0 7.5-3.358 7.5-7.5s-3.357-7.5-7.5-7.5h-18.23l-12.162-13.091h106.252c17.81,0 32.299-14.489 32.299-32.299v-226.626c0-17.81-14.49-32.299-32.299-32.299zm-392.18,250.422v-209.62h409.479v209.621h-409.479zm17.298-235.423h374.882c7.24,0 13.447,4.475 16.021,10.801h-406.924c2.575-6.325 8.781-10.801 16.021-10.801zm260.318,289.314h-145.754l12.162-13.091h121.43l12.162,13.091zm114.564-28.09h-374.882c-7.24,0-13.446-4.475-16.021-10.801h406.924c-2.575,6.325-8.781,10.801-16.021,10.801z"/>
+                      <path d="M374.171,159.137c-9.064-9.064-23.814-9.065-32.879,0-4.392,4.391-6.811,10.23-6.811,16.44 0,3.34 0.721,6.562 2.051,9.52l-59.872,47.207c-6.806-3.618-15.042-3.618-21.847,0l-59.883-47.216c3.825-8.549 2.259-18.944-4.748-25.95-9.065-9.064-23.813-9.066-32.88,0-7.006,7.007-8.573,17.401-4.748,25.95l-59.883,47.216c-8.789-4.672-19.965-3.317-27.363,4.08-9.064,9.065-9.064,23.814 0,32.879 4.533,4.532 10.486,6.799 16.439,6.799 5.954,0 11.907-2.266 16.44-6.799 7.006-7.007 8.573-17.401 4.748-25.95l59.883-47.216c3.403,1.809 7.162,2.719 10.923,2.719 3.762,0 7.521-0.91 10.924-2.719l59.883,47.216c-3.825,8.549-2.259,18.944 4.748,25.95 4.533,4.533 10.485,6.798 16.44,6.798 5.952,0 11.907-2.266 16.439-6.798 0,0 0,0 0.001,0 7.006-7.007 8.572-17.401 4.747-25.95l59.884-47.216c3.403,1.809 7.162,2.719 10.924,2.719 5.953,0 11.906-2.266 16.439-6.799 9.065-9.065 9.065-23.815 0.001-32.88zm-286.591,99.519c-3.214,3.216-8.449,3.217-11.665,0-3.217-3.217-3.217-8.45 0-11.666 1.607-1.608 3.72-2.412 5.832-2.412 2.113,0 4.226,0.804 5.833,2.412 3.217,3.216 3.217,8.45 1.42109e-14,11.666zm80.329-77.246c-3.217-3.217-3.217-8.45 0-11.666 1.607-1.608 3.72-2.412 5.832-2.412 2.113,0 4.226,0.804 5.833,2.412 3.217,3.217 3.217,8.45 0,11.666-3.213,3.216-8.448,3.217-11.665,0zm103.661,77.246c-3.217,3.217-8.452,3.216-11.667,0-3.217-3.217-3.217-8.45 0-11.666 1.607-1.608 3.72-2.412 5.833-2.412 2.112,0 4.226,0.804 5.833,2.412 3.217,3.216 3.217,8.45 0.001,11.666zm91.993-77.246c-3.215,3.216-8.449,3.216-11.666,0-1.559-1.558-2.416-3.629-2.416-5.833 0-2.203 0.857-4.275 2.417-5.833 1.607-1.608 3.72-2.412 5.833-2.412 2.112,0 4.225,0.804 5.832,2.412 3.217,3.216 3.217,8.449 0,11.666z"/>
+                    </g>
+                  </svg>
+            </div>
+            <span class="brand-text">Monitoring</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="repo-title">Visibility<!--<span class="blinking-cursor"></span>--></div>
+          <p class="repo-description">
+            Real-time monitoring with proactive alerts and performance insights across hybrid and cloud environments.
+          </p>
+          <!--
+          <div class="tag-wrapper">
+            <span class="badge badge-js">Real-Time</span>
+            <span class="badge badge-ts">Insights</span>
+          </div>
+          -->
+        </div>
+      </div>
+
+      <!-- Support -->
+
+      <div class="nhost-card">
+        <div class="card-glow"></div>
+        <div class="card-grid"></div>
+        <a href="/src/pages/contact/" class="go-corner" aria-label="Contact us">
+          <span class="go-arrow">→</span>
+        </a>
+
+        <div class="card-header">
+          <div class="brand-wrapper">
+            <div class="logo-container">
+              <svg height="22px" width="22px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48.401 48.401" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path style="fill:#ffffff;" d="M16.36,18.515l-3.17,3.17c-0.586,0.588-0.979,1.354-0.979,2.208v1.422c0,0.553,0.448,1,1,1h4.838 c0.552,0,1-0.422,1-0.942c0-0.522-0.448-0.944-1.001-0.944h-2.629c-0.552,0-1-0.12-1-0.267c0-0.149,0-0.268,0-0.268 c0-0.32,0.124-0.623,0.338-0.819l3.17-3.169c0.587-0.588,0.961-1.354,0.961-2.208v-1.532c0-1.548-1.46-2.813-3.259-2.813 c-1.798,0-3.258,1.264-3.258,2.813v0.623c0,0.345,0.447,0.624,1,0.624h0.208c0.552,0,1-0.279,1-0.624c0-0.344,0-0.623,0-0.623 c0-0.498,0.481-0.926,1.05-0.926c0.588,0,1.051,0.428,1.051,0.926v1.532C16.68,18.017,16.556,18.302,16.36,18.515z"></path> <path style="fill:#ffffff;" d="M27.134,13.494h-0.207c-0.553,0-1.231,0.384-1.516,0.858l-4.064,6.779 c-0.283,0.474-0.514,1.281-0.514,1.802c0,0.52,0.447,0.943,1,0.943h3.091c0.554,0,1,0.447,1,1v0.439c0,0.553,0.447,1,1,1h0.209 c0.553,0,1-0.446,1-1v-0.439c0-0.553,0.158-1,0.354-1c0.198,0,0.356-0.422,0.356-0.943c0-0.522-0.158-0.945-0.355-0.945 c-0.195,0-0.355-0.447-0.355-1v-6.494C28.134,13.941,27.688,13.494,27.134,13.494z M25.925,20.988c0,0.553-0.446,1-1,0.999h-0.688 c-0.552,0-0.771-0.385-0.49-0.86l1.669-2.82c0.281-0.474,0.51-0.413,0.51,0.14L25.925,20.988L25.925,20.988z"></path> <path style="fill:#ffffff;" d="M31.424,11.762c-0.381,0-0.689,0.447-0.689,1v6.635c0,0.553,0.309,1,0.689,0.999 c0.381,0,0.69-0.447,0.69-1v-3.401c0-0.324,0.312-0.576,0.685-0.576c0.371,0,0.684,0.252,0.684,0.576v3.401 c0,0.553,0.309,1,0.689,1c0.379,0,0.688-0.447,0.688-1v-3.401c0-0.935-0.923-1.691-2.062-1.691c-0.123,0-0.24,0.015-0.352,0.04 c-0.191,0.044-0.333-0.331-0.333-0.884v-0.698C32.114,12.209,31.804,11.762,31.424,11.762z"></path> <path style="fill:#ffffff;" d="M47.463,25.801l-1.977-0.617c0.195-1.897,0.16-3.814-0.129-5.721 C43.487,7.105,31.913-1.427,19.553,0.444C7.197,2.315-1.335,13.891,0.536,26.249c0.214,1.408,0.554,2.769,1.006,4.069 c0.365,1.043,1.186,1.748,1.734,1.617c0.547-0.131,0.598-1.045,0.225-2.084c-0.447-1.244-0.78-2.549-0.986-3.904 C0.808,14.682,8.587,4.128,19.854,2.423c11.267-1.706,21.819,6.073,23.526,17.34c0.241,1.603,0.297,3.216,0.164,4.815 c0,0-0.826-0.258-1.846-0.576c-1.021-0.318-1.648,0.299-1.406,1.375l1.309,5.826c0.242,1.076,1.098,1.344,1.908,0.596l4.392-4.047 C48.713,27.003,48.515,26.13,47.463,25.801z"></path> <path style="fill:#ffffff;" d="M46.551,41.784c0.054-0.286,0.027-0.589-0.102-0.881c-0.866-1.956-3.608-6.686-10.331-8.334 c-3.082-0.758-7.685-1.661-12.108-1.661l-0.453,0.003c-6.573,0.098-12.463,1.432-12.65,1.477 c-0.206,0.033-5.076,0.869-8.325,4.352l0.012,0.012c-0.562,0.469-1.082,1.321-1.314,1.738l-0.02-0.013 c-0.431,0.713-0.754,1.413-0.988,2.14c-0.094,0.293-0.09,0.59-0.014,0.867c-0.14,0.241-0.228,0.517-0.23,0.813L0,45.834 c-0.008,0.913,0.728,1.664,1.645,1.674l10.928,0.09h0.009c0.909,0,1.653-0.738,1.661-1.646l0.028-3.538 c0.002-0.277-0.071-0.535-0.19-0.767c0.053-0.076,0.116-0.15,0.157-0.228c0.152-0.291,0.882-1.258,3.875-1.442 c0.96-0.06,2.111-0.089,3.421-0.089c3.779,0,7.694,0.25,7.733,0.253l0.122,0.001c0.407,0,2.446,0.072,2.576,1.493 c0.015,0.163,0.057,0.314,0.109,0.46c-0.188,0.279-0.297,0.615-0.286,0.977l0.117,3.543c0.033,0.896,0.763,1.599,1.659,1.599 l11.745-0.386c0.912-0.034,1.63-0.802,1.6-1.712l-0.117-3.539C46.782,42.284,46.692,42.017,46.551,41.784z M12.244,45.595 L2.002,45.511l0.022-2.856l10.242,0.084L12.244,45.595z M29.405,38.144c-0.003,0-0.007,0-0.01,0 c-0.039-0.002-4.016-0.257-7.862-0.257c-1.351,0-2.544,0.031-3.544,0.093c-3.598,0.223-4.99,1.489-5.525,2.514 c-0.016,0.03-0.061,0.072-0.016,0.072L2.43,40.557c0.149-0.346,0.329-0.69,0.54-1.042c0.139-0.197,0.84-1.129,1.035-1.367 l0.042-0.044c2.774-2.975,7.145-3.736,7.248-3.756c0.059-0.014,5.929-1.344,12.292-1.438l0.424-0.003 c4.224,0,8.656,0.872,11.632,1.604c5.107,1.253,7.564,4.511,8.606,6.442l-10.327,0.229C33.553,38.948,31.289,38.144,29.405,38.144 z M33.892,46.202l-0.095-2.856l11.007-0.36l0.095,2.854L33.892,46.202z"></path> </g> </g> </g></svg>
+            </div>
+            <span class="brand-text">Support</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="repo-title">Continuity<!--<span class="blinking-cursor"></span>--></div>
+          <p class="repo-description">
+            24×7 enterprise support delivering rapid issue resolution, proactive maintenance, and operational reliability.
+          </p>
+          <!--
+          <div class="tag-wrapper">
+            <span class="badge badge-js">24×7</span>
+            <span class="badge badge-ts">Proactive</span>
+          </div>
+          -->
+        </div>
+      </div>
+      </div>
       </div>
     </section>
 

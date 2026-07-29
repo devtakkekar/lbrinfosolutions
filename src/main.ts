@@ -19,7 +19,6 @@
 
 import { initDropdowns } from './components/dropdown';
 import { initCookieBanner } from './components/cookie-banner';
-import { initCarousel } from './components/carousel';
 import { initLogoCarousel } from './components/logo-carousel';
 import { initRadialDiagram } from './components/radial-diagram';
 import { initCounters } from './components/counter';
@@ -36,9 +35,6 @@ function init(): void {
   initCounters();
 
   // 2. Initialize page-specific components if their containers exist
-  if (document.getElementById('product-carousel')) {
-    initCarousel();
-  }
   if (document.getElementById('logoTrack')) {
     initLogoCarousel();
   }
