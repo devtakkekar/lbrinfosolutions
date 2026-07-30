@@ -338,8 +338,20 @@
     <div class="h-18 lg:h-20"></div>
   
   <main>
-    <section class="bg-navy">
-      <div class="container-main hero-padding">
+    <section class="relative bg-navy overflow-hidden">
+      <!-- Subtle grid pattern background -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+      <!-- Ambient gradient glows — brand teal/blue/violet, identical to the
+           homepage hero, so every page shares the exact same look. -->
+      <div class="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#1ed3b0] opacity-[0.15] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#6a5cf5] opacity-[0.14] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2f8ee0] opacity-[0.12] blur-[110px] pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Glass layer — same frosted overlay as the homepage hero -->
+      <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="container-main hero-padding relative z-10">
         <div class="max-w-3xl animate-on-scroll">
           <span class="logo-chip mb-4"><img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='800'%20width='1200'%20viewBox='-91.776%20-36%20795.392%20216'%3e%3cg%20fill='none'%3e%3cpath%20fill='%23E00'%20d='M126.97%2082.99c12.51%200%2030.61-2.58%2030.61-17.46a14%2014%200%2000-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.39%208.19%20103.26%200%2097.01%200c-5.82%200-7.51%207.5-14.45%207.5-6.68%200-11.64-5.6-17.89-5.6-6%200-9.91%204.09-12.93%2012.5%200%200-8.41%2023.72-9.49%2027.16a6.43%206.43%200%2000-.22%201.94c0%209.22%2036.3%2039.45%2084.94%2039.45m32.53-11.38c1.73%208.19%201.73%209.05%201.73%2010.13%200%2014-15.74%2021.77-36.43%2021.77-46.76.03-87.72-27.37-87.72-45.48a18.45%2018.45%200%20011.51-7.33C21.77%2051.5%200%2054.5%200%2073.72%200%20105.2%2074.59%20144%20133.65%20144c45.28%200%2056.7-20.48%2056.7-36.65%200-12.72-11-27.16-30.83-35.78'/%3e%3cpath%20fill='%23000'%20d='M159.5%2071.57c1.73%208.19%201.73%209.05%201.73%2010.13%200%2014-15.74%2021.77-36.43%2021.77-46.76.03-87.72-27.37-87.72-45.48a18.45%2018.45%200%20011.51-7.33l3.66-9.06a6.43%206.43%200%2000-.22%201.9c0%209.22%2036.3%2039.45%2084.94%2039.45%2012.51%200%2030.61-2.58%2030.61-17.46a14%2014%200%2000-.31-3.42zM579.24%2092.3c0%2011.89%207.15%2017.67%2020.19%2017.67a52.11%2052.11%200%200011.89-1.68V94.5a24.84%2024.84%200%2001-7.68%201.16c-5.37%200-7.36-1.68-7.36-6.73V67.8h15.56V53.6h-15.56v-18l-17%203.68V53.6h-11.29v14.2h11.25zm-53%20.32c0-3.68%203.69-5.47%209.26-5.47a43.12%2043.12%200%200110.1%201.26v7.15a21.51%2021.51%200%2001-10.63%202.63c-5.46%200-8.73-2.1-8.73-5.57zm5.2%2017.56c6%200%2010.84-1.26%2015.36-4.31v3.37h16.82V73.58c0-13.56-9.14-21-24.39-21-8.52%200-16.94%202-26%206.1l6.1%2012.52c6.52-2.74%2012-4.42%2016.83-4.42%207%200%2010.62%202.73%2010.62%208.31v2.73a49.53%2049.53%200%2000-12.62-1.58c-14.31%200-22.93%206-22.93%2016.73%200%209.78%207.78%2017.24%2020.19%2017.24zm-92.46-.91h18.09V80.42h30.29v28.82h18.14V35.62h-18.07v28.29h-30.29V35.62h-18.09zm-68.86-27.9c0-8%206.31-14.1%2014.62-14.1a17.22%2017.22%200%200111.76%204.32v19.45a16.36%2016.36%200%2001-11.76%204.46c-8.2%200-14.62-6.1-14.62-14.09zm26.61%2027.91h16.83V31.94l-17%203.68v20.93a28.3%2028.3%200%2000-14.2-3.68c-16.19%200-28.92%2012.51-28.92%2028.5a28.25%2028.25%200%200028.4%2028.6%2025.12%2025.12%200%200014.93-4.83zM319.5%2066.5c5.36%200%209.88%203.47%2011.67%208.83h-23.2c1.68-5.53%205.89-8.83%2011.53-8.83zm-28.67%2015c0%2016.2%2013.25%2028.82%2030.28%2028.82%209.36%200%2016.2-2.53%2023.25-8.42l-11.26-10c-2.63%202.74-6.52%204.21-11.14%204.21a14.39%2014.39%200%2001-13.68-8.83h39.65v-4.23c0-17.67-11.88-30.39-28.08-30.39a28.57%2028.57%200%2000-29%2028.81zM261.5%2051.08c6%200%209.36%203.78%209.36%208.31%200%204.53-3.36%208.31-9.36%208.31h-17.89V51.08zm-36%2058.16h18.09V82.42h13.77l13.89%2026.82h20.25l-16.2-29.45a22.27%2022.27%200%200013.88-20.72c0-13.25-10.41-23.45-26-23.45H225.5z'/%3e%3c/g%3e%3c/svg%3e" alt="Red Hat logo" loading="lazy"></span>
           <span class="badge bg-white/10 text-blue-accent border-0 mb-4">Operating System</span>
@@ -488,8 +500,17 @@
     </section>
   </main>
   
-    <footer class="bg-navy text-white" aria-label="Site footer">
-      <div class="container-main section-padding">
+    <footer class="relative bg-navy text-white overflow-hidden" aria-label="Site footer">
+      <!-- Subtle grid pattern background — same treatment as every navy
+           section site-wide, so the footer doesn't look like a different,
+           older page bolted onto the bottom. -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      <div class="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#1ed3b0] opacity-[0.15] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#6a5cf5] opacity-[0.14] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2f8ee0] opacity-[0.12] blur-[110px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="container-main section-padding relative z-10">
         <!-- Top section -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <!-- Brand column -->
@@ -521,7 +542,7 @@
           <!-- Link columns -->
           
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Products</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Products</h4>
         <ul class="space-y-2.5">
           
             <li>
@@ -552,7 +573,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Company</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Company</h4>
         <ul class="space-y-2.5">
           
             <li>
@@ -573,7 +594,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Legal</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Legal</h4>
         <ul class="space-y-2.5">
           
             <li>
