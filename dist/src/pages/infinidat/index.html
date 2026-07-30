@@ -353,8 +353,20 @@
 
   <main>
     <!-- Product Hero -->
-    <section class="bg-navy">
-      <div class="container-main hero-padding">
+    <section class="relative bg-navy overflow-hidden">
+      <!-- Subtle grid pattern background -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+      <!-- Ambient gradient glows — brand teal/blue/violet, identical to the
+           homepage hero, so every page shares the exact same look. -->
+      <div class="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#1ed3b0] opacity-[0.15] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#6a5cf5] opacity-[0.14] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2f8ee0] opacity-[0.12] blur-[110px] pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Glass layer — same frosted overlay as the homepage hero -->
+      <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="container-main hero-padding relative z-10">
         <div class="max-w-3xl animate-on-scroll">
           <span class="logo-chip mb-4"><img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20width='145.502'%20height='41'%20viewBox='0%200%20145.502%2041'%3e%3cdefs%3e%3cclipPath%20id='clip-path'%3e%3crect%20id='Rectangle_3390'%20data-name='Rectangle%203390'%20width='145.502'%20height='41'%20fill='none'%3e%3c/rect%3e%3c/clipPath%3e%3c/defs%3e%3cg%20id='Group_1334'%20data-name='Group%201334'%20transform='translate(0%200)'%3e%3cpath%20id='Path_4059'%20data-name='Path%204059'%20d='M0,0V15.183H10.26V13.6H1.714V0Z'%20fill='%23000'%3e%3c/path%3e%3cg%20id='Group_1328'%20data-name='Group%201328'%20transform='translate(0%200)'%3e%3cg%20id='Group_1327'%20data-name='Group%201327'%20clip-path='url(%23clip-path)'%3e%3cpath%20id='Path_4060'%20data-name='Path%204060'%20d='M22.084,13.469v-.043a5.531,5.531,0,0,1,5.379-5.834c3.319,0,5.227,2.646,5.227,5.921a4.464,4.464,0,0,1-.021.542H23.776a3.916,3.916,0,0,0,3.947,3.8,4.639,4.639,0,0,0,3.535-1.583L32.3,17.2a5.79,5.79,0,0,1-4.62,2.1,5.574,5.574,0,0,1-5.6-5.835M31,12.819C30.826,10.78,29.654,9,27.42,9c-1.952,0-3.427,1.627-3.644,3.818Z'%20transform='translate(-11.23%20-3.861)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4061'%20data-name='Path%204061'%20d='M47.381,7.83h1.67V9.782a4.246,4.246,0,0,1,3.839-2.19c2.711,0,4.294,1.821,4.294,4.49v6.963h-1.67v-6.55c0-2.082-1.127-3.384-3.1-3.384a3.3,3.3,0,0,0-3.362,3.513v6.421h-1.67Z'%20transform='translate(-24.095%20-3.861)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4062'%20data-name='Path%204062'%20d='M70.812,13.492v-.043A5.846,5.846,0,0,1,82.5,13.405v.043A5.823,5.823,0,0,1,76.625,19.3a5.745,5.745,0,0,1-5.813-5.813m9.977,0v-.043a4.243,4.243,0,0,0-4.165-4.381,4.139,4.139,0,0,0-4.1,4.338v.043a4.207,4.207,0,0,0,4.143,4.359,4.137,4.137,0,0,0,4.121-4.316'%20transform='translate(-36.01%20-3.861)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4063'%20data-name='Path%204063'%20d='M94.746,8.077h1.843l3.774,9.305,3.8-9.305h1.8l-4.88,11.3H99.6Z'%20transform='translate(-48.181%20-4.107)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4064'%20data-name='Path%204064'%20d='M117.686,13.492v-.043a5.846,5.846,0,0,1,11.691-.043v.043A5.823,5.823,0,0,1,123.5,19.3a5.745,5.745,0,0,1-5.813-5.813m9.977,0v-.043A4.243,4.243,0,0,0,123.5,9.067a4.139,4.139,0,0,0-4.1,4.338v.043a4.207,4.207,0,0,0,4.143,4.359,4.137,4.137,0,0,0,4.121-4.316'%20transform='translate(-59.847%20-3.861)'%20fill='%23000'%3e%3c/path%3e%3crect%20id='Rectangle_3387'%20data-name='Rectangle%203387'%20width='4.343'%20height='19.739'%20transform='translate(0%2021.261)'%20fill='%23000'%3e%3c/rect%3e%3cpath%20id='Path_4065'%20data-name='Path%204065'%20d='M18.634,43.26h4l9.249,12.153V43.26h4.286V63H32.48L22.92,50.451V63H18.634Z'%20transform='translate(-9.476%20-21.999)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4066'%20data-name='Path%204066'%20d='M64.056,43.26h15.03v3.948H68.4v4.2h9.418v3.948H68.4V63H64.056Z'%20transform='translate(-32.575%20-21.999)'%20fill='%23000'%3e%3c/path%3e%3crect%20id='Rectangle_3388'%20data-name='Rectangle%203388'%20width='4.343'%20height='19.739'%20transform='translate(49.902%2021.261)'%20fill='%23000'%3e%3c/rect%3e%3cpath%20id='Path_4067'%20data-name='Path%204067'%20d='M120.171,43.26h4l9.249,12.153V43.26h4.286V63h-3.694l-9.559-12.548V63h-4.286Z'%20transform='translate(-61.111%20-21.999)'%20fill='%23000'%3e%3c/path%3e%3crect%20id='Rectangle_3389'%20data-name='Rectangle%203389'%20width='4.343'%20height='19.739'%20transform='translate(81.462%2021.261)'%20fill='%23000'%3e%3c/rect%3e%3cpath%20id='Path_4068'%20data-name='Path%204068'%20d='M184.387,43.26h7.7c6.2,0,10.49,4.258,10.49,9.813v.056c0,5.556-4.286,9.87-10.49,9.87h-7.7Zm4.343,3.919v11.9h3.356a5.625,5.625,0,0,0,5.95-5.894v-.057a5.669,5.669,0,0,0-5.95-5.95Z'%20transform='translate(-93.767%20-21.999)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4069'%20data-name='Path%204069'%20d='M231.154,42.973h4l8.46,19.88h-4.54l-1.8-4.427h-8.347l-1.8,4.427h-4.427Zm4.568,11.618-2.622-6.4-2.622,6.4Z'%20transform='translate(-113.247%20-21.853)'%20fill='%23000'%3e%3c/path%3e%3cpath%20id='Path_4070'%20data-name='Path%204070'%20d='M268.785,47.264h-6.006v-4h16.355v4h-6.006V63h-4.343Z'%20transform='translate(-133.632%20-22)'%20fill='%23000'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="Infinidat logo" loading="lazy"></span>
           <span class="badge bg-white/10 text-blue-accent border-0 mb-4">Storage</span>
@@ -622,8 +634,17 @@
   </main>
 
   
-    <footer class="bg-navy text-white" aria-label="Site footer">
-      <div class="container-main section-padding">
+    <footer class="relative bg-navy text-white overflow-hidden" aria-label="Site footer">
+      <!-- Subtle grid pattern background — same treatment as every navy
+           section site-wide, so the footer doesn't look like a different,
+           older page bolted onto the bottom. -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      <div class="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#1ed3b0] opacity-[0.15] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#6a5cf5] opacity-[0.14] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2f8ee0] opacity-[0.12] blur-[110px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="container-main section-padding relative z-10">
         <!-- Top section -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <!-- Brand column -->
@@ -655,7 +676,7 @@
           <!-- Link columns -->
           
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Products</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Products</h4>
         <ul class="space-y-2.5">
           
             <li>
@@ -686,7 +707,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Company</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Company</h4>
         <ul class="space-y-2.5">
           
             <li>
@@ -707,7 +728,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Legal</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Legal</h4>
         <ul class="space-y-2.5">
           
             <li>

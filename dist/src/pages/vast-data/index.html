@@ -340,8 +340,20 @@
   
   <main>
     <!-- Hero -->
-    <section class="bg-navy">
-      <div class="container-main hero-padding">
+    <section class="relative bg-navy overflow-hidden">
+      <!-- Subtle grid pattern background -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+      <!-- Ambient gradient glows — brand teal/blue/violet, identical to the
+           homepage hero, so every page shares the exact same look. -->
+      <div class="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#1ed3b0] opacity-[0.15] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#6a5cf5] opacity-[0.14] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2f8ee0] opacity-[0.12] blur-[110px] pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Glass layer — same frosted overlay as the homepage hero -->
+      <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="container-main hero-padding relative z-10">
         <div class="max-w-3xl animate-on-scroll">
           <span class="logo-chip logo-chip--dark mb-4"><img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20class='vastWordmark'%20width='66'%20height='14'%20fill='none'%20viewBox='0%200%2066%2014'%20data-v-3195884c=''%3e%3cpath%20fill='currentColor'%20d='m11.918.916-.783-.375a.919.919%200%200%200-1.23.444l-.22.414L6.235%208.77%202.788%201.4l-.22-.414a.917.917%200%200%200-1.23-.444L.556.916c-.466.219-.69.804-.474%201.273l.195.383%204.689%2010.024a1.383%201.383%200%200%200%201.248.797h.042a1.385%201.385%200%200%200%201.248-.797l4.689-10.024.195-.383c.217-.469-.007-1.054-.47-1.273ZM19.311%2012.926l.784.375a.918.918%200%200%200%201.23-.444l.22-.414%203.451-7.371%203.448%207.371.22.414a.918.918%200%200%200%201.23.444l.785-.375c.462-.221.687-.804.469-1.271l-.195-.383-4.689-10.024a1.384%201.384%200%200%200-1.248-.797h-.041a1.386%201.386%200%200%200-1.25.797l-4.688%2010.024-.195.383c-.219.467.006%201.05.47%201.27ZM47.275%203.212a.918.918%200%200%200%20.966-.882l.03-.868c.02-.512-.393-.982-.908-1.006L46.887.45h-5.413c-.03%200-.059%200-.092.004-1.433.095-3.565%201.126-3.565%203.572%200%202.487%202.104%203.599%203.236%203.846l2.823.677c.041.009.082.017.124.023.15.022.896.176.896%201.014%200%20.504-.253.801-.754.885h-5.318l-.362.005a.918.918%200%200%200-.966.883l-.03.868c-.02.512.393.982.908%201.006l.45.005h5.413c.043%200%20.086%200%20.128-.005%201.327-.123%203.301-1.196%203.301-3.647%200-2.539-2.051-3.547-3.195-3.742l-2.787-.668-.039-.008c-.042-.01-1.058-.235-1.058-1.142%200-.606.578-.769.953-.81h5.347l.388-.004ZM66%201.365a.916.916%200%200%200-.938-.914H55.5a.919.919%200%200%200-.938.914v.878c0%20.513.427.968.942.976H58.897v9.086a.914.914%200%200%200%20.56.864.919.919%200%200%200%20.355.073h.879c.512%200%20.968-.426.976-.94V3.217H65.06c.515-.007.943-.463.942-.975l-.003-.878Z'%20data-v-3195884c=''%3e%3c/path%3e%3c/svg%3e" alt="VAST Data logo" loading="lazy" style="filter: brightness(0) invert(1);"></span>
           <span class="badge bg-white/10 text-blue-accent border-0 mb-4">Storage</span>
@@ -546,8 +558,17 @@
   </main>
 
   
-    <footer class="bg-navy text-white" aria-label="Site footer">
-      <div class="container-main section-padding">
+    <footer class="relative bg-navy text-white overflow-hidden" aria-label="Site footer">
+      <!-- Subtle grid pattern background — same treatment as every navy
+           section site-wide, so the footer doesn't look like a different,
+           older page bolted onto the bottom. -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      <div class="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#1ed3b0] opacity-[0.15] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#6a5cf5] opacity-[0.14] blur-[120px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2f8ee0] opacity-[0.12] blur-[110px] pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 backdrop-blur-2xl bg-gradient-to-b from-white/[0.04] via-white/[0.015] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="container-main section-padding relative z-10">
         <!-- Top section -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <!-- Brand column -->
@@ -579,7 +600,7 @@
           <!-- Link columns -->
           
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Products</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Products</h4>
         <ul class="space-y-2.5">
           
             <li>
@@ -610,7 +631,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Company</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Company</h4>
         <ul class="space-y-2.5">
           
             <li>
@@ -631,7 +652,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-navy mb-4 tracking-wide uppercase">Legal</h4>
+        <h4 class="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Legal</h4>
         <ul class="space-y-2.5">
           
             <li>
