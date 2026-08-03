@@ -28,6 +28,7 @@ export default defineConfig({
         cloudian: resolve(__dirname, 'src/pages/cloudian/index.html'),
         yubico: resolve(__dirname, 'src/pages/yubico/index.html'),
         about: resolve(__dirname, 'src/pages/about/index.html'),
+        blog: resolve(__dirname, 'src/pages/blog/index.html'),
         contact: resolve(__dirname, 'src/pages/contact/index.html'),
         privacy: resolve(__dirname, 'src/pages/privacy/index.html'),
         terms: resolve(__dirname, 'src/pages/terms/index.html'),
