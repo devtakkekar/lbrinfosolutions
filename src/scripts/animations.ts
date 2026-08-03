@@ -80,3 +80,41 @@ export function applyStagger(containerSelector: string, childSelector: string): 
     child.style.transitionDelay = `${index * animationConfig.staggerDelay}ms`;
   });
 }
+
+/**
+ * Attaches the same reveal-on-scroll behavior as initAnimations(), scoped
+ * to a specific root — for content rendered dynamically *after* the page's
+ * initial initAnimations() call already ran (e.g. blog cards injected by
+ * blog-list.ts). Call this once, right after injecting the new markup and
+ * after applyStagger() has set any transition-delay values.
+ */
+export function observeRevealElements(root: ParentNode = document): void {
+  const elements = root.querySelectorAll<HTMLElement>(REVEAL_SELECTOR);
+  if (elements.length === 0) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          if (animationConfig.animateOnce) {
+            observer.unobserve(entry.target);
+          }
+        } else if (!animationConfig.animateOnce) {
+          entry.target.classList.remove('is-visible');
+        }
+      });
+    },
+    {
+      threshold: animationConfig.observerThreshold,
+      rootMargin: animationConfig.observerRootMargin,
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}

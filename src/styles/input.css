@@ -2,6 +2,7 @@
 @import './typography.css';
 @import './utilities.css';
 @import './radial-diagram.css';
+@import './blog.css';
 
 @tailwind base;
 @tailwind components;

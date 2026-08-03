@@ -74,6 +74,10 @@ export const mainNavItems: NavItem[] = [
     href: '/src/pages/about/',
   },
   {
+    label: 'Blog',
+    href: '/src/pages/blog/',
+  },
+  {
     label :'Career',
     href: '',
   },
@@ -104,6 +108,7 @@ export const footerColumns: FooterColumn[] = [
     title: 'Company',
     links: [
       { label: 'About Us', href: '/src/pages/about/' },
+      { label: 'Blog', href: '/src/pages/blog/' },
       { label: 'Contact', href: '/src/pages/contact/' },
       { label: 'All Products', href: '/src/pages/products/' },
     ],
