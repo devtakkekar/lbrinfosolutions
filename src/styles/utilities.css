@@ -1,0 +1,356 @@
+/* ============================================================
+   Custom Utility Classes — LBR InfoSolutions
+   Extending Tailwind with project-specific utilities
+   ============================================================ */
+
+@layer components {
+  /* Container */
+  .container-main {
+    @apply w-full max-w-container mx-auto px-6;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-10;
+  }
+
+  /* Page hero spacing (product pages, about, contact) — matches section-padding scale */
+  .hero-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Compact hero spacing (legal pages with minimal header content) */
+  .hero-padding-compact {
+    @apply py-10 md:py-12 lg:py-14;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white border border-gray-200 rounded shadow-card transition-all duration-250;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover -translate-y-0.5;
+  }
+
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wide rounded transition-all duration-250 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply btn bg-navy text-white hover:bg-navy-700 active:bg-navy-900 hover:shadow-card-hover;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-navy border border-navy-200 hover:border-navy hover:bg-navy-50;
+  }
+
+  .btn-accent {
+    @apply btn bg-blue-accent text-white hover:bg-blue-light hover:shadow-card-hover;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent text-blue-accent border border-blue-accent hover:bg-blue-accent hover:text-white;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded bg-navy-50 text-navy-600;
+  }
+
+  /* Product logo chip — fixed height, auto width, so every partner logo
+     reads at the same visual size regardless of its native aspect ratio.
+     The chip itself is a fixed box (h-12 x w-32); the image inside is
+     constrained to fill that box via object-fit: contain, so a wide
+     wordmark (Hammerspace) and a compact mark (VisionLabs) both end up
+     visually similar in weight instead of one looking tiny next to another.
+     Default variant is a light chip for dark-fill logos; the --dark variant
+     is used on dark hero backgrounds so light-fill logos remain visible. */
+  .logo-chip {
+    @apply inline-flex items-center justify-center flex-shrink-0 h-12 w-32 px-3 bg-white border border-gray-200 rounded;
+  }
+
+  .logo-chip img {
+    @apply h-full w-full object-contain;
+  }
+
+  .logo-chip--dark {
+    @apply bg-navy border-navy-700;
+  }
+
+  /* Section title block */
+  .section-header {
+    @apply text-center max-w-2xl mx-auto mb-12;
+  }
+
+  .section-header h2 {
+    @apply text-h2 text-navy mb-4;
+  }
+
+  .section-header p {
+    @apply text-body text-gray-600;
+  }
+
+  /* Alternating section backgrounds */
+  .section-alt {
+    @apply bg-gray-50;
+  }
+
+  /* Grid layouts */
+  .grid-features {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+  }
+
+  .grid-products {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-gray-200;
+  }
+
+  /* Prose text (for legal/content pages) */
+  .prose-content p {
+    @apply mb-4 text-gray-600 leading-relaxed;
+  }
+
+  .prose-content h2 {
+    @apply text-h2 text-navy mt-10 mb-4;
+  }
+
+  .prose-content h3 {
+    @apply text-h3 text-navy mt-8 mb-3;
+  }
+
+  .prose-content ul {
+    @apply list-disc list-inside mb-4 space-y-2 text-gray-600;
+  }
+
+  .prose-content ol {
+    @apply list-decimal list-inside mb-4 space-y-2 text-gray-600;
+  }
+
+  .prose-content a {
+    @apply text-blue-accent hover:text-blue-light underline;
+  }
+
+  /* Logo Carousel — continuous marquee of partner/technology logos.
+     Sits inside .container-main like every other section, so the fade
+     masks blend with the section's own background rather than the page's.
+     JS (logo-carousel.ts) duplicates .logo-track's children once and
+     animates via translate3d for a seamless infinite loop. */
+  .logo-carousel {
+    @apply relative w-full overflow-hidden isolate;
+  }
+
+  .logo-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  .logo-card {
+    @apply bg-white border border-gray-200 rounded transition-all duration-250;
+    width: 180px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 180px;
+    user-select: none;
+  }
+
+  .logo-card:hover {
+    @apply shadow-card-hover -translate-y-0.5;
+  }
+
+  .logo-card img {
+    width: 130px;
+    height: 40px;
+    object-fit: contain;
+    -webkit-user-drag: none;
+  }
+
+  .logo-card img.hpe-logo {
+    width: 100px;
+    height: 60px;
+  }
+
+  .logo-card img.redhat-logo {
+    width: 170px;
+    height: 90px;
+  }
+
+  .logo-card img.postgres-logo {
+    width: 160px;
+    height: 80px;
+  }
+
+  /* Left & right fade masks — solid color matches the section's own
+     background (gray-50), not the page background, so it blends
+     correctly regardless of which sections sit above/below. */
+  .logo-carousel::before,
+  .logo-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  .logo-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-gray-50) 0%, rgba(247, 249, 252, 0) 100%);
+  }
+
+  .logo-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-gray-50) 0%, rgba(247, 249, 252, 0) 100%);
+  }
+
+  @media (max-width: 640px) {
+    .logo-carousel::before,
+    .logo-carousel::after {
+      width: 48px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Text gradient (used sparingly) */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-navy to-blue-accent;
+  }
+
+  /* Animate on scroll — hidden state (fade + rise, the default reveal) */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reveal variants — same IntersectionObserver-driven mechanism as .animate-on-scroll,
+     applied via the `.is-visible` class from initAnimations() in scripts/animations.ts */
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 0.7s ease-out;
+    will-change: opacity;
+  }
+  .reveal-fade.is-visible { opacity: 1; }
+
+  .reveal-zoom {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-zoom.is-visible { opacity: 1; transform: scale(1); }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-left.is-visible { opacity: 1; transform: translateX(0); }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-right.is-visible { opacity: 1; transform: translateX(0); }
+
+  /* Stagger delays for children (manual variant — auto-stagger via [data-stagger] is preferred) */
+  .stagger-1 { transition-delay: 100ms; }
+  .stagger-2 { transition-delay: 200ms; }
+  .stagger-3 { transition-delay: 300ms; }
+  .stagger-4 { transition-delay: 400ms; }
+  .stagger-5 { transition-delay: 500ms; }
+
+  /* Generic hover lift for non-card elements (feature rows, list items) */
+  .hover-lift {
+    transition: transform 0.25s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Feature icon micro-interaction — scales and deepens color on row hover */
+  .feature-row {
+    transition: transform 0.25s ease;
+  }
+  .feature-row:hover {
+    transform: translateX(2px);
+  }
+  .feature-icon {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease;
+  }
+  .feature-row:hover .feature-icon {
+    transform: scale(1.12);
+    background-color: var(--color-blue-accent, #2A87FF);
+    color: #fff;
+  }
+
+  /* Pulsing double-chevron button accent — used inline after CTA button text
+     (e.g. "Explore Solutions") in place of a static arrow icon. Built from
+     SVG (not a rotated bordered box) so it aligns cleanly against the text
+     baseline via flex centering — a rotated border-box's visible ink sits
+     offset from its own layout box, which previously made the mark appear
+     shifted above the text line. Each chevron nudges right and brightens on
+     a staggered loop, matching the vendor "scrolldown" chevron animation but
+     rotated 90° for horizontal use. Uses currentColor so it automatically
+     matches whichever button variant it's placed in. Respects the global
+     prefers-reduced-motion override already defined above (animation
+     duration is forced near-zero there). */
+  .btn-chevrons {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    margin-left: 0.5rem;
+  }
+
+  .btn-chevron {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .btn-chevron:nth-child(1) {
+    animation: btnChevronPulse 900ms ease infinite;
+  }
+
+  .btn-chevron:nth-child(2) {
+    animation: btnChevronPulse 900ms ease infinite 150ms;
+  }
+
+  @keyframes btnChevronPulse {
+    0%, 20% { opacity: 0.35; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(3px); }
+    80%, 100% { opacity: 0.35; transform: translateX(0); }
+  }
+
+  /* Mobile menu smooth slide (max-height driven, JS sets the target height) */
+  .mobile-menu {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  }
+  .mobile-menu.is-open {
+    opacity: 1;
+  }
+}
