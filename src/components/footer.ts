@@ -54,7 +54,7 @@ export function buildFooterHtml(): string {
           <!-- Brand column -->
           <div class="lg:col-span-2">
             <a href="/" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
-          <img src="/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 pb-2 w-auto" />
+          <img src="/lbrinfosolutions/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 pb-2 w-auto" />
         </a>
             <p class="text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
               Delivering disruptive enterprise technology solutions in database infrastructure, storage, AI, and data orchestration for modern workloads.
