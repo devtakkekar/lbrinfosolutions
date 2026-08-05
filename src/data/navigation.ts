@@ -8,7 +8,7 @@ import type { NavItem, FooterColumn } from '../types/navigation';
 export const mainNavItems: NavItem[] = [
   {
     label: 'Home',
-    href: '/',
+    href: '/lbrinfosolutions/',
   },
   {
     label: 'Products',
@@ -17,28 +17,28 @@ export const mainNavItems: NavItem[] = [
       items: [
         {
           label: 'Postgres Pro',
-          href: '/src/pages/postgres-pro/',
-          logo: '/src/assets/logos/PostgresPro_logo.svg',
+          href: '/lbrinfosolutions/src/pages/postgres-pro/',
+          logo: '/lbrinfosolutions/src/assets/logos/PostgresPro_logo.svg',
         },
         {
           label: 'RHEL',
-          href: '/src/pages/rhel/',
-          logo: '/src/assets/logos/redhat.svg',
+          href: '/lbrinfosolutions/src/pages/rhel/',
+          logo: '/lbrinfosolutions/src/assets/logos/redhat.svg',
         },
         {
           label: 'Infinidat',
-          href: '/src/pages/infinidat/',
-          logo: '/src/assets/logos/lenovo_infinidat.svg',
+          href: '/lbrinfosolutions/src/pages/infinidat/',
+          logo: '/lbrinfosolutions/src/assets/logos/lenovo_infinidat.svg',
         },
         {
           label: 'HPE',
-          href: '/src/pages/hpe/',
-          logo: '/src/assets/logos/hpe.svg',
+          href: '/lbrinfosolutions/src/pages/hpe/',
+          logo: '/lbrinfosolutions/src/assets/logos/hpe.svg',
         },
         {
           label: 'Cloudian',
-          href: '/src/pages/cloudian/',
-          logo: '/src/assets/logos/cloudian.svg',
+          href: '/lbrinfosolutions/src/pages/cloudian/',
+          logo: '/lbrinfosolutions/src/assets/logos/cloudian.svg',
         },
         /* Only shows major products 
         {
@@ -71,11 +71,11 @@ export const mainNavItems: NavItem[] = [
   },
   {
     label: 'About',
-    href: '/src/pages/about/',
+    href: '/lbrinfosolutions/src/pages/about/',
   },
   {
     label: 'Blog',
-    href: '/src/pages/blog/',
+    href: '/lbrinfosolutions/src/pages/blog/',
   },
   {
     label :'Career',
@@ -83,7 +83,7 @@ export const mainNavItems: NavItem[] = [
   },
   {
     label: 'Contact',
-    href: '/src/pages/contact/',
+    href: '/lbrinfosolutions/src/pages/contact/',
   },
 ];
 
@@ -91,11 +91,11 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Products',
     links: [
-      { label: 'Postgres Pro', href: '/src/pages/postgres-pro/' },
-      { label: 'RHEL', href: '/src/pages/rhel/' },
-      { label: 'Infinidat', href: '/src/pages/infinidat/' },
-      { label: 'HPE', href: '/src/pages/hpe/' },
-      { label: 'Cloudian', href: '/src/pages/cloudian/' },
+      { label: 'Postgres Pro', href: '/lbrinfosolutions/src/pages/postgres-pro/' },
+      { label: 'RHEL', href: '/lbrinfosolutions/src/pages/rhel/' },
+      { label: 'Infinidat', href: '/lbrinfosolutions/src/pages/infinidat/' },
+      { label: 'HPE', href: '/lbrinfosolutions/src/pages/hpe/' },
+      { label: 'Cloudian', href: '/lbrinfosolutions/src/pages/cloudian/' },
       /* 
       { label: 'VAST Data', href: '/src/pages/vast-data/' },
       { label: 'Hammerspace', href: '/src/pages/hammerspace/' },
@@ -107,18 +107,18 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '/src/pages/about/' },
-      { label: 'Blog', href: '/src/pages/blog/' },
-      { label: 'Contact', href: '/src/pages/contact/' },
-      { label: 'All Products', href: '/src/pages/products/' },
+      { label: 'About Us', href: '/lbrinfosolutions/src/pages/about/' },
+      { label: 'Blog', href: '/lbrinfosolutions/src/pages/blog/' },
+      { label: 'Contact', href: '/lbrinfosolutions/src/pages/contact/' },
+      { label: 'All Products', href: '/lbrinfosolutions/src/pages/products/' },
     ],
   },
   {
     title: 'Legal',
     links: [
-      { label: 'Privacy Policy', href: '/src/pages/privacy/' },
-      { label: 'Terms & Conditions', href: '/src/pages/terms/' },
-      { label: 'Cookie Policy', href: '/src/pages/cookies/' },
+      { label: 'Privacy Policy', href: '/lbrinfosolutions/src/pages/privacy/' },
+      { label: 'Terms & Conditions', href: '/lbrinfosolutions/src/pages/terms/' },
+      { label: 'Cookie Policy', href: '/lbrinfosolutions/src/pages/cookies/' },
     ],
   },
 ];
