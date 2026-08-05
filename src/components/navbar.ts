@@ -161,7 +161,7 @@ export function buildNavbarHtml(): string {
       <div class="container-main flex items-center justify-between h-18 lg:h-20">
         <!-- Logo -->
         <a href="/" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
-          <img src="/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 w-auto" />
+          <img src="/lbrinfosolutions/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 w-auto" />
         </a>
 
         <!-- Desktop Navigation -->
