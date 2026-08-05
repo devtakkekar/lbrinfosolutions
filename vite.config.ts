@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import { partialsPlugin } from './vite-plugin-partials';
 
 export default defineConfig({
+  base: '/lbrinfosolutions/',
   root: '.',
   publicDir: 'public',
   plugins: [partialsPlugin()],
