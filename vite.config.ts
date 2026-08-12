@@ -30,6 +30,7 @@ export default defineConfig({
         yubico: resolve(__dirname, 'src/pages/yubico/index.html'),
         about: resolve(__dirname, 'src/pages/about/index.html'),
         blog: resolve(__dirname, 'src/pages/blog/index.html'),
+        career: resolve(__dirname, 'src/pages/career/index.html'),
         contact: resolve(__dirname, 'src/pages/contact/index.html'),
         privacy: resolve(__dirname, 'src/pages/privacy/index.html'),
         terms: resolve(__dirname, 'src/pages/terms/index.html'),

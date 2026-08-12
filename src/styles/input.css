@@ -3,6 +3,7 @@
 @import './utilities.css';
 @import './radial-diagram.css';
 @import './blog.css';
+@import './careers.css';
 
 @tailwind base;
 @tailwind components;

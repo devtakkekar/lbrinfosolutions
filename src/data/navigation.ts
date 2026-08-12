@@ -79,7 +79,7 @@ export const mainNavItems: NavItem[] = [
   },
   {
     label :'Career',
-    href: '',
+    href: '/lbrinfosolutions/src/pages/career/',
   },
   {
     label: 'Contact',
