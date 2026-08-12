@@ -1,9 +1,10 @@
 /**
  * Careers Data
  *
- * To add a new opening: paste the full LinkedIn post URL below — the kind
- * you get from "Copy link to post" or straight out of the browser address
- * bar. Nothing else needs extracting by hand; the numeric activity ID
+ * To add a new opening: set `title` to the role name as you want it
+ * displayed, and paste the full LinkedIn post URL — the kind you get
+ * from "Copy link to post" or straight out of the browser address bar.
+ * Nothing else needs extracting by hand; the numeric activity ID
  * LinkedIn's embed API needs is parsed automatically in
  * src/components/careers-list.ts.
  *
@@ -12,15 +13,23 @@
  */
 
 export interface JobPosting {
+  /** Displayed in bold on the card — e.g. "Sales Manager", "Intern". */
+  title: string;
   linkedinPostUrl: string;
 }
 
 export const jobPostings: JobPosting[] = [
   {
+    // NOTE: inferred from the post's URL slug ("sales-manager-postgresql-
+    // location-mumbai") — double-check this is the exact title you want shown.
+    title: 'Sales Manager',
     linkedinPostUrl:
       'https://www.linkedin.com/posts/lbrinfosolutions_sales-manager-postgresql-location-mumbai-activity-7490659868060803072-2IIQ',
   },
   {
+    // NOTE: inferred from the post's URL slug ("hiring-internship-postgresql")
+    // — double-check this is the exact title you want shown.
+    title: 'Intern',
     linkedinPostUrl:
       'https://www.linkedin.com/posts/lbrinfosolutions_hiring-internship-postgresql-activity-7490658826669584384-M2Mn',
   },

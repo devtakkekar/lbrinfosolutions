@@ -14,7 +14,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/styles/input.css">
 </head>
 <body>
@@ -40,7 +40,7 @@
         <!-- Populated by careers-list.ts from src/data/careers.ts — add
              a job by pasting its LinkedIn post URL there, nothing here
              needs to change. -->
-        <div id="job-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" data-stagger></div>
+        <div id="job-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8" data-stagger></div>
 
         <div class="mt-14 lg:mt-16 text-center animate-on-scroll">
           <p class="text-gray-400 text-sm mb-4">Don't see a role that fits right now?</p>
@@ -61,7 +61,7 @@
   <div id="footer"></div>
   <script type="module" src="/src/main.ts"></script>
   <script type="module">
-    import { renderJobPostings, initJobPostingFrames } from '/src/components/careers-list.ts';
+    import { renderJobPostings } from '/src/components/careers-list.ts';
     import { jobPostings, linkedinCompanyUrl } from '/src/data/careers.ts';
     import { applyStagger, observeRevealElements } from '/src/scripts/animations.ts';
 
@@ -72,7 +72,6 @@
       renderJobPostings('job-list', jobPostings);
       applyStagger('#job-list', '.job-card');
       observeRevealElements(listEl);
-      initJobPostingFrames();
 
       const viewAllLink = document.getElementById('view-all-openings');
       if (viewAllLink instanceof HTMLAnchorElement) {
