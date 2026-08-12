@@ -13,7 +13,7 @@ export const siteConfig = {
   contact: {
     address: 'C 704, Country Park, Dattapada Road, Borivali (E), Mumbai, India',
     email: 'info@lbrinfosolutions.com',
-    phone: '+91-22-XXXX-XXXX',
+    phone: '+91-9920892704',
   },
 
   social: {

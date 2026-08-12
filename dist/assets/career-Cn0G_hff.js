@@ -1,4 +1,4 @@
-import{a as o,o as s}from"./main-yY1lzQhG.js";function r(n){return`
+import{a as o,o as s}from"./main-CZXfFU7L.js";function a(n){return`
     <a
       href="${n.linkedinPostUrl}"
       target="_blank"
@@ -19,4 +19,4 @@ import{a as o,o as s}from"./main-yY1lzQhG.js";function r(n){return`
       <span class="go-corner" aria-hidden="true">
         <span class="go-arrow">&rarr;</span>
       </span>
-    </a>`}function a(n,e){const t=document.getElementById(n);t&&(t.innerHTML=e.map(r).join(""))}const l=[{title:"Sales Manager",linkedinPostUrl:"https://www.linkedin.com/posts/lbrinfosolutions_sales-manager-postgresql-location-mumbai-activity-7490659868060803072-2IIQ"},{title:"PostgreSQL Intern",linkedinPostUrl:"https://www.linkedin.com/posts/lbrinfosolutions_hiring-internship-postgresql-activity-7490658826669584384-M2Mn"}],d="https://www.linkedin.com/company/lbrinfosolutions/";function i(){const n=document.getElementById("job-list");if(!n)return;a("job-list",l),o("#job-list",".job-card"),s(n);const e=document.getElementById("view-all-openings");e instanceof HTMLAnchorElement&&(e.href=d)}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",i):i();
+    </a>`}function r(n,e){const t=document.getElementById(n);t&&(t.innerHTML=e.map(a).join(""))}const l=[{title:"Sales Manager",linkedinPostUrl:"https://www.linkedin.com/posts/lbrinfosolutions_sales-manager-postgresql-location-mumbai-activity-7490659868060803072-2IIQ"},{title:"Intern",linkedinPostUrl:"https://www.linkedin.com/posts/lbrinfosolutions_hiring-internship-postgresql-activity-7490658826669584384-M2Mn"}],d="https://www.linkedin.com/company/lbrinfosolutions/";function i(){const n=document.getElementById("job-list");if(!n)return;r("job-list",l),o("#job-list",".job-card"),s(n);const e=document.getElementById("view-all-openings");e instanceof HTMLAnchorElement&&(e.href=d)}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",i):i();
