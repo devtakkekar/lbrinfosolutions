@@ -4,6 +4,7 @@
 @import './radial-diagram.css';
 @import './blog.css';
 @import './careers.css';
+@import './contact-form.css';
 
 @tailwind base;
 @tailwind components;

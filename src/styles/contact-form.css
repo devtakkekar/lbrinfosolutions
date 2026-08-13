@@ -1,0 +1,62 @@
+/* Contact form — Formspree AJAX integration styling.
+   useDefaultStyles is off in contact-form.ts, so this file is
+   responsible for everything the library doesn't style itself: showing/
+   hiding [data-fs-success] and [data-fs-error] (the library only toggles
+   the data-fs-active attribute, not visibility), field error text, the
+   invalid-field border, and the success panel look. */
+
+[data-fs-success]:not([data-fs-active]),
+[data-fs-error]:not([data-fs-active]) {
+  display: none;
+}
+
+.contact-field-error {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #dc2626;
+}
+
+/* Matches the DataAttributes.FIELD contract: the library sets this
+   automatically on invalid fields tagged [data-fs-field]. */
+[data-fs-field][aria-invalid='true'] {
+  border-color: #dc2626 !important;
+}
+
+.contact-form-level-error {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.contact-success-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 8px;
+  background: #f0fdf9;
+  border: 1px solid #99e6cc;
+}
+
+.contact-success-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #1ed3b0;
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin {
+    animation: none;
+  }
+}
