@@ -34,12 +34,14 @@
       <div class="container-main relative z-10 py-16 md:py-20 lg:py-24">
         <div class="max-w-2xl mb-14 lg:mb-16 animate-on-scroll">
           <h1 class="text-h1 text-white mb-3">We're always looking for awesome people to join us</h1>
-          <p class="text-gray-400 leading-relaxed">Join a team solving real infrastructure problems for enterprise clients. Our current openings are posted straight from LinkedIn below, so what you see here is always up to date.</p>
+          <p class="text-gray-400 leading-relaxed">Join a team solving real infrastructure problems for enterprise clients. Browse our current openings below — click a role to see the full job description.</p>
         </div>
 
         <!-- Populated by careers-list.ts from src/data/careers.ts — add
-             a job by pasting its LinkedIn post URL there, nothing here
-             needs to change. -->
+             a job by adding an entry there (title, summary, and
+             point-wise sections), nothing here needs to change.
+             Clicking a card opens the full description via
+             careers-modal.ts. -->
         <div id="job-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8" data-stagger></div>
 
         <div class="mt-14 lg:mt-16 text-center animate-on-scroll">
@@ -50,7 +52,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 text-white font-medium hover:text-blue-accent transition-colors"
-          >
+            >
             Follow us on LinkedIn for future openings
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
           </a>
@@ -62,6 +64,7 @@
   <script type="module" src="/src/main.ts"></script>
   <script type="module">
     import { renderJobPostings } from '/src/components/careers-list.ts';
+    import { initCareersModal } from '/src/components/careers-modal.ts';
     import { jobPostings, linkedinCompanyUrl } from '/src/data/careers.ts';
     import { applyStagger, observeRevealElements } from '/src/scripts/animations.ts';
 
@@ -70,6 +73,7 @@
       if (!listEl) return;
 
       renderJobPostings('job-list', jobPostings);
+      initCareersModal('job-list', jobPostings);
       applyStagger('#job-list', '.job-card');
       observeRevealElements(listEl);
 

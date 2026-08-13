@@ -1,37 +1,47 @@
 /**
  * Careers List Component
  * Renders job posting cards from src/data/careers.ts. Each card shows
- * the role title and links straight out to the LinkedIn post — no embed,
- * no iframe, just a fast, simple card. Runs in the browser (like
- * blog-list.ts), invoked from an inline script on
- * src/pages/career/index.html.
+ * the role title and a short teaser and, on click, opens the full
+ * point-wise job description in a modal (see careers-modal.ts) —
+ * nothing here links out to LinkedIn anymore, so a deleted/edited
+ * LinkedIn post can never break a listing.
+ *
+ * Cards are deliberately identical in shape (fixed-height teaser,
+ * clamped to 2 lines) regardless of how long a role's full JD runs —
+ * that length only shows up once the modal opens, so the grid stays
+ * visually consistent whether a posting has 3 bullets or 20.
+ *
+ * Runs in the browser (like blog-list.ts), invoked from an inline
+ * script on src/pages/career/index.html.
  */
 
 import type { JobPosting } from '../data/careers';
 
-function buildCard(posting: JobPosting): string {
+function buildCard(posting: JobPosting, index: number): string {
   return `
-    <a
-      href="${posting.linkedinPostUrl}"
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      type="button"
+      data-job-index="${index}"
       class="job-card animate-on-scroll"
-      aria-label="View the ${posting.title} posting on LinkedIn"
+      aria-haspopup="dialog"
+      aria-label="View full job description for ${posting.title}"
     >
       <div class="job-card-glow" aria-hidden="true"></div>
       <div class="job-card-content">
         <div class="job-card-header">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="job-card-linkedin-icon" aria-hidden="true">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="job-card-briefcase-icon" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
           </svg>
           <span>Open Position</span>
         </div>
         <h3 class="job-card-title">${posting.title}</h3>
+        <p class="job-card-summary">${posting.summary}</p>
       </div>
       <span class="go-corner" aria-hidden="true">
         <span class="go-arrow">&rarr;</span>
       </span>
-    </a>`;
+      <span class="job-card-cta">View job description</span>
+    </button>`;
 }
 
 export function renderJobPostings(containerId: string, postings: JobPosting[]): void {

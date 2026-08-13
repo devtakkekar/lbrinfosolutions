@@ -15,8 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/lbrinfosolutions/assets/career-dj5-OHSi.js"></script>
-  <link rel="modulepreload" crossorigin href="/lbrinfosolutions/assets/main-e3zHq23O.js">
+  <script type="module" crossorigin src="/lbrinfosolutions/assets/career-ChFfuCrS.js"></script>
+  <link rel="modulepreload" crossorigin href="/lbrinfosolutions/assets/main-gi_IYJgT.js">
   <link rel="stylesheet" crossorigin href="/lbrinfosolutions/assets/main-BYsWLr4r.css">
 </head>
 <body>
@@ -354,17 +354,19 @@
       <div class="container-main relative z-10 py-16 md:py-20 lg:py-24">
         <div class="max-w-2xl mb-14 lg:mb-16 animate-on-scroll">
           <h1 class="text-h1 text-white mb-3">We're always looking for awesome people to join us</h1>
-          <p class="text-gray-400 leading-relaxed">Join a team solving real infrastructure problems for enterprise clients. Our current openings are posted straight from LinkedIn below, so what you see here is always up to date.</p>
+          <p class="text-gray-400 leading-relaxed">Join a team solving real infrastructure problems for enterprise clients. Browse our current openings below — click a role to see the full job description.</p>
         </div>
 
         <!-- Populated by careers-list.ts from src/data/careers.ts — add
-             a job by pasting its LinkedIn post URL there, nothing here
-             needs to change. -->
+             a job by adding an entry there (title, summary, and
+             point-wise sections), nothing here needs to change.
+             Clicking a card opens the full description via
+             careers-modal.ts. -->
         <div id="job-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8" data-stagger></div>
 
         <div class="mt-14 lg:mt-16 text-center animate-on-scroll">
           <p class="text-gray-400 text-sm mb-4">Don't see a role that fits right now?</p>
-          <a
+          
             id="view-all-openings"
             href="https://www.linkedin.com/company/lbrinfosolutions/"
             target="_blank"
