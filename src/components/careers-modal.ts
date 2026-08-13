@@ -58,8 +58,8 @@ function ensureModal(): void {
         <a class="job-modal-linkedin-link" data-job-modal-linkedin-link target="_blank" rel="noopener noreferrer">
           View original LinkedIn post
         </a>
-        <a class="btn-accent job-modal-apply" data-job-modal-apply-link href="mailto:info@lbrinfosolutions.com">
-          Apply for this role
+        <a class="btn-accent job-modal-apply" href="/lbrinfosolutions/src/pages/contact/">
+          Contact Us
         </a>
       </div>
     </div>`;
