@@ -22,6 +22,7 @@ import { initCookieBanner } from './components/cookie-banner';
 import { initLogoCarousel } from './components/logo-carousel';
 import { initRadialDiagram } from './components/radial-diagram';
 import { initCounters } from './components/counter';
+import { initContactForm } from './components/contact-form';
 import { initNavigation } from './scripts/navigation';
 import { initAnimations } from './scripts/animations';
 import { initScroll } from './scripts/scroll';
@@ -40,6 +41,9 @@ function init(): void {
   }
   if (document.getElementById('stage')) {
     initRadialDiagram();
+  }
+  if (document.getElementById('contact-form')) {
+    initContactForm();
   }
 
   // 3. Cookie consent (always last, non-blocking)
