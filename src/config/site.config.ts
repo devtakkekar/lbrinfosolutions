@@ -11,14 +11,13 @@ export const siteConfig = {
   locale: 'en_US',
 
   contact: {
-    address: 'C 704, Country Park, Dattapada Road, Borivali (E), Mumbai, India',
+    address: 'LBR InfoSolutions-102, Floor-1, Gumpha Darshan A&B, Chinchpada Road, Borivali (E), Mumbai, India - 400067',
     email: 'info@lbrinfosolutions.com',
     phone: '+91-9920892704',
   },
 
   social: {
     linkedin: 'https://www.linkedin.com/company/lbrinfosolutions',
-    twitter: 'https://twitter.com/lbrinfosolutions',
   },
 
   meta: {
