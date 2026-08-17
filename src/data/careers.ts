@@ -1,12 +1,18 @@
 /**
  * Careers Data
  *
- * Each opening's full job description lives here, point-wise, so the
- * site is the source of truth — it no longer depends on a LinkedIn post
- * staying up. `linkedinPostUrl` is optional and only used as a
- * secondary "View original post" link in the modal footer; if a post
- * gets taken down, deleted, or was never posted, just omit it (or
- * delete it) and everything keeps working.
+ * This array is the FALLBACK job data used by careers-api.ts whenever
+ * VITE_CAREERS_API_URL is unset, unreachable, or returns malformed data
+ * (including local `npm run dev` with no env var configured). The live
+ * site normally renders postings fetched from Google Sheets at runtime —
+ * see careers-api.ts for that data layer. This file is what keeps the
+ * Careers page working even if that API is down.
+ *
+ * Each opening's full job description lives here, point-wise.
+ * `linkedinPostUrl` is optional and only used as a secondary "View
+ * original post" link in the modal footer; if a post gets taken down,
+ * deleted, or was never posted, just omit it (or delete it) and
+ * everything keeps working.
  *
  * To add a new opening: add an entry with a `title`, a one-line
  * `summary` (shown on the card face), and one or more `sections` —
@@ -27,6 +33,13 @@ export interface JobSection {
 }
 
 export interface JobPosting {
+  /**
+   * Optional stable identifier (e.g. a Google Sheet row id). Not used by
+   * the UI directly — cards/modal are keyed by array index like before —
+   * but kept so a remote data source (see careers-api.ts) has something
+   * stable to key rows on.
+   */
+  id?: string;
   /** Displayed in bold on the card — e.g. "Sales Manager", "Intern". */
   title: string;
   /** Short one-line teaser shown on the card face (not the full JD). */

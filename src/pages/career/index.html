@@ -37,9 +37,11 @@
           <p class="text-gray-400 leading-relaxed">Join a team solving real infrastructure problems for enterprise clients. Browse our current openings below — click a role to see the full job description.</p>
         </div>
 
-        <!-- Populated by careers-list.ts from src/data/careers.ts — add
-             a job by adding an entry there (title, summary, and
-             point-wise sections), nothing here needs to change.
+        <!-- Populated by careers-list.ts from getJobPostings()
+             (src/data/careers-api.ts), which fetches from the Careers
+             Google Sheet API and falls back to the local postings in
+             src/data/careers.ts if that's unavailable. See
+             CAREERS_CMS.md for how to add/edit/deactivate a job.
              Clicking a card opens the full description via
              careers-modal.ts. -->
         <div id="job-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8" data-stagger></div>
@@ -63,24 +65,38 @@
   <div id="footer"></div>
   <script type="module" src="/src/main.ts"></script>
   <script type="module">
-    import { renderJobPostings } from '/src/components/careers-list.ts';
+    import { renderJobPostings, renderJobPostingsLoading, renderJobPostingsEmpty } from '/src/components/careers-list.ts';
     import { initCareersModal } from '/src/components/careers-modal.ts';
-    import { jobPostings, linkedinCompanyUrl } from '/src/data/careers.ts';
+    import { linkedinCompanyUrl } from '/src/data/careers.ts';
+    import { getJobPostings } from '/src/data/careers-api.ts';
     import { applyStagger, observeRevealElements } from '/src/scripts/animations.ts';
 
-    function initCareers() {
+    async function initCareers() {
       const listEl = document.getElementById('job-list');
       if (!listEl) return;
-
-      renderJobPostings('job-list', jobPostings);
-      initCareersModal('job-list', jobPostings);
-      applyStagger('#job-list', '.job-card');
-      observeRevealElements(listEl);
 
       const viewAllLink = document.getElementById('view-all-openings');
       if (viewAllLink instanceof HTMLAnchorElement) {
         viewAllLink.href = linkedinCompanyUrl;
       }
+
+      renderJobPostingsLoading('job-list');
+
+      // getJobPostings() never throws — a missing/unreachable/malformed
+      // Careers API resolves to the local fallback data, so there's
+      // nothing to catch here. A genuinely empty (but valid) response
+      // just means "no open roles right now."
+      const postings = await getJobPostings();
+
+      if (postings.length === 0) {
+        renderJobPostingsEmpty('job-list');
+        return;
+      }
+
+      renderJobPostings('job-list', postings);
+      initCareersModal('job-list', postings);
+      applyStagger('#job-list', '.job-card');
+      observeRevealElements(listEl);
     }
 
     if (document.readyState === 'loading') {

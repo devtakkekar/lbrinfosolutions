@@ -20,14 +20,29 @@ let linkedinLinkEl: HTMLAnchorElement | null = null;
 let applyLinkEl: HTMLAnchorElement | null = null;
 let lastFocusedElement: HTMLElement | null = null;
 
+/**
+ * Minimal HTML-escaping for text interpolated into template strings.
+ * Same pattern as blog-list.ts / careers-list.ts. Needed because
+ * section headings/items can now come from the Careers API (Sheet
+ * content edited by someone else), not just the local careers.ts file.
+ */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function renderSections(posting: JobPosting): string {
   return posting.sections
     .map(
       (section) => `
         <div class="job-modal-section">
-          <h4 class="job-modal-section-heading">${section.heading}</h4>
+          <h4 class="job-modal-section-heading">${escapeHtml(section.heading)}</h4>
           <ul class="job-modal-list">
-            ${section.items.map((item) => `<li>${item}</li>`).join('')}
+            ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
           </ul>
         </div>`
     )

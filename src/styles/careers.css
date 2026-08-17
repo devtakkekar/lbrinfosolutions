@@ -173,6 +173,75 @@
   }
 }
 
+/* ========== LOADING / EMPTY STATE (Careers API) ==========
+   Shown briefly while getJobPostings() resolves, or when the Careers
+   API responds successfully with zero active postings. Reuses the
+   existing .job-card shape/background so it doesn't look like a
+   separate, bolted-on UI. */
+.job-card-skeleton {
+  cursor: default;
+}
+
+.job-card-skeleton:hover,
+.job-card-skeleton:focus-visible {
+  transform: none;
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.45);
+  border-color: var(--card-border);
+}
+
+.job-card-skeleton-line {
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  animation: job-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.job-card-skeleton-line--eyebrow {
+  width: 40%;
+  height: 12px;
+  margin-bottom: 14px;
+}
+
+.job-card-skeleton-line--title {
+  width: 65%;
+  height: 24px;
+  margin-bottom: 12px;
+}
+
+.job-card-skeleton-line--summary {
+  width: 100%;
+  height: 12px;
+  margin-bottom: 8px;
+}
+
+.job-card-skeleton-line--summary.short {
+  width: 70%;
+}
+
+@keyframes job-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.job-list-empty {
+  grid-column: 1 / -1;
+  padding: 48px 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .job-card-skeleton-line {
+    animation: none;
+  }
+}
+
 /* ========== JOB DESCRIPTION MODAL ========== */
 .job-modal {
   position: fixed;

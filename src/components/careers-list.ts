@@ -17,14 +17,31 @@
 
 import type { JobPosting } from '../data/careers';
 
+/**
+ * Minimal HTML-escaping for text interpolated into template strings.
+ * Same pattern as blog-list.ts. Needed here because, unlike the old
+ * hardcoded careers.ts array, job data can now come from the Careers
+ * API (careers-api.ts) — Sheet content edited by someone else — so it
+ * has to be treated as untrusted before it lands in innerHTML.
+ */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function buildCard(posting: JobPosting, index: number): string {
+  const title = escapeHtml(posting.title);
   return `
     <button
       type="button"
       data-job-index="${index}"
       class="job-card animate-on-scroll"
       aria-haspopup="dialog"
-      aria-label="View full job description for ${posting.title}"
+      aria-label="View full job description for ${title}"
     >
       <div class="job-card-glow" aria-hidden="true"></div>
       <div class="job-card-content">
@@ -34,8 +51,8 @@ function buildCard(posting: JobPosting, index: number): string {
           </svg>
           <span>Open Position</span>
         </div>
-        <h3 class="job-card-title">${posting.title}</h3>
-        <p class="job-card-summary">${posting.summary}</p>
+        <h3 class="job-card-title">${title}</h3>
+        <p class="job-card-summary">${escapeHtml(posting.summary)}</p>
       </div>
       <span class="go-corner" aria-hidden="true">
         <span class="go-arrow">&rarr;</span>
@@ -49,4 +66,35 @@ export function renderJobPostings(containerId: string, postings: JobPosting[]): 
   if (!container) return;
 
   container.innerHTML = postings.map(buildCard).join('');
+}
+
+/** Skeleton placeholder cards shown while the Careers API request is in flight. */
+export function renderJobPostingsLoading(containerId: string, count = 3): void {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = Array.from({ length: count })
+    .map(
+      () => `
+      <div class="job-card job-card-skeleton" aria-hidden="true">
+        <div class="job-card-content">
+          <div class="job-card-skeleton-line job-card-skeleton-line--eyebrow"></div>
+          <div class="job-card-skeleton-line job-card-skeleton-line--title"></div>
+          <div class="job-card-skeleton-line job-card-skeleton-line--summary"></div>
+          <div class="job-card-skeleton-line job-card-skeleton-line--summary short"></div>
+        </div>
+      </div>`
+    )
+    .join('');
+}
+
+/** Shown when the Careers API responds successfully with zero active postings. */
+export function renderJobPostingsEmpty(containerId: string): void {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="job-list-empty">
+      <p>There are no open positions right now — check back soon, or follow us on LinkedIn below for future openings.</p>
+    </div>`;
 }
