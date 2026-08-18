@@ -42,12 +42,33 @@
         </div>
 
         <!-- Populated by blog-list.ts from src/data/blog.ts — add posts
-             there, nothing here needs to change. -->
-        <div id="blog-list" class="max-w-3xl" data-stagger></div>
+             there, nothing here needs to change.
+
+             data-post-count reserves height for this still-empty div
+             (see #blog-list rule in blog.css) so the page doesn't jump
+             from ~0 height to full height once JS renders the cards —
+             that jump was the page's whole CLS problem. If you add or
+             remove a post in blog.ts, bump this number to match
+             blogPosts.length (a slightly-off estimate still helps a lot;
+             it just doesn't fully vanish the (much smaller) shift the
+             way an exact count does). -->
+        <div id="blog-list" class="max-w-3xl" data-stagger data-post-count="3"></div>
       </div>
     </section>
   </main>
   <div id="footer"></div>
+  <!-- Reserves #blog-list's height BEFORE main.ts/the render script below
+       run, so the container never paints at 0 height. Plain sync script
+       (no type="module", no defer) so it executes immediately as the
+       parser reaches it — before layout for this section happens — and
+       doesn't need any build-time data, so it can't hit the asset-import
+       problem described in vite-plugin-partials.ts. -->
+  <script>
+    (function () {
+      var el = document.getElementById('blog-list');
+      if (el) el.style.setProperty('--blog-post-count', el.dataset.postCount || '0');
+    })();
+  </script>
   <script type="module" src="/src/main.ts"></script>
   <script type="module">
     import { renderBlogList } from '/src/components/blog-list.ts';
@@ -61,6 +82,9 @@
       if (!listEl) return;
 
       renderBlogList('blog-list', blogPosts);
+      // Real content now determines height — drop the CSS reservation so
+      // there's no leftover empty space if the estimate ran a bit high.
+      listEl.style.removeProperty('--blog-post-count');
       applyStagger('#blog-list', '.blog-post');
       observeRevealElements(listEl);
       initBlogGalleries();

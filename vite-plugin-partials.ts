@@ -11,6 +11,19 @@
  * empty placeholders were visible for a split second on every navigation —
  * a visible flash of unstyled/incomplete markup. Injecting the HTML at
  * build time means the browser receives the complete page on first paint.
+ *
+ * NOTE: this same treatment was tried for #blog-list (see git history /
+ * PR discussion) and reverted. src/data/blog.ts imports real .jpeg/.svg
+ * files via `import blog1 from '...jpeg'` so Vite can fingerprint them —
+ * but vite.config.ts (and everything reachable from it, including this
+ * file, even via dynamic import()) gets bundled by esbuild BEFORE any of
+ * Vite's own asset-loader plugins exist, so esbuild has no loader for
+ * .jpeg/.svg at that stage and config loading crashes outright. Unlike
+ * navbar/footer (whose data — navigation.ts — only holds plain string
+ * paths, never an image import), blog.ts can't safely be reached from
+ * here. The blog page's CLS fix instead reserves space for #blog-list
+ * via CSS (see blog.css + the inline script in blog/index.html) rather
+ * than pre-rendering its content.
  */
 
 import type { Plugin } from 'vite';

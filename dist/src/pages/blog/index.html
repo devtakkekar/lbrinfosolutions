@@ -19,9 +19,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/lbrinfosolutions/assets/blog-D_uvntVo.js"></script>
-  <link rel="modulepreload" crossorigin href="/lbrinfosolutions/assets/main-B-Qb7DiY.js">
-  <link rel="stylesheet" crossorigin href="/lbrinfosolutions/assets/main-BodevM5o.css">
+  <script type="module" crossorigin src="/lbrinfosolutions/assets/blog-BpUmdZyG.js"></script>
+  <link rel="modulepreload" crossorigin href="/lbrinfosolutions/assets/main-CZ_SzDe3.js">
+  <link rel="stylesheet" crossorigin href="/lbrinfosolutions/assets/main-CiI2-vk4.css">
 </head>
 <body>
   
@@ -366,8 +366,17 @@
         </div>
 
         <!-- Populated by blog-list.ts from src/data/blog.ts — add posts
-             there, nothing here needs to change. -->
-        <div id="blog-list" class="max-w-3xl" data-stagger></div>
+             there, nothing here needs to change.
+
+             data-post-count reserves height for this still-empty div
+             (see #blog-list rule in blog.css) so the page doesn't jump
+             from ~0 height to full height once JS renders the cards —
+             that jump was the page's whole CLS problem. If you add or
+             remove a post in blog.ts, bump this number to match
+             blogPosts.length (a slightly-off estimate still helps a lot;
+             it just doesn't fully vanish the (much smaller) shift the
+             way an exact count does). -->
+        <div id="blog-list" class="max-w-3xl" data-stagger data-post-count="3"></div>
       </div>
     </section>
   </main>
@@ -509,6 +518,18 @@
         </div>
       </div>
     </footer>
-  
+  
+  <!-- Reserves #blog-list's height BEFORE main.ts/the render script below
+       run, so the container never paints at 0 height. Plain sync script
+       (no type="module", no defer) so it executes immediately as the
+       parser reaches it — before layout for this section happens — and
+       doesn't need any build-time data, so it can't hit the asset-import
+       problem described in vite-plugin-partials.ts. -->
+  <script>
+    (function () {
+      var el = document.getElementById('blog-list');
+      if (el) el.style.setProperty('--blog-post-count', el.dataset.postCount || '0');
+    })();
+  </script>
 </body>
 </html>

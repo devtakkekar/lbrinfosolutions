@@ -17,6 +17,8 @@
  * card markup into the DOM.
  */
 
+import { bindImage } from './image-skeleton';
+
 const ROTATE_INTERVAL_MS = 3000;
 
 interface GalleryFrame {
@@ -38,7 +40,28 @@ let lastFocusedElement: HTMLElement | null = null;
 const prefersReducedMotion = (): boolean =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/**
+ * Slides after index 0 are built with a `data-blog-src` placeholder and no
+ * `src` (see blog-list.ts) so a multi-image post doesn't fire every image
+ * request at once on load. Hydrate the real `src` the first time a slide
+ * is actually about to be shown, so images load one at a time as the
+ * gallery advances instead of all competing with the visible slide.
+ */
+function hydrateSlide(slide: HTMLElement | undefined): void {
+  const pendingSrc = slide?.dataset.blogSrc;
+  if (pendingSrc && slide instanceof HTMLImageElement && !slide.src) {
+    slide.src = pendingSrc;
+    delete slide.dataset.blogSrc;
+    // image-skeleton.ts deliberately skips binding a src-less <img> (see
+    // its bindImage for why) — now that this slide actually has a src and
+    // is genuinely loading, bind it so it gets a shimmer + settles on
+    // load/error like every other image, instead of never resolving.
+    bindImage(slide);
+  }
+}
+
 function showSlide(frame: GalleryFrame, index: number): void {
+  hydrateSlide(frame.slides[index]);
   frame.slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
   frame.index = index;
 }
@@ -100,7 +123,9 @@ function ensureLightbox(): void {
 
 function renderLightboxImage(): void {
   if (!activeFrame || !lightboxImgEl || !lightboxCounterEl) return;
-  const src = activeFrame.slides[lightboxIndex]?.getAttribute('src') ?? '';
+  const targetSlide = activeFrame.slides[lightboxIndex];
+  hydrateSlide(targetSlide); // lightbox nav can jump straight to an unhydrated slide
+  const src = targetSlide?.getAttribute('src') ?? '';
   const title = activeFrame.element.dataset.blogTitle ?? '';
   lightboxImgEl.src = src;
   lightboxImgEl.alt = title;

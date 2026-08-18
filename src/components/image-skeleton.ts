@@ -33,8 +33,23 @@ function settle(img: HTMLImageElement): void {
   img.classList.add('is-loaded');
 }
 
-function bindImage(img: HTMLImageElement): void {
+/**
+ * Exported (not just used internally by initImageSkeletons) so
+ * blog-gallery.ts can bind a single slide the moment it actually gets a
+ * `src` — see the early-return below for why that matters.
+ */
+export function bindImage(img: HTMLImageElement): void {
   if (img.hasAttribute(BOUND_ATTR)) return;
+
+  // No src yet — e.g. a blog gallery slide waiting on blog-gallery.ts's
+  // hydrateSlide() to fill in data-blog-src (see blog-list.ts). It isn't
+  // loading, so it shouldn't shimmer: `.img-skeleton` sets `opacity: 1`,
+  // which — at equal specificity — beats `.blog-image-slide { opacity: 0 }`
+  // on cascade order, permanently un-hiding an inactive slide that will
+  // never fire load/error to clear the class. Leave it unbound (no
+  // BOUND_ATTR) so a later call — once it has a real src — is not a no-op.
+  if (!img.getAttribute('src')) return;
+
   img.setAttribute(BOUND_ATTR, 'true');
 
   // Already loaded — e.g. served from cache, or a same-page navigation.

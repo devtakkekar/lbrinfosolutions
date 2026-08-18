@@ -24,17 +24,28 @@ function escapeHtml(value: string): string {
 
 function buildImageFrame(post: BlogPost): string {
   const slides = post.images
-    .map(
-      (src, index) => `
+    .map((src, index) => {
+      // Slide 0 is the LCP candidate for every card — load it eagerly and
+      // at high priority so it paints immediately instead of racing the
+      // rest of the gallery's images for bandwidth. Every other slide
+      // gets NO src yet (data-blog-src holds it instead); blog-gallery.ts
+      // hydrates it just before it's about to become active, so a post
+      // with N images doesn't fire N simultaneous requests on load.
+      const escapedSrc = escapeHtml(src);
+      const loadingAttrs =
+        index === 0
+          ? `src="${escapedSrc}" loading="eager" fetchpriority="high"`
+          : `data-blog-src="${escapedSrc}" loading="lazy"`;
+
+      return `
         <img
-          src="${escapeHtml(src)}"
           alt="${escapeHtml(post.title)}"
           class="blog-image-slide absolute inset-0 w-full h-full object-cover${index === 0 ? ' is-active' : ''}"
           data-blog-slide
-          loading="lazy"
+          ${loadingAttrs}
           decoding="async"
-        />`
-    )
+        />`;
+    })
     .join('');
 
   const zoomButton = `
@@ -76,9 +87,23 @@ function buildCard(post: BlogPost): string {
     </article>`;
 }
 
+/**
+ * Pure-string build of the full card list — no DOM access. NOT currently
+ * wired into the build (see the note in vite-plugin-partials.ts for why
+ * blog.ts's image imports can't safely be reached from vite.config.ts).
+ * Exported anyway since it's a handy building block for a real fix later
+ * — e.g. a postbuild script that rewrites dist/blog/index.html using the
+ * already-fingerprinted URLs from Vite's build manifest, run as a
+ * separate Node process after `vite build` rather than from inside
+ * vite.config.ts's own module graph.
+ */
+export function buildBlogListHtml(posts: BlogPost[]): string {
+  return posts.map(buildCard).join('');
+}
+
 export function renderBlogList(containerId: string, posts: BlogPost[]): void {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  container.innerHTML = posts.map(buildCard).join('');
+  container.innerHTML = buildBlogListHtml(posts);
 }
