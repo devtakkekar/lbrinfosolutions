@@ -35,7 +35,7 @@ www.lbrinfosolutions.com` (and your apex domain), then add these
 | `Referrer-Policy` | `strict-origin-when-cross-origin` |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=()` |
 | `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` |
-| `Content-Security-Policy` | `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests` |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' 'inline-speculation-rules'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://script.google.com https://script.googleusercontent.com; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests` |
 
 Also worth turning on while you're in the dashboard (not headers, but part
 of the same hardening pass, all free-plan):
@@ -46,13 +46,31 @@ of the same hardening pass, all free-plan):
 ## If the CSP ever breaks something
 
 The policy above was built from what the site currently loads: self-hosted
-JS bundle, Google Fonts stylesheet, Formspree for the contact form, no
-other third-party scripts. If you add something later (analytics, a chat
-widget, Stripe.js, etc.), it will be blocked by default under this CSP —
-that's the point of CSP — and you'll need to add its domain to the
-relevant directive (usually `script-src` or `connect-src`) in **both**
-places: `vite-plugin-partials.ts` (meta tag) and the Cloudflare Transform
-Rule.
+JS bundle, Google Fonts stylesheet, Formspree for the contact form, the
+Careers page's Google Apps Script endpoint (`script.google.com` /
+`script.googleusercontent.com`, via `VITE_CAREERS_API_URL`), and no other
+third-party scripts. If you add something later (analytics, a chat
+widget, Stripe.js, another API, etc.), it will be blocked by default
+under this CSP — that's the point of CSP — and you'll need to add its
+domain to the relevant directive (usually `script-src` or `connect-src`)
+in **both** places: `vite-plugin-partials.ts` (meta tag) and the
+Cloudflare Transform Rule (and `.htaccess`, for consistency, though it's
+the least important of the three).
+
+Note that endpoints loaded from an env var (`import.meta.env.VITE_*`)
+won't show up if you just grep the codebase for `https://` — check every
+`.env*` file and every `import.meta.env.VITE_*` reference too, not just
+literal URLs in `.ts`/`.html` files.
+
+## Why `'inline-speculation-rules'` is in `script-src`
+
+`src/scripts/prefetch.ts` injects an inline `<script type="speculationrules">`
+tag on supporting browsers (on-hover prefetching — see that file's header
+comment for the full design). CSP treats speculation-rules scripts like
+any other inline script and blocks them by default; `'inline-speculation-rules'`
+is a narrow CSP keyword that allow-lists exactly that one tag type without
+loosening `script-src` for anything else (no general `'unsafe-inline'` was
+added).
 
 Quickest way to check what's being blocked: open DevTools → Console, the
 browser prints a CSP violation for each blocked resource with the exact

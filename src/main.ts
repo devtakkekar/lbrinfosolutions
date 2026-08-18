@@ -26,6 +26,7 @@ import { initContactForm } from './components/contact-form';
 import { initNavigation } from './scripts/navigation';
 import { initAnimations } from './scripts/animations';
 import { initScroll } from './scripts/scroll';
+import { initHoverPrefetch } from './scripts/prefetch';
 
 function init(): void {
   // 1. Initialize interactive behaviors on the already-present navbar/footer markup
@@ -48,6 +49,9 @@ function init(): void {
 
   // 3. Cookie consent (always last, non-blocking)
   initCookieBanner();
+
+  // 4. Prefetch on hover-intent so the next page navigation feels instant
+  initHoverPrefetch();
 }
 
 // Boot when DOM is ready
