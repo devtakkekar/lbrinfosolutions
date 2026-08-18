@@ -16,6 +16,7 @@
 import type { Plugin } from 'vite';
 import { buildNavbarHtml } from './src/components/navbar';
 import { buildFooterHtml } from './src/components/footer';
+import { BASE_PATH } from './src/config/base-path';
 
 /**
  * Security meta tags injected into every page's <head>.
@@ -47,7 +48,11 @@ export function partialsPlugin(): Plugin {
       return html
         .replace('<head>', `<head>${SECURITY_META}`)
         .replace('<div id="navbar"></div>', buildNavbarHtml())
-        .replace('<div id="footer"></div>', buildFooterHtml());
+        .replace('<div id="footer"></div>', buildFooterHtml())
+        // Every internal <a href="__BASE__..."> in the raw page HTML gets
+        // its real base path substituted here — see src/config/base-path.ts
+        // for why this is a placeholder instead of a hardcoded string.
+        .replaceAll('__BASE__', BASE_PATH);
     },
   };
 }

@@ -7,6 +7,7 @@
 
 import { mainNavItems } from '../data/navigation';
 import { siteConfig } from '../config/site.config';
+import { BASE_PATH } from '../config/base-path';
 import type { NavDropdown } from '../types/navigation';
 
 function buildDropdownItems(items: NavDropdown | undefined): string {
@@ -81,7 +82,7 @@ function buildNavItems(): string {
             </div>
             <div class="border-t border-gray-200 p-4">
               <a
-                  href="/lbrinfosolutions/src/pages/products/"
+                  href="${BASE_PATH}src/pages/products/"
                   class="flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3 text-sm font-semibold text-blue-accent transition hover:bg-blue-50"
               >
                   <span>View All Products</span>
@@ -136,7 +137,7 @@ function buildMobileNavItems(): string {
               </a>`
               )
               .join('')}
-            <a href="/lbrinfosolutions/src/pages/products/" class="block px-4 py-2 text-sm font-medium text-blue-accent hover:text-blue-light transition-colors">
+            <a href="${BASE_PATH}src/pages/products/" class="block px-4 py-2 text-sm font-medium text-blue-accent hover:text-blue-light transition-colors">
               View All Products &rarr;
             </a>
           </div>
@@ -160,8 +161,8 @@ export function buildNavbarHtml(): string {
     <nav class="navbar fixed top-0 left-0 right-0 z-[200] bg-white border-b border-gray-200 shadow-nav" aria-label="Main navigation">
       <div class="container-main flex items-center justify-between h-18 lg:h-20">
         <!-- Logo -->
-        <a href="/" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
-          <img src="/lbrinfosolutions/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 w-auto" />
+        <a href="${BASE_PATH}" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
+          <img src="${BASE_PATH}lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 w-auto" />
         </a>
 
         <!-- Desktop Navigation -->

@@ -7,6 +7,7 @@
 
 import { footerColumns } from '../data/navigation';
 import { siteConfig } from '../config/site.config';
+import { BASE_PATH } from '../config/base-path';
 
 function buildFooterColumns(): string {
   return footerColumns
@@ -53,8 +54,8 @@ export function buildFooterHtml(): string {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <!-- Brand column -->
           <div class="lg:col-span-2">
-            <a href="/" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
-          <img src="/lbrinfosolutions/lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 pb-2 w-auto" />
+            <a href="${BASE_PATH}" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
+          <img src="${BASE_PATH}lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 pb-2 w-auto" />
         </a>
             <p class="text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
               Delivering disruptive enterprise technology solutions in database infrastructure, storage, AI, and data orchestration for modern workloads.

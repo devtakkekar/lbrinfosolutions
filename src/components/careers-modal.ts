@@ -12,6 +12,7 @@
  */
 
 import type { JobPosting } from '../data/careers';
+import { BASE_PATH } from '../config/base-path';
 
 let modalEl: HTMLDivElement | null = null;
 let titleEl: HTMLElement | null = null;
@@ -73,7 +74,7 @@ function ensureModal(): void {
         <a class="job-modal-linkedin-link" data-job-modal-linkedin-link target="_blank" rel="noopener noreferrer">
           View original LinkedIn post
         </a>
-        <a class="btn-accent job-modal-apply" href="/lbrinfosolutions/src/pages/contact/">
+        <a class="btn-accent job-modal-apply" href="${BASE_PATH}src/pages/contact/">
           Contact Us
         </a>
       </div>

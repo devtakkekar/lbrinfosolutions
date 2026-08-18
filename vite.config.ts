@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import { partialsPlugin } from './vite-plugin-partials';
+import { BASE_PATH } from './src/config/base-path';
 
 export default defineConfig({
-  base: '/lbrinfosolutions/',
+  base: BASE_PATH,
   root: '.',
   publicDir: 'public',
   plugins: [partialsPlugin()],
