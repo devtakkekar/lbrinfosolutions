@@ -23,12 +23,18 @@ import { initLogoCarousel } from './components/logo-carousel';
 import { initRadialDiagram } from './components/radial-diagram';
 import { initCounters } from './components/counter';
 import { initContactForm } from './components/contact-form';
+import { initImageSkeletons } from './components/image-skeleton';
 import { initNavigation } from './scripts/navigation';
 import { initAnimations } from './scripts/animations';
 import { initScroll } from './scripts/scroll';
 import { initHoverPrefetch } from './scripts/prefetch';
 
 function init(): void {
+  // 0. Skeleton-load every image already present in the initial HTML
+  // (navbar/footer logo, logo-chip grids, product hero art, etc.).
+  // Components that inject their own <img> tags later (blog-list,
+  // logo-carousel) re-scan their own container after rendering.
+  initImageSkeletons();
   // 1. Initialize interactive behaviors on the already-present navbar/footer markup
   initDropdowns();
   initNavigation();

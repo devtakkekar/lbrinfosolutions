@@ -9,6 +9,8 @@
  * conventions already used by the product carousel and animate-on-scroll.
  */
 
+import { initImageSkeletons, resetImageSkeleton } from './image-skeleton';
+
 const SPEED_PX_PER_FRAME = 1.0;
 const GAP_PX = 24; // must match the `gap` set on .logo-track in utilities.css
 
@@ -25,8 +27,14 @@ export function initLogoCarousel(): void {
   // Duplicate the set once so the strip can scroll seamlessly from the
   // first copy into the second, then reset without a visible jump.
   originalCards.forEach((card) => {
-    track.appendChild(card.cloneNode(true));
+    const clone = card.cloneNode(true) as HTMLElement;
+    // cloneNode copies the "already skeleton-bound" state but not the
+    // load/error listeners that clear it, which would leave the clone
+    // shimmering forever — reset so the scan below re-binds it fresh.
+    clone.querySelectorAll<HTMLImageElement>('img').forEach(resetImageSkeleton);
+    track.appendChild(clone);
   });
+  initImageSkeletons(track);
 
   let loopWidth = 0;
   let x = 0;

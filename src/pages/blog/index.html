@@ -54,6 +54,7 @@
     import { initBlogGalleries } from '/src/components/blog-gallery.ts';
     import { blogPosts } from '/src/data/blog.ts';
     import { applyStagger, observeRevealElements } from '/src/scripts/animations.ts';
+    import { initImageSkeletons } from '/src/components/image-skeleton.ts';
 
     function initBlog() {
       const listEl = document.getElementById('blog-list');
@@ -63,6 +64,9 @@
       applyStagger('#blog-list', '.blog-post');
       observeRevealElements(listEl);
       initBlogGalleries();
+      // These <img> tags are inserted after main.ts's own page-wide scan
+      // already ran, so they need their own scoped skeleton pass.
+      initImageSkeletons(listEl);
     }
 
     if (document.readyState === 'loading') {

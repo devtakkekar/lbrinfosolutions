@@ -353,4 +353,55 @@
   .mobile-menu.is-open {
     opacity: 1;
   }
+
+  /* Image skeleton loading — applied directly to an <img> (see
+     src/components/image-skeleton.ts), not a wrapper, since every image
+     on the site already sits in a sized container (fixed box, aspect
+     ratio, or object-fit parent), so toggling background/opacity here
+     never causes layout shift. Two color variants: the default suits
+     images on white/gray sections, --dark suits navy hero/blog sections. */
+  .img-skeleton-fade {
+    transition: opacity 0.4s ease;
+  }
+
+  .img-skeleton {
+    background-color: var(--color-gray-100);
+    background-image: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(138, 155, 181, 0.35) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: img-skeleton-shimmer 1.5s ease-in-out infinite;
+    opacity: 1;
+  }
+
+  .img-skeleton--dark {
+    background-color: rgba(255, 255, 255, 0.06);
+    background-image: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(143, 194, 255, 0.18) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+  }
+
+  .img-skeleton-fade.is-loaded {
+    background: none;
+    animation: none;
+  }
+
+  @keyframes img-skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .img-skeleton,
+    .img-skeleton--dark {
+      animation: none;
+    }
+  }
 }
