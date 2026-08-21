@@ -302,3 +302,8 @@
 .nhost-card:nth-child(4) { transition-delay: 0.35s; }
 .nhost-card:nth-child(5) { transition-delay: 0.45s; }
 .nhost-card:nth-child(6) { transition-delay: 0.55s; }
+
+.marquee-static .marquee-track {
+  transform: none !important;
+  justify-content: center;
+}

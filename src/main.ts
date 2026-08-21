@@ -24,6 +24,7 @@ import { initRadialDiagram } from './components/radial-diagram';
 import { initCounters } from './components/counter';
 import { initContactForm } from './components/contact-form';
 import { initImageSkeletons } from './components/image-skeleton';
+import { initMarquee } from './components/marquee';
 import { initNavigation } from './scripts/navigation';
 import { initAnimations } from './scripts/animations';
 import { initScroll } from './scripts/scroll';
@@ -58,6 +59,10 @@ function init(): void {
 
   // 4. Prefetch on hover-intent so the next page navigation feels instant
   initHoverPrefetch();
+
+  if (document.getElementById('marquee')) {
+  initMarquee();
+}
 }
 
 // Boot when DOM is ready
