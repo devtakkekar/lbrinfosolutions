@@ -112,6 +112,21 @@
     animation: hero-logo-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+    /* Mobile-only logo card — same gradient/grid background as the desktop
+     side panel, but a plain square in normal flow, shown right below the
+     navy hero panel. Hidden at lg where the side-panel layout takes over. */
+    .hero-logo-mobile-wrap {
+    @apply block lg:hidden bg-white;
+  }
+
+  .hero-logo-mobile {
+    @apply relative w-full aspect-square overflow-hidden flex items-center justify-center;
+  }
+
+  .hero-logo-mobile img {
+    @apply relative z-10 w-2/3 h-auto object-contain;
+  }
+
   /* Section title block */
   .section-header {
     @apply text-center max-w-2xl mx-auto mb-12;
