@@ -78,6 +78,39 @@
   .logo-chip--dark {
     @apply bg-navy border-navy-700;
   }
+  /* Hero text wrapper — viewport-relative left padding so it lines up
+     with container-main elsewhere on the page. */
+  .hero-container {
+    @apply w-full hero-padding relative z-30;
+    padding-left: max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem));
+    padding-right: 1.5rem;
+  }
+
+  /* Navy panel — inset from the right on large screens, rounded on the
+     right side only, so it reveals the gradient layer behind it. */
+  .hero-panel {
+    @apply relative z-10 overflow-hidden bg-navy lg:mr-[360px] xl:mr-[540px] lg:rounded-tr-[3rem] lg:rounded-br-[3rem];
+  }
+
+  /* Full-bleed gradient background — behind everything, spans the
+     entire hero section edge to edge. */
+  .hero-logo-bg-layer {
+    @apply hidden lg:block absolute inset-0 z-0;
+  }
+
+  /* The logo's own fixed-width slot, pinned to the right of the
+     section, above the navy panel. */
+  .hero-logo-panel {
+    @apply hidden lg:flex absolute inset-y-0 right-0 w-[360px] xl:w-[540px] items-center justify-center p-6 z-20;
+  }
+
+  .hero-logo-panel img {
+    @apply w-full h-auto max-h-56 object-contain grayscale-0 transition duration-300 ease-out hover:scale-110 hover:grayscale;
+  }
+
+  .hero-logo-enter {
+    animation: hero-logo-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
 
   /* Section title block */
   .section-header {
@@ -221,6 +254,38 @@
       width: 48px;
     }
   }
+}
+
+@keyframes hero-logo-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-logo-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #fff 0%, #fff 40%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(to right, #0ed2da, #5f29c7);
+}
+
+.hero-logo-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, #ccc 1px, transparent 1px);
+  background-size: 50px 100%;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 @layer utilities {
