@@ -81,7 +81,7 @@ export default {
         'small': ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }],
       },
       maxWidth: {
-        'container': '1280px',
+        'container': '1440px',
       },
       spacing: {
         '18': '4.5rem',

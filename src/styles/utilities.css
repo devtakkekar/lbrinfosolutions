@@ -82,7 +82,7 @@
      with container-main elsewhere on the page. */
   .hero-container {
     @apply w-full hero-padding relative z-30;
-    padding-left: max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem));
+    padding-left: max(1.5rem, calc((100vw - 1440px) / 2 + 1.5rem));
     padding-right: 1.5rem;
   }
 

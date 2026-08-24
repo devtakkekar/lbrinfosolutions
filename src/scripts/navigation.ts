@@ -3,6 +3,8 @@
  * Handles active link highlighting and smooth scroll to anchors.
  */
 
+import { BASE_PATH } from '../config/base-path';
+
 export function initNavigation(): void {
   initStickyNav();
   initSmoothScrollLinks();
@@ -41,8 +43,16 @@ function highlightActiveLink(): void {
     const href = link.getAttribute('href');
     if (!href) return;
 
-    // Match exact path or parent path for products
-    if (currentPath === href || (currentPath.startsWith(href) && href !== '/')) {
+    // The Home link's href is just the site's base path (e.g. "/" or
+    // "/lbrinfosolutions/"), which is itself a *prefix* of every other
+    // page's path. A plain startsWith() check therefore matched Home on
+    // every single page. Home now requires an exact match; every other
+    // link keeps the "exact or parent path" prefix match (e.g. so a
+    // product sub-page still highlights the "Products" parent link).
+    const isHome = href === BASE_PATH;
+    const isActive = isHome ? currentPath === href : currentPath === href || currentPath.startsWith(href);
+
+    if (isActive) {
       link.classList.add('text-navy', 'font-semibold');
       link.setAttribute('aria-current', 'page');
     }
