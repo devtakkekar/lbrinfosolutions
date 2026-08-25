@@ -187,8 +187,15 @@
   /* Logo Carousel — continuous marquee of partner/technology logos.
      Sits inside .container-main like every other section, so the fade
      masks blend with the section's own background rather than the page's.
-     JS (logo-carousel.ts) duplicates .logo-track's children once and
-     animates via translate3d for a seamless infinite loop. */
+     JS (logo-carousel.ts) duplicates .logo-track's children once, then
+     sets --logo-loop-distance/--logo-marquee-duration and lets this
+     @keyframes animation run the actual scroll. That's deliberate: the
+     old version advanced `transform` from a requestAnimationFrame loop
+     every frame from the main thread, which is exactly what stutters
+     under any main-thread load (other timers/observers on the page,
+     image decoding, GC pauses, etc.) — a native CSS animation instead
+     runs on the compositor thread and keeps scrolling smoothly even
+     while the main thread is busy. */
   .logo-carousel {
     @apply relative w-full overflow-hidden isolate;
   }
@@ -198,8 +205,21 @@
     gap: 24px;
     width: max-content;
     will-change: transform;
-    transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+    animation: logo-marquee var(--logo-marquee-duration, 30s) linear infinite;
+  }
+
+  .logo-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes logo-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(var(--logo-loop-distance, -50%), 0, 0);
+    }
   }
 
   .logo-card {
