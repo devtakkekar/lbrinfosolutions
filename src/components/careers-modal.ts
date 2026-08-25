@@ -74,7 +74,7 @@ function ensureModal(): void {
         <a class="job-modal-linkedin-link" data-job-modal-linkedin-link target="_blank" rel="noopener noreferrer">
           View original LinkedIn post
         </a>
-        <a class="btn-accent job-modal-apply" href="${BASE_PATH}src/pages/contact/">
+        <a class="btn-accent job-modal-apply" href="${BASE_PATH}src/pages/contact/index.html">
           Contact Us
         </a>
       </div>

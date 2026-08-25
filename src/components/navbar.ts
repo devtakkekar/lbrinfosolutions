@@ -82,7 +82,7 @@ function buildNavItems(): string {
             </div>
             <div class="border-t border-gray-200 p-4">
               <a
-                  href="${BASE_PATH}src/pages/products/"
+                  href="${BASE_PATH}src/pages/products/index.html"
                   class="flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3 text-sm font-semibold text-blue-accent transition hover:bg-blue-50"
               >
                   <span>View All Products</span>
@@ -137,7 +137,7 @@ function buildMobileNavItems(): string {
               </a>`
               )
               .join('')}
-            <a href="${BASE_PATH}src/pages/products/" class="block px-4 py-2 text-sm font-medium text-blue-accent hover:text-blue-light transition-colors">
+            <a href="${BASE_PATH}src/pages/products/index.html" class="block px-4 py-2 text-sm font-medium text-blue-accent hover:text-blue-light transition-colors">
               View All Products &rarr;
             </a>
           </div>

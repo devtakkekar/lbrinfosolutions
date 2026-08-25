@@ -59,7 +59,7 @@ export function initCookieBanner(): void {
             <p class="text-xs text-gray-500 leading-relaxed">
               We use cookies to enhance your browsing experience, analyze site traffic, and personalize content.
               By clicking "Allow All", you consent to our use of cookies.
-              <a href="/src/pages/cookies/" class="text-blue-accent hover:text-blue-light underline">Cookie Policy</a>
+              <a href="/src/pages/cookies/index.html" class="text-blue-accent hover:text-blue-light underline">Cookie Policy</a>
             </p>
           </div>
           <!-- Buttons -->

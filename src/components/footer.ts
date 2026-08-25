@@ -58,7 +58,7 @@ export function buildFooterHtml(): string {
               <a href="${BASE_PATH}" class="nav-logo flex items-center flex-shrink-0" aria-label="${siteConfig.name} - Home">
                 <img src="${BASE_PATH}lbrinfosolutions.png" alt="${siteConfig.name}" class="h-9 lg:h-11 pb-2 w-auto" />
               </a>
-              <img src="${BASE_PATH}src/assets/logos/iso-9001-white.svg" alt="ISO 9001:2015 Certified" class="h-9 lg:h-11 w-auto flex-shrink-0 opacity-70" />
+              <img src="${BASE_PATH}logos/iso-9001-white.svg" alt="ISO 9001:2015 Certified" class="h-9 lg:h-11 w-auto flex-shrink-0 opacity-70" />
             </div>
             <p class="text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
               Delivering disruptive enterprise technology solutions in database infrastructure, storage, AI, and data orchestration for modern workloads.

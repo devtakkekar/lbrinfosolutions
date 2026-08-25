@@ -16,4 +16,4 @@
  * below to '/' and rebuild (`npm run build`) — nothing else needs to
  * change.
  */
-export const BASE_PATH = '/lbrinfosolutions/';
+export const BASE_PATH = '/';

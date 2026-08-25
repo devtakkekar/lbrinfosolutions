@@ -96,7 +96,7 @@ function buildCard(posting: JobPosting, index: number): string {
                 ? `<a class="job-card-expand-linkedin" href="${posting.linkedinPostUrl}" target="_blank" rel="noopener noreferrer">View original LinkedIn post</a>`
                 : ''
             }
-            <a class="btn-accent job-card-expand-apply" href="${BASE_PATH}src/pages/contact/">Contact Us</a>
+            <a class="btn-accent job-card-expand-apply" href="${BASE_PATH}src/pages/contact/index.html">Contact Us</a>
           </div>
         </div>
       </div>
