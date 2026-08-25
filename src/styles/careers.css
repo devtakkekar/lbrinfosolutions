@@ -116,21 +116,30 @@
   white-space: nowrap;
 }
 
-/* Smooth height animation without a fixed max-height guess, using the
-   grid-rows trick: 0fr collapsed, 1fr expanded, overflow-hidden inner
-   wrapper clips the content in between. */
+/* Smooth open/close: height is driven from JS (measuring the real
+   content height via scrollHeight — see setExpanded() in
+   careers-list.ts) rather than the CSS-only grid-template-rows trick,
+   since animating that with `fr` units doesn't render smoothly in
+   every browser (notably older/mobile Safari, where it can just snap
+   open instead of easing). The content also fades and slides in
+   slightly, so the reveal feels layered rather than a flat height
+   change. */
 .job-card-expand {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.job-card.is-expanded .job-card-expand {
-  grid-template-rows: 1fr;
-}
-
-.job-card-expand-inner {
+  height: 0;
   overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.job-card-expand-body {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.job-card.is-expanded .job-card-expand-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.08s;
 }
 
 .job-card-expand-body {

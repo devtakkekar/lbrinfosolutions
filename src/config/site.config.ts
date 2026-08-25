@@ -12,7 +12,7 @@ export const siteConfig = {
 
   contact: {
     address: 'LBR InfoSolutions-102, Floor-1, Gumpha Darshan A&B, Chinchpada Road, Borivali (E), Mumbai, India - 400067',
-    email: 'info@lbrinfosolutions.com',
+    email: 'sales@lbrinfosolutions.com',
     phone: '+91-9920892704',
   },
 

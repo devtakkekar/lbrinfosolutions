@@ -111,6 +111,45 @@ export function renderJobPostings(containerId: string, postings: JobPosting[]): 
 }
 
 /**
+ * Animates one card's expand panel open or closed by measuring its
+ * real content height and transitioning to/from that pixel value
+ * (the CSS just has `transition: height`, see careers.css). This is
+ * more reliable across browsers than letting a CSS grid-rows trick
+ * animate `fr` units, which some browsers don't ease smoothly.
+ *
+ * Expanding: set height to the measured content height, then swap to
+ * `height: auto` once the transition finishes so the panel still
+ * reflows correctly if content/viewport changes while it's open.
+ * Collapsing: if height is currently `auto`, pin it to the current
+ * pixel height first (so there's something to transition *from*),
+ * force a reflow, then set it to 0 on the next frame.
+ */
+function setExpanded(card: HTMLElement, panel: HTMLElement, expand: boolean): void {
+  if (expand) {
+    card.classList.add('is-expanded');
+    panel.style.height = `${panel.scrollHeight}px`;
+    panel.addEventListener(
+      'transitionend',
+      function onEnd(event: TransitionEvent) {
+        if (event.propertyName !== 'height') return;
+        panel.removeEventListener('transitionend', onEnd);
+        if (card.classList.contains('is-expanded')) panel.style.height = 'auto';
+      }
+    );
+  } else {
+    panel.style.height = `${panel.scrollHeight}px`;
+    // Force layout so the browser registers the pixel height above
+    // before we change it again — otherwise the two writes collapse
+    // into one and there's nothing to transition from.
+    void panel.offsetHeight;
+    card.classList.remove('is-expanded');
+    requestAnimationFrame(() => {
+      panel.style.height = '0px';
+    });
+  }
+}
+
+/**
  * Wires up expand/collapse on each rendered card. Call once, right
  * after renderJobPostings() has inserted the card markup. Clicking a
  * link inside the expanded panel (Contact Us / LinkedIn) is not
@@ -122,9 +161,13 @@ export function initCareersExpand(containerId: string): void {
 
   container.querySelectorAll<HTMLElement>('.job-card').forEach((card) => {
     const face = card.querySelector<HTMLButtonElement>('.job-card-face');
-    face?.addEventListener('click', () => {
-      const isOpen = card.classList.toggle('is-expanded');
-      face.setAttribute('aria-expanded', String(isOpen));
+    const panel = card.querySelector<HTMLElement>('.job-card-expand');
+    if (!face || !panel) return;
+
+    face.addEventListener('click', () => {
+      const willExpand = !card.classList.contains('is-expanded');
+      setExpanded(card, panel, willExpand);
+      face.setAttribute('aria-expanded', String(willExpand));
     });
   });
 }
