@@ -15,6 +15,7 @@
  */
 
 import type { JobPosting, JobSection } from '../data/careers';
+import { BASE_PATH } from '../config/base-path';
 
 /**
  * Minimal HTML-escaping for text interpolated into template strings.
@@ -95,9 +96,7 @@ function buildCard(posting: JobPosting, index: number): string {
                 ? `<a class="job-card-expand-linkedin" href="${posting.linkedinPostUrl}" target="_blank" rel="noopener noreferrer">View original LinkedIn post</a>`
                 : ''
             }
-            <a class="btn-accent job-card-expand-apply" href="mailto:info@lbrinfosolutions.com?subject=${encodeURIComponent(
-              `Application: ${posting.title}`
-            )}">Contact Us</a>
+            <a class="btn-accent job-card-expand-apply" href="${BASE_PATH}src/pages/contact/">Contact Us</a>
           </div>
         </div>
       </div>
