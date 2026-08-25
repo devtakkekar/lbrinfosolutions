@@ -1,0 +1,189 @@
+/* ============================================================
+   Global Styles — LBR InfoSolutions
+   Enterprise design system foundation
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* Color tokens */
+    --color-navy: #0B213F;
+    --color-blue-primary: #336fd0;
+    --color-blue-accent: #3b8efc;
+    --color-blue-light: #5CA5FF;
+    --color-blue-muted: #8FC2FF;
+    --color-white: #FFFFFF;
+    --color-gray-50: #F7F9FC;
+    --color-gray-100: #EEF1F6;
+    --color-gray-200: #E2E6EE;
+    --color-gray-300: #CDD3DE;
+    --color-gray-400: #8A9BB5;
+    --color-gray-600: #4A5568;
+    --color-gray-800: #1A2332;
+
+    /* Spacing */
+    --section-padding-y: 5rem;
+    --section-padding-y-mobile: 3rem;
+    --container-max: 1440px;
+    --container-padding: 1.5rem;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px rgba(11, 33, 63, 0.06);
+    --shadow-card-hover: 0 4px 20px rgba(11, 33, 63, 0.08);
+    --shadow-nav: 0 1px 2px rgba(11, 33, 63, 0.05);
+    --shadow-dropdown: 0 8px 30px rgba(11, 33, 63, 0.12);
+
+    /* Z-index scale */
+    --z-dropdown: 100;
+    --z-nav: 200;
+    --z-mobile-menu: 300;
+    --z-cookie-banner: 400;
+    --z-modal: 500;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    background-color: var(--color-white);
+    overflow-x: hidden;
+  }
+
+  /* Respect reduced motion preference */
+ @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Stop continuous decorative animations */
+  .btn-shine,
+  .btn-chevron,
+  .logo-track,
+  .animate-word-spin {
+    animation: none !important;
+  }
+
+  /* Disable reveal transitions */
+  .animate-on-scroll,
+  .reveal-fade,
+  .reveal-left,
+  .reveal-right,
+  .reveal-zoom {
+    transition: none !important;
+  }
+}
+  @layer utilities {
+  .animate-word-spin {
+    animation-duration: 6s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
+  /* Selection styling */
+  ::selection {
+    background-color: rgba(51, 102, 153, 0.15);
+    color: var(--color-navy);
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-blue-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Remove default focus for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  a {
+    color: var(--color-blue-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  /* Excludes button-variant links — buttons manage their own hover text color
+     (see utilities.css). Without this exclusion, a:hover's specificity (0,1,1)
+     beats plain utility classes like .text-white (0,1,0), silently overriding
+     button text color on hover — and for .btn-accent specifically, that
+     override color matched the hover background color exactly, making the
+     button text disappear.
+     Note: `.btn` itself is applied to these elements via Tailwind's @apply,
+     which merges CSS properties but does NOT add the literal "btn" string to
+     the rendered class attribute — so :not(.btn) never actually matched.
+     Matching on the real class names (btn-primary/btn-accent/etc.) instead. */
+  a:not([class*='btn-']):hover {
+    color: var(--color-blue-light);
+  }
+}
+
+@layer components {
+  /* Nav link underline sweep — used on primary nav links only */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.25rem;
+    height: 2px;
+    background-color: var(--color-blue-accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  /* Logo mark — gentle scale on hover, signals interactivity without being loud */
+  .nav-logo svg {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .nav-logo:hover svg {
+    transform: scale(1.08) rotate(-2deg);
+  }
+
+  /* Social icon hover in footer */
+  footer a[aria-label] svg {
+    transition: transform 0.25s ease;
+  }
+
+  footer a[aria-label]:hover svg {
+    transform: translateY(-2px) scale(1.1);
+  }
+}

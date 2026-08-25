@@ -1,0 +1,106 @@
+/* Radial Feature Diagram — homepage hero decoration.
+   Ported from a standalone demo: same node positions, connector-line/arc
+   math, and gradients, just namespaced under .radial-diagram so it can't
+   leak into/collide with the rest of the site's styles, and wrapped in a
+   scale container (see index.html) so the fixed 660x680 canvas can shrink
+   to fit smaller desktop widths without touching any of the internal
+   pixel/trig math. JS lives in src/components/radial-diagram.ts. */
+
+.radial-diagram-scale {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radial-diagram .stage {
+  position: relative;
+  width: 660px;
+  height: 680px;
+  transform-origin: top left;
+  /* Hidden until JS finishes computing connector-line endpoints and
+     arc-bracket paths (see radial-diagram.ts) — otherwise the raw,
+     unset SVG state (lines defaulting to (0,0), paths with no `d`
+     yet) paints for one frame before snapping into place, which
+     looks like a glitch. Revealed via the .is-ready class instead. */
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.radial-diagram .stage.is-ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radial-diagram .stage {
+    transition: none;
+  }
+}
+
+.radial-diagram .node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.radial-diagram .node:hover {
+  transform: translate(-50%, -50%) scale(1.045);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radial-diagram .node {
+    transition: none;
+  }
+  .radial-diagram .node:hover {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.radial-diagram .node-title {
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.radial-diagram .node-desc {
+  opacity: 0.92;
+  line-height: 1.25;
+}
+
+.radial-diagram .icon-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Node gradients — matched to the reference design */
+.radial-diagram .g-clock {
+  background: linear-gradient(135deg, #22a7d8, #2fb8c9);
+}
+.radial-diagram .g-money {
+  background: linear-gradient(135deg, #55b66a, #6fc37e);
+}
+.radial-diagram .g-flask {
+  background: linear-gradient(135deg, #0f8f7c, #33a86a);
+}
+.radial-diagram .g-anchor {
+  background: linear-gradient(135deg, #74d17a, #8fd98f);
+}
+.radial-diagram .g-search {
+  background: linear-gradient(135deg, #1f78d1, #2f8fe0);
+}
+.radial-diagram .g-pencil {
+  background: linear-gradient(135deg, #0f9e97, #17b5a1);
+}
+.radial-diagram .g-wrench {
+  background: linear-gradient(135deg, #155f9e, #1c74c2);
+}
+.radial-diagram .g-center {
+  background: linear-gradient(135deg, #ffffff, #aea9a9);
+}

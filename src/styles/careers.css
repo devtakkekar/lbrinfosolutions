@@ -1,0 +1,469 @@
+/* Career page — job posting cards.
+   Cards are white, rounded, and stacked full-width (not a grid), each
+   showing title + location on the left, category tags + an employment
+   type pill on the right, and a diagonal arrow that rotates into a
+   "collapse" position on expand. Clicking a card reveals its full,
+   point-wise job description inline, directly beneath it, instead of
+   opening a modal — see initCareersExpand() in careers-list.ts.
+   The job-modal-* rules further below are no longer wired up (the
+   career page doesn't call initCareersModal anymore) but are left in
+   place, unused, in case a modal pattern is wanted again elsewhere. */
+
+.job-card {
+  font-family: "Inter", system-ui, sans-serif;
+  width: 100%;
+  background: #e7feff;
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgba(11, 33, 63, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.job-card:hover {
+  box-shadow: 0 12px 32px -8px rgba(11, 33, 63, 0.18);
+}
+
+.job-card-face {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 28px 28px 24px;
+}
+
+.job-card-face:focus-visible {
+  outline: 2px solid #2f8ee0;
+  outline-offset: -2px;
+  border-radius: 24px;
+}
+
+.job-card-heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.job-card-title {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #0b213f;
+}
+
+.job-card-location {
+  margin-top: 6px;
+  font-size: 0.9375rem;
+  color: #6b7280;
+}
+
+.job-card-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: #0b213f;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.job-card.is-expanded .job-card-arrow {
+  transform: rotate(135deg);
+}
+
+.job-card-tags-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.job-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.job-card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.job-card-type {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: #e5e7eb;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+/* Smooth open/close: height is driven from JS (measuring the real
+   content height via scrollHeight — see setExpanded() in
+   careers-list.ts) rather than the CSS-only grid-template-rows trick,
+   since animating that with `fr` units doesn't render smoothly in
+   every browser (notably older/mobile Safari, where it can just snap
+   open instead of easing). The content also fades and slides in
+   slightly, so the reveal feels layered rather than a flat height
+   change. */
+.job-card-expand {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.job-card-expand-body {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.job-card.is-expanded .job-card-expand-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.08s;
+}
+
+.job-card-expand-body {
+  margin: 0 28px;
+  padding: 20px 0 28px;
+  border-top: 1px solid #eef0f3;
+}
+
+.job-card-expand-section + .job-card-expand-section {
+  margin-top: 20px;
+}
+
+.job-card-expand-heading {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0b213f;
+  margin-bottom: 8px;
+}
+
+.job-card-expand-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.job-card-expand-list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #4b5563;
+}
+
+.job-card-expand-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(47, 142, 224, 0.15);
+  border: 1px solid #2f8ee0;
+}
+
+.job-card-expand-linkedin {
+  display: inline-block;
+  margin-top: 20px;
+  color: #6b7280;
+  font-size: 0.8125rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.job-card-expand-linkedin:hover {
+  color: #0b213f;
+}
+
+.job-card-expand-apply {
+  display: inline-flex;
+  margin-top: 20px;
+  margin-left: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .job-card,
+  .job-card-arrow,
+  .job-card-expand {
+    transition: none;
+  }
+}
+
+/* ========== LOADING / EMPTY STATE (Careers API) ==========
+   Shown briefly while getJobPostings() resolves, or when the Careers
+   API responds successfully with zero active postings. Reuses the
+   existing .job-card shape so it doesn't look like a separate,
+   bolted-on UI. */
+.job-card-skeleton .job-card-face {
+  cursor: default;
+}
+
+.job-card-skeleton-line {
+  border-radius: 6px;
+  background: #eef0f3;
+  animation: job-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.job-card-skeleton-line--title {
+  width: 45%;
+  height: 22px;
+  margin-bottom: 10px;
+}
+
+.job-card-skeleton-line--location {
+  width: 25%;
+  height: 14px;
+}
+
+@keyframes job-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.job-list-empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .job-card-skeleton-line {
+    animation: none;
+  }
+}
+
+/* ========== JOB DESCRIPTION MODAL ========== */
+.job-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.job-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.job-modal-open {
+  overflow: hidden;
+}
+
+.job-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 13, 28, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.job-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #156778 0%, #0e4561 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.job-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.2s ease;
+}
+
+.job-modal-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.job-modal-header {
+  flex-shrink: 0;
+  padding: 32px 56px 20px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.job-modal-eyebrow {
+  display: block;
+  color: #4ebfd3;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.job-modal-title {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.job-modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 24px 32px;
+}
+
+.job-modal-section + .job-modal-section {
+  margin-top: 24px;
+}
+
+.job-modal-section-heading {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.job-modal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.job-modal-list li {
+  position: relative;
+  padding-left: 26px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.job-modal-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: rgba(78, 191, 211, 0.18);
+  border: 1px solid rgba(78, 191, 211, 0.6);
+}
+
+.job-modal-list li::after {
+  content: '';
+  position: absolute;
+  left: 3.5px;
+  top: 0.55em;
+  width: 7px;
+  height: 4px;
+  border-left: 2px solid #4ebfd3;
+  border-bottom: 2px solid #4ebfd3;
+  transform: rotate(-45deg);
+}
+
+.job-modal-footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.job-modal-linkedin-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8125rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.job-modal-linkedin-link:hover {
+  color: #ffffff;
+}
+
+.job-modal-linkedin-link.is-hidden {
+  display: none;
+}
+
+.job-modal-apply {
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .job-modal-header {
+    padding: 28px 48px 16px 20px;
+  }
+  .job-modal-body {
+    padding: 20px;
+  }
+  .job-modal-footer {
+    padding: 16px 20px;
+    justify-content: stretch;
+  }
+  .job-modal-apply {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .job-modal {
+    transition: none;
+  }
+}

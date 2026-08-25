@@ -1,0 +1,176 @@
+/* Blog page — card layout and typography are plain Tailwind utility
+   classes (see blog-list.ts). This file only covers what Tailwind can't
+   express declaratively: the image crossfade and the lightbox overlay.
+   JS lives in src/components/blog-gallery.ts. */
+
+/* CLS fix: #blog-list is empty in the served HTML — blog-list.ts fills it
+   in client-side. Without a reservation, that div jumps from ~0 height to
+   full height in one frame once JS runs, which is a huge, unavoidable
+   layout shift. The inline script in blog/index.html sets
+   --blog-post-count from data-post-count before this section lays out;
+   min-height uses it to reserve roughly the right amount of space, then
+   the render script clears the property once real content sets the
+   height itself. --blog-card-est-h is a rough per-card height guess
+   (row layout: image + padding); it doesn't need to be exact to help —
+   it just needs to not be zero. */
+#blog-list {
+  --blog-card-est-h: 320px;
+  min-height: calc(var(--blog-post-count, 0) * var(--blog-card-est-h));
+}
+
+@media (max-width: 639px) {
+  /* Below Tailwind's `sm` breakpoint the frame stacks above the text
+     instead of sitting beside it (see blog-image-frame in
+     blog-list.ts), so each card runs noticeably taller. */
+  #blog-list {
+    --blog-card-est-h: 560px;
+  }
+}
+
+.blog-image-slide {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.blog-image-slide.is-active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-image-slide {
+    transition: none;
+  }
+}
+
+/* Lightbox */
+.blog-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.blog-lightbox.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-lightbox {
+    transition: none;
+  }
+}
+
+body.blog-lightbox-open {
+  overflow: hidden;
+}
+
+.blog-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 13, 28, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.blog-lightbox-figure {
+  position: relative;
+  z-index: 1;
+  max-width: min(90vw, 1100px);
+  max-height: 85vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+  object-fit: contain;
+}
+
+.blog-lightbox-counter {
+  margin-top: 14px;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.blog-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.2s ease;
+}
+
+.blog-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.blog-lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.blog-lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.blog-lightbox-arrow.is-hidden {
+  display: none;
+}
+
+.blog-lightbox-prev {
+  left: 16px;
+}
+
+.blog-lightbox-next {
+  right: 16px;
+}
+
+@media (max-width: 640px) {
+  .blog-lightbox-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  .blog-lightbox-prev {
+    left: 8px;
+  }
+  .blog-lightbox-next {
+    right: 8px;
+  }
+  .blog-lightbox-close {
+    top: 12px;
+    right: 12px;
+  }
+}
