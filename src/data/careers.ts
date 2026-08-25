@@ -44,9 +44,15 @@ export interface JobPosting {
   title: string;
   /** Short one-line teaser shown on the card face (not the full JD). */
   summary: string;
-  /** Full job description, rendered point-wise in the modal. */
+  /** Optional — shown under the title, e.g. "New York" or "Remote". */
+  location?: string;
+  /** Optional — short category pills shown on the card, e.g. ["Engineering", "Backend"]. */
+  tags?: string[];
+  /** Optional — single filled pill on the right, e.g. "Permanent", "Contract", "Internship". */
+  employmentType?: string;
+  /** Full job description, rendered point-wise when the card expands. */
   sections: JobSection[];
-  /** Optional — secondary "View original post" link in the modal footer. */
+  /** Optional — secondary "View original post" link shown alongside the expanded description. */
   linkedinPostUrl?: string;
 }
 

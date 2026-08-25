@@ -55,6 +55,12 @@ function normalizeJobPosting(raw: unknown): JobPosting | null {
   const posting: JobPosting = { title: job.title, summary: job.summary, sections };
   if (isNonEmptyString(job.id)) posting.id = job.id;
   if (isNonEmptyString(job.linkedinPostUrl)) posting.linkedinPostUrl = job.linkedinPostUrl;
+  if (isNonEmptyString(job.location)) posting.location = job.location;
+  if (isNonEmptyString(job.employmentType)) posting.employmentType = job.employmentType;
+  if (Array.isArray(job.tags)) {
+    const tags = job.tags.filter(isNonEmptyString);
+    if (tags.length > 0) posting.tags = tags;
+  }
 
   return posting;
 }
