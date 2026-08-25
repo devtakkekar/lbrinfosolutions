@@ -22,8 +22,6 @@ export default defineConfig({
         products: resolve(__dirname, 'src/pages/products/index.html'),
         postgresPro: resolve(__dirname, 'src/pages/postgres-pro/index.html'),
         infinidat: resolve(__dirname, 'src/pages/infinidat/index.html'),
-        vastData: resolve(__dirname, 'src/pages/vast-data/index.html'),
-        hammerspace: resolve(__dirname, 'src/pages/hammerspace/index.html'),
         visionlabsAi: resolve(__dirname, 'src/pages/visionlabs-ai/index.html'),
         rhel: resolve(__dirname, 'src/pages/rhel/index.html'),
         hpe: resolve(__dirname, 'src/pages/hpe/index.html'),

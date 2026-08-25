@@ -9,10 +9,6 @@ import type { Product } from '../types/product';
 // Each resolves to a hashed URL string at build time.
 import postgresProLogo from '../assets/logos/PostgresPro_logo.svg';
 import infinidatLogo from '../assets/logos/lenovo_infinidat.svg';
-import vastDataLogo from '../assets/logos/vast_data.svg';
-// Hammerspace's source file is white-fill only (transparent on white cards),
-// so a navy-fill variant is used for light surfaces (cards, listing grid).
-import hammerspaceLogo from '../assets/logos/hammerspace-dark.svg';
 import visionLabsLogo from '../assets/logos/vison_labs.svg';
 import redhatLogo from '../assets/logos/redhat.svg';
 import hpeLogo from '../assets/logos/hpe.svg';
@@ -108,90 +104,6 @@ export const products: Product[] = [
     pagePath: '/src/pages/infinidat/',
     featured: true,
     order: 2,
-  },
-  {
-    id: 'vast-data',
-    name: 'VAST Data',
-    tagline: 'The AI Data Platform',
-    shortDescription: 'Next-generation all-flash data platform that eliminates storage tiering and delivers unified file, object, and database services for AI workloads.',
-    overview: 'VAST Data has built the AI operating system — a groundbreaking scale-out platform that eliminates complex storage tiering and brings an end to the HDD era in the data center. The VAST Data Platform delivers file, object, database, and edge-to-cloud services in one scalable, affordable all-flash system.\n\nDesigned from the ground up for AI and deep learning workloads, VAST provides the performance to keep GPUs fully utilized, the security to protect intellectual property, and 99.999% uptime for continuous AI development. Recognized as a Leader in the 2024 Gartner Magic Quadrant for File and Object Storage Platforms.',
-    category: 'Storage',
-    logo: vastDataLogo,
-    features: [
-      { title: 'Universal Storage', description: 'Unified file, object, and database services in a single all-flash system — no tiering required.' },
-      { title: 'DASE Architecture', description: 'Disaggregated, Shared-Everything architecture delivering cloud data services with resilience at scale.' },
-      { title: 'AI-Optimized Performance', description: 'Purpose-built for GPU-intensive workloads with consistent high-bandwidth, low-latency access.' },
-      { title: 'Exabyte Scale', description: 'Linear scalability from terabytes to exabytes without performance degradation.' },
-      { title: 'Data Catalogue', description: 'Built-in metadata management and discovery engine for AI-ready data pipelines.' },
-      { title: 'Multi-Tenancy', description: 'Secure isolation with dynamic composability for multiple teams and workloads.' },
-      { title: 'Global Data Services', description: 'Edge-to-cloud data fabric with consistent APIs across all deployment locations.' },
-      { title: '99.999% Availability', description: 'Enterprise-grade uptime ensuring continuous AI development without interruption.' },
-    ],
-    benefits: [
-      { title: 'Eliminate Storage Tiering', description: 'One platform for all data — active, archive, and everything in between — at flash performance and near-tape economics.' },
-      { title: 'Accelerate AI Pipelines', description: 'Keep GPU clusters fed with data at line rate, reducing training time and maximizing infrastructure ROI.' },
-      { title: 'Simplify Operations', description: 'Replace multiple storage systems with a single platform, reducing management complexity by orders of magnitude.' },
-      { title: 'Future-Proof Architecture', description: 'Scale seamlessly as data grows without rearchitecting, re-tiering, or migrating workloads.' },
-    ],
-    useCases: [
-      { title: 'AI Model Training', description: 'High-throughput storage for feeding GPU clusters during deep learning training runs.', industries: ['Technology', 'Research', 'Automotive'] },
-      { title: 'Data Lakes', description: 'Consolidating structured and unstructured data into a single high-performance platform.', industries: ['Media', 'Healthcare', 'Financial Services'] },
-      { title: 'Analytics & Data Warehousing', description: 'Real-time analytics on massive datasets without performance bottlenecks.', industries: ['Retail', 'Telecom', 'Government'] },
-      { title: 'Life Sciences', description: 'Genomics, drug discovery, and medical imaging workloads requiring high-bandwidth access.', industries: ['Pharmaceuticals', 'Healthcare', 'Research'] },
-    ],
-    industries: ['Technology', 'Healthcare & Life Sciences', 'Financial Services', 'Media & Entertainment', 'Government', 'Research & Education'],
-    faq: [
-      { question: 'What makes VAST Data different from traditional storage?', answer: 'VAST eliminates the need for storage tiering entirely. Its DASE architecture delivers all-flash performance at near-tape economics, providing a single system for all data regardless of temperature or workload type.' },
-      { question: 'Is VAST Data suitable for AI workloads?', answer: 'VAST was purpose-built for AI. It delivers the sustained bandwidth and low latency needed to keep GPU clusters fully utilized during training, inference, and RAG workloads.' },
-      { question: 'How does VAST Data handle scalability?', answer: 'The DASE architecture provides linear scalability from terabytes to exabytes. Performance scales with capacity — adding nodes increases both storage and throughput proportionally.' },
-      { question: 'What protocols does VAST Data support?', answer: 'VAST supports NFS, SMB, S3 object, and database protocols natively — all from a single namespace without gateways or translation layers.' },
-    ],
-    officialUrl: 'https://www.vastdata.com/',
-    pagePath: '/src/pages/vast-data/',
-    featured: true,
-    order: 3,
-  },
-  {
-    id: 'hammerspace',
-    name: 'Hammerspace',
-    tagline: 'Global Data Orchestration',
-    shortDescription: 'Software-defined data orchestration platform providing a unified global namespace across heterogeneous storage, clouds, and geographic locations.',
-    overview: 'Hammerspace is a software-defined data orchestration and storage solution that provides unified file access via a high-performance Parallel Global File System spanning different storage types, vendors, geographic locations, and cloud environments.\n\nDesigned to make data a global resource across distributed or otherwise incompatible storage platforms, Hammerspace presents a cross-platform global namespace where users and applications can have direct multi-protocol access to all files on any storage anywhere — automating data movement, transformation, and lifecycle management for AI-ready pipelines.',
-    category: 'Data Orchestration',
-    logo: hammerspaceLogo,
-    features: [
-      { title: 'Global Namespace', description: 'Unified view of all data across heterogeneous storage systems, locations, and clouds.' },
-      { title: 'Parallel Global File System', description: 'High-performance distributed file system delivering bandwidth at scale across sites.' },
-      { title: 'Automated Data Orchestration', description: 'Policy-driven data placement and movement across storage tiers and locations.' },
-      { title: 'Multi-Protocol Access', description: 'Simultaneous NFS, SMB, and S3 access to the same data without copies or gateways.' },
-      { title: 'AI Data Pipeline', description: 'Automated data transformation and continuous delivery of AI-ready data to GPU clusters.' },
-      { title: 'Metadata Intelligence', description: 'Rich metadata services enabling smart data placement, search, and lifecycle management.' },
-      { title: 'Hybrid & Multi-Cloud', description: 'Seamless data mobility between on-premises, edge, and multiple cloud providers.' },
-      { title: 'Storage Agnostic', description: 'Works with any vendor\'s storage — no forklift upgrades or vendor lock-in required.' },
-    ],
-    benefits: [
-      { title: 'Eliminate Data Silos', description: 'Unify fragmented storage into a single accessible namespace without migrating or copying data.' },
-      { title: 'Accelerate AI Workflows', description: 'Automated pipelines ensure GPU clusters always have access to the right data in the right format.' },
-      { title: 'Reduce Cloud Costs', description: 'Intelligent data placement moves cold data to cheaper tiers automatically while maintaining instant access.' },
-      { title: 'Vendor Independence', description: 'Avoid lock-in by orchestrating data across any vendor\'s storage infrastructure transparently.' },
-    ],
-    useCases: [
-      { title: 'AI Data Management', description: 'Automating data pipelines for training, inference, and RAG workloads across distributed GPU clusters.', industries: ['Technology', 'Automotive', 'Research'] },
-      { title: 'Hybrid Cloud Storage', description: 'Extending on-premises storage to cloud seamlessly for burst capacity and DR.', industries: ['Enterprise IT', 'Financial Services'] },
-      { title: 'Media Production', description: 'Global collaboration on large media files with automatic data placement near editors.', industries: ['Media & Entertainment', 'Advertising'] },
-      { title: 'HPC & Research', description: 'High-performance data access for scientific computing and simulation workloads.', industries: ['Government', 'Research', 'Energy'] },
-    ],
-    industries: ['Technology', 'Media & Entertainment', 'Government', 'Research & Education', 'Financial Services', 'Energy'],
-    faq: [
-      { question: 'How does Hammerspace differ from traditional NAS?', answer: 'Unlike traditional NAS which is a single storage system, Hammerspace provides a software layer that orchestrates data across any existing storage — NAS, object, cloud — presenting it all as a single high-performance global file system.' },
-      { question: 'Does Hammerspace require replacing existing storage?', answer: 'No. Hammerspace works with your existing storage infrastructure from any vendor. It adds a metadata and orchestration layer on top without requiring data migration or hardware changes.' },
-      { question: 'How does Hammerspace support AI workloads?', answer: 'Hammerspace automates the entire pipeline of discovering, transforming, and delivering data to GPU clusters. It ensures AI workloads always have the freshest, properly formatted data regardless of where it physically resides.' },
-      { question: 'What cloud providers does Hammerspace support?', answer: 'Hammerspace supports all major cloud providers including AWS, Azure, Google Cloud, and Oracle Cloud — enabling true multi-cloud data mobility without application changes.' },
-    ],
-    officialUrl: 'https://hammerspace.com/',
-    pagePath: '/src/pages/hammerspace/',
-    featured: true,
-    order: 4,
   },
   {
     id: 'visionlabs-ai',

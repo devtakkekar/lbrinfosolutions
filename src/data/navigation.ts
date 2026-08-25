@@ -43,18 +43,6 @@ export const mainNavItems: NavItem[] = [
         },
         /* Only shows major products 
         {
-          label: 'VAST Data',
-          href: '/src/pages/vast-data/',
-          description: '',
-          badge: '',
-        },
-        {
-          label: 'Hammerspace',
-          href: '/src/pages/hammerspace/',
-          description: '',
-          badge: '',
-        },
-        {
           label: 'VisionLabs AI',
           href: '/src/pages/visionlabs-ai/',
           description: '',
@@ -98,8 +86,6 @@ export const footerColumns: FooterColumn[] = [
       { label: 'HPE', href: `${BASE_PATH}src/pages/hpe/` },
       { label: 'Cloudian', href: `${BASE_PATH}src/pages/cloudian/` },
       /* 
-      { label: 'VAST Data', href: '/src/pages/vast-data/' },
-      { label: 'Hammerspace', href: '/src/pages/hammerspace/' },
       { label: 'VisionLabs AI', href: '/src/pages/visionlabs-ai/' },
       { label: 'Yubico', href: '/src/pages/yubico/' },
       */
