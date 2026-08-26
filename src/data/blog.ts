@@ -17,15 +17,10 @@
  */
 
 import type { BlogPost } from '../types/blog';
-import blog1 from '../assets/blog/blog1.jpeg';
-import blog2 from '../assets/blog/blog2.jpeg';
-import blog3 from '../assets/blog/blog3.jpeg';
-import blog4 from '../assets/blog/blog4.jpeg';
-import blog5 from '../assets/blog/blog5.jpeg';
-import blog6 from '../assets/blog/blog6.jpeg';
-import trophy1 from '../assets/blog/trophy1.jpeg';
-import trophy2 from '../assets/blog/trophy2.jpeg';
 import security1 from '../assets/blog/security-1.svg';
+import storage1 from '../assets/blog/storage-1.svg';
+import storage2 from '../assets/blog/storage-2.svg';
+import storage3 from '../assets/blog/storage-3.svg';
 import database1 from '../assets/blog/database-1.svg';
 
 export const blogPosts: BlogPost[] = [
@@ -35,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Aging storage rarely fails all at once — it shows up first as slow backups, capacity firefighting, and support contracts that keep getting more expensive. Here\'s what to look for before it becomes an outage.',
     date: 'Jul 15, 2026',
-    images: [blog1, blog2, blog3, blog4, blog5 ,blog6, trophy1, trophy2],
+    images: [storage1, storage2, storage3],
   },
   {
     id: 'phishing-resistant-mfa-why-it-matters',
