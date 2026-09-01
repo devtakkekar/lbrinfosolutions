@@ -8,7 +8,7 @@
 
 import { initForm } from '@formspree/ajax';
 
-const FORMSPREE_FORM_ID = 'xykrdvjd';
+const FORMSPREE_FORM_ID = 'xbgjgooy';
 
 export function initContactForm(): void {
   const form = document.getElementById('contact-form');
